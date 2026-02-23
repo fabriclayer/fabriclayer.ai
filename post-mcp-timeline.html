@@ -40,6 +40,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .nav-links{display:flex;align-items:center;gap:1.5rem}
 .nav-links a{font-family:var(--mono);font-size:0.78rem;font-weight:400;color:var(--text-2);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--pink);text-decoration:none}
+.nav-links .nav-soon{color:#ccc;cursor:default;position:relative;font-family:var(--mono);font-size:0.78rem;font-weight:400}
+.nav-links .nav-soon:hover{color:#ccc}
+.nav-soon .tooltip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#111;color:#fff;font-family:var(--mono);font-size:0.6rem;padding:4px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.nav-soon .tooltip::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);border:4px solid transparent;border-bottom-color:#111}
+.nav-soon:hover .tooltip{opacity:1}
 .nav-right{display:flex;align-items:center;gap:0.75rem}
 .burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;transition:background .15s}
 .burger:hover{background:rgba(0,0,0,.04)}
@@ -149,11 +154,19 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
     <span class="nav-logo-text">blog</span>
   </div>
   <div class="nav-right">
-    <div class="nav-links"><a href="https://www.fabriclayer.ai">Home</a><a href="https://trust.fabriclayer.ai">Trust Index</a><a href="/docs">Docs</a><a href="/blog">Blog</a></div>
+        <div class="nav-links">
+      <a href="https://trust.fabriclayer.ai">Trust Index</a>
+      <span class="nav-soon">API<span class="tooltip">Coming soon</span></span>
+      <a href="/docs">Docs</a>
+    </div>
     <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </div></nav>
-<div class="mobile-menu" id="mobileMenu"><a href="https://www.fabriclayer.ai">Home</a><a href="https://trust.fabriclayer.ai">Trust Index</a><a href="/docs">Docs</a><a href="/blog">Blog</a></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://trust.fabriclayer.ai">Trust Index</a>
+  <span class="nav-soon" style="display:block;padding:0.55rem 1.25rem;font-family:var(--mono);font-size:0.78rem;color:#ccc">API<span class="tooltip">Coming soon</span></span>
+  <a href="/docs">Docs</a>
+</div>
 
 <article class="article">
 <a href="/blog" class="article-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>All posts</a>
@@ -283,7 +296,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <footer><div class="foot-inner">
 <div class="foot-l">&copy; 2026 Fabric Layer Technologies LTD. A <a href="https://motherbird.ai">Motherbird</a> product.</div>
-<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li><a href="/docs">Docs</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
+<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
 </div></footer>
 <script>const burger=document.getElementById('burgerBtn');const mobileMenu=document.getElementById('mobileMenu');burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileMenu.classList.toggle('open')});mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileMenu.classList.remove('open')}));</script>
 </body>

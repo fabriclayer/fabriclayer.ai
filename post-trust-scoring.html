@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>How Fabric trust scoring works — six signals, no black boxes</title>
-<meta name="description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's the full methodology.">
+<meta name="description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's what we measure and how publishers can improve.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -14,7 +14,7 @@
 <meta property="article:author" content="Fabric">
 <meta property="og:url" content="https://fabriclayer.ai/blog/how-trust-scoring-works">
 <meta property="og:title" content="How Fabric trust scoring works — six signals, no black boxes">
-<meta property="og:description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's the full methodology.">
+<meta property="og:description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's what we measure and how publishers can improve.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-trust-scoring.png">
 <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://fabriclayer.ai/og-trust-scoring.png">
 <meta name="twitter:site" content="@fabriclayer">
 <meta name="twitter:title" content="How Fabric trust scoring works — six signals, no black boxes">
-<meta name="twitter:description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's the full methodology.">
+<meta name="twitter:description" content="Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's what we measure and how publishers can improve.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--black:#000;--blue:#068cff;--pink:#fe83e0;--white:#fff;--bg:#f7f7f7;--text:#0a0a0a;--text-2:#555;--text-3:#999;--border:#e5e5e5;--green:#0dc956;--orange:#f7931e;--red:#e82d35;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'DM Mono','SF Mono',monospace}
@@ -40,6 +40,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .nav-links{display:flex;align-items:center;gap:1.5rem}
 .nav-links a{font-family:var(--mono);font-size:0.78rem;font-weight:400;color:var(--text-2);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--pink);text-decoration:none}
+.nav-links .nav-soon{color:#ccc;cursor:default;position:relative;font-family:var(--mono);font-size:0.78rem;font-weight:400}
+.nav-links .nav-soon:hover{color:#ccc}
+.nav-soon .tooltip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#111;color:#fff;font-family:var(--mono);font-size:0.6rem;padding:4px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.nav-soon .tooltip::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);border:4px solid transparent;border-bottom-color:#111}
+.nav-soon:hover .tooltip{opacity:1}
 .nav-right{display:flex;align-items:center;gap:0.75rem}
 .burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;transition:background .15s}
 .burger:hover{background:rgba(0,0,0,.04)}
@@ -151,7 +156,7 @@ pre{font-size:11px!important;line-height:1.6!important}
 nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
 @media(max-width:768px){footer{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Fabric trust scoring works \u2014 six signals, no black boxes","description":"Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's the full methodology.","url":"https://fabriclayer.ai/blog/how-trust-scoring-works","image":"https://fabriclayer.ai/og-trust-scoring.png","datePublished":"2026-02-05","dateModified":"2026-02-05","author":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"},"publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai","logo":{"@type":"ImageObject","url":"https://fabriclayer.ai/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://fabriclayer.ai/blog/how-trust-scoring-works"},"keywords":["trust scoring","methodology","AI safety","vulnerability scoring","MCP tools"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Fabric trust scoring works \u2014 six signals, no black boxes","description":"Every AI service gets a score from 0.00 to 5.00 across six independently weighted signals. Here's what we measure and how publishers can improve.","url":"https://fabriclayer.ai/blog/how-trust-scoring-works","image":"https://fabriclayer.ai/og-trust-scoring.png","datePublished":"2026-02-05","dateModified":"2026-02-05","author":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"},"publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai","logo":{"@type":"ImageObject","url":"https://fabriclayer.ai/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://fabriclayer.ai/blog/how-trust-scoring-works"},"keywords":["trust scoring","methodology","AI safety","vulnerability scoring","MCP tools"]}</script>
 </head>
 <body>
 <nav><div class="nav-inner">
@@ -162,19 +167,17 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
   </div>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="https://www.fabriclayer.ai">Home</a>
       <a href="https://trust.fabriclayer.ai">Trust Index</a>
+      <span class="nav-soon">API<span class="tooltip">Coming soon</span></span>
       <a href="/docs">Docs</a>
-      <a href="/blog">Blog</a>
     </div>
     <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </div></nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="https://www.fabriclayer.ai">Home</a>
   <a href="https://trust.fabriclayer.ai">Trust Index</a>
+  <span class="nav-soon" style="display:block;padding:0.55rem 1.25rem;font-family:var(--mono);font-size:0.78rem;color:#ccc">API<span class="tooltip">Coming soon</span></span>
   <a href="/docs">Docs</a>
-  <a href="/blog">Blog</a>
 </div>
 
 <article class="article">
@@ -183,127 +186,118 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
   <span class="article-tag product">Product</span>
   <span>February 2026</span>
   <span>·</span>
-  <span>6 min read</span>
+  <span>7 min read</span>
 </div>
 
 <h1>How our trust scoring works — six signals, no black boxes</h1>
 
-<p class="lead">Every AI service indexed by Fabric receives a score from 0.00 to 5.00. The score is computed from six independently weighted signals, all derived from public data. No manual reviews. No paid placements. No provider involvement required. Here's exactly how it works.</p>
+<p class="lead">Every AI service indexed by Fabric receives a composite score from 0.00 to 5.00. The score is computed from six independently weighted signals, all derived from public data. No manual reviews. No paid placements. No provider involvement required. Here's what we measure, why we built it this way, and how publishers can improve their score.</p>
 
 <h2>The problem with single metrics</h2>
 
-<p>The MCP ecosystem is growing fast. Thousands of AI services, tools, and models are published every week across npm, PyPI, HuggingFace, and MCP registries like ClawHub. The question every agent developer faces: which ones can you trust?</p>
+<p>The MCP ecosystem is growing fast. Thousands of AI services, tools, and models are published every week across npm, PyPI, HuggingFace, and MCP registries. The question every agent developer faces: which ones can you trust?</p>
 
 <p>Download count is the most common proxy for trust. It's also the easiest to game. The ClawHub malware incident proved it — the #1 most-downloaded skill on the platform was actively stealing SSH keys, crypto wallets, and browser passwords. It had thousands of installs. It looked legitimate. And it was malware.</p>
 
-<p>GitHub stars, npm downloads, HuggingFace likes — individually, any of these can be inflated. You need multiple independent signals that are hard to fake simultaneously. That's the core design principle behind Fabric's scoring.</p>
+<p>GitHub stars, npm downloads, HuggingFace likes — individually, any of these can be inflated. You need multiple independent signals that are hard to fake simultaneously. That's the core design principle behind Fabric's Trust Index.</p>
 
 <h2>Six signals, weighted by risk</h2>
 
-<p>Each signal scores 0–5 independently, then is multiplied by its weight. The six weighted contributions sum to the final score. Security and operational signals carry 65% of the total because they directly affect safety. Adoption and reputation are supporting evidence, not primary drivers.</p>
+<p>Each signal scores 0–5 independently, then is multiplied by its weight. The six weighted contributions sum to the final composite score. Security-related signals carry the highest weight because they directly affect safety. Adoption and reputation are supporting evidence, not primary drivers.</p>
 
 <div class="signals">
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">1. Vulnerability &amp; Safety</span> <span class="signal-weight">×0.25</span></div>
-  <div class="signal-contrib">max 1.25</div>
-  <div class="signal-desc">The highest-weighted signal. Scans for known CVEs (severity-weighted), flagged dependencies, install scripts, typosquatting indicators, and malware signatures across the full dependency tree. Starts at 5.0, deducts per finding. Critical unpatched CVE = floor at 1.0. Active malware = zero.</div>
+  <div class="signal-head"><span class="signal-name">1. Vulnerability &amp; Safety</span> <span class="signal-weight">highest weight</span></div>
+  <div class="signal-desc">The most heavily weighted signal. Scans for known CVEs, flagged dependencies, suspicious install scripts, typosquatting indicators, and malware signatures. A clean dependency tree with no known vulnerabilities scores high. Active malware scores zero.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">2. Operational Health</span> <span class="signal-weight">×0.20</span></div>
-  <div class="signal-contrib">max 1.00</div>
-  <div class="signal-desc">The only signal that requires Fabric's own infrastructure. We actively monitor services for uptime, latency, and behavioural consistency. 99.9%+ uptime and sub-500ms p50 = 5.0. Heaviest penalty is for behavioural inconsistency — different responses to identical inputs.</div>
+  <div class="signal-head"><span class="signal-name">2. Maintenance Activity</span> <span class="signal-weight">high weight</span></div>
+  <div class="signal-desc">Is anyone home? Evaluates recency of commits, release cadence, issue response time, and PR merge velocity. Active projects with regular releases score well. Abandoned projects with no recent activity score low.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">3. Maintenance Activity</span> <span class="signal-weight">×0.20</span></div>
-  <div class="signal-contrib">max 1.00</div>
-  <div class="signal-desc">Is anyone home? Evaluates recency of last commit, 90-day commit frequency, issue response time, PR merge velocity, and release cadence. Active project with regular releases = 5.0. No commits in 12+ months = 1.0 or below.</div>
+  <div class="signal-head"><span class="signal-name">3. Operational Health</span> <span class="signal-weight">moderate weight</span></div>
+  <div class="signal-desc">Where possible, we actively monitor services for uptime, latency, and behavioural consistency. Reliable services with strong uptime score high. The heaviest penalty is for behavioural inconsistency — different responses to identical inputs.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">4. Adoption</span> <span class="signal-weight">×0.15</span></div>
-  <div class="signal-contrib">max 0.75</div>
-  <div class="signal-desc">Logarithmic scale against ecosystem peers. Combines download counts, stars, forks across registries. Normalised by category so niche tools aren't penalised. Download velocity matters more than absolute count. This is the one signal attackers can inflate — that's why it's weighted low.</div>
+  <div class="signal-head"><span class="signal-name">4. Adoption</span> <span class="signal-weight">moderate weight</span></div>
+  <div class="signal-desc">Combines download counts, stars, and forks across registries, normalised by category so niche tools aren't penalised against popular ones. Download velocity matters more than absolute count. This is the signal attackers most commonly inflate — that's why it's weighted moderately.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">5. Transparency</span> <span class="signal-weight">×0.10</span></div>
-  <div class="signal-contrib">max 0.50</div>
-  <div class="signal-desc">Checklist-based: open source, recognised licence, README quality, SECURITY.md, published schemas, model cards, API docs, research links. Each element adds to the score. Closed-source with no documentation scores near zero.</div>
+  <div class="signal-head"><span class="signal-name">5. Transparency</span> <span class="signal-weight">moderate weight</span></div>
+  <div class="signal-desc">Measures openness: open source status, recognised licence, README quality, SECURITY.md, published schemas, model cards, API documentation. Each element contributes to the score. Closed-source with no documentation scores poorly.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">6. Publisher Trust</span> <span class="signal-weight">×0.10</span></div>
-  <div class="signal-contrib">max 0.50</div>
-  <div class="signal-desc">Account age, organisational backing, other maintained packages, cross-registry identity consistency, verified domain. New anonymous accounts start near 1.0. Established orgs with clean track records score above 4.0.</div>
+  <div class="signal-head"><span class="signal-name">6. Publisher Trust</span> <span class="signal-weight">lower weight</span></div>
+  <div class="signal-desc">Evaluates the publisher behind the service: account age, organisational backing, other maintained packages, cross-registry identity consistency, and verified domain. New anonymous accounts start low. Established orgs with clean track records score well.</div>
 </div>
 </div>
-
-<h2>The formula</h2>
-
-<div class="code"><pre><span class="fn">trust_score</span> =
-  (<span class="str">vulnerability_safety</span> × <span class="fn">0.25</span>)
-+ (<span class="str">operational_health</span>   × <span class="fn">0.20</span>)
-+ (<span class="str">maintenance_activity</span> × <span class="fn">0.20</span>)
-+ (<span class="str">adoption</span>             × <span class="fn">0.15</span>)
-+ (<span class="str">transparency</span>         × <span class="fn">0.10</span>)
-+ (<span class="str">publisher_trust</span>      × <span class="fn">0.10</span>)</pre></div>
-
-<h3>Worked example</h3>
-
-<div class="code"><pre><span class="cmt">// A well-maintained open source image generation API</span>
-<span class="fn">trust_score</span> = (<span class="fn">4.8</span> × 0.25) + (<span class="fn">4.5</span> × 0.20) + (<span class="fn">3.4</span> × 0.20) + (<span class="fn">2.1</span> × 0.15) + (<span class="fn">3.7</span> × 0.10) + (<span class="fn">4.3</span> × 0.10)
-            = 1.20 + 0.90 + 0.68 + 0.32 + 0.37 + 0.43
-            = <span class="fn">3.90</span> <span class="cmt">// ✅ Trusted</span></pre></div>
 
 <h2>Three tiers</h2>
 
-<p>Every score maps to one of three tiers that determine default agent behaviour:</p>
+<p>Every composite score maps to one of three tiers that determine default behaviour for agents integrating with the Trust Index:</p>
 
 <div class="tiers">
 <div class="tier green">
-  <span class="tier-score green">3.34 – 5.00</span>
+  <span class="tier-score green">≥ 3.25</span>
   <span class="tier-label">Trusted</span>
   <span class="tier-desc">Low risk across all signals. Agents can auto-approve without human confirmation.</span>
 </div>
 <div class="tier orange">
-  <span class="tier-score orange">1.67 – 3.33</span>
+  <span class="tier-score orange">1.00 – 3.24</span>
   <span class="tier-label">Caution</span>
   <span class="tier-desc">Some signals flagged. Agents should request human confirmation before proceeding.</span>
 </div>
 <div class="tier red">
-  <span class="tier-score red">0.00 – 1.66</span>
+  <span class="tier-score red">&lt; 1.00</span>
   <span class="tier-label">Blocked</span>
   <span class="tier-desc">Significant risks detected. Agents deny by default. Manual override required.</span>
 </div>
 </div>
 
-<h2>Score modifiers</h2>
+<p>Additional modifiers can reduce a score below what the signals alone would produce. New services with limited history and inactive services both receive penalties. These exist to prevent trust-before-evidence — you shouldn't get a high score just because nothing bad has happened <em>yet</em>.</p>
 
-<p>Two additional multipliers can reduce a score below what the signals alone would produce. Providers with fewer than 10 recorded transactions receive a "new provider" penalty of 0.8× on their final score. Providers inactive for 7+ days are flagged with an "inactive" multiplier of 0.7×. Both exist to prevent trust-before-evidence — you shouldn't get a high score just because nothing bad has happened yet.</p>
+<h2>How publishers can improve their score</h2>
+
+<p>Fabric scores are fully automated. You can't contact us to request a higher score, and there's no paid tier that boosts your ranking. The only way to improve your score is to improve the underlying signals. Here's what actually moves the needle:</p>
+
+<h3>Vulnerability &amp; Safety</h3>
+<p>This is the fastest way to improve a low score. Patch known CVEs in your dependencies, keep your dependency tree up to date, and audit transitive dependencies regularly. Avoid unnecessary install scripts — they're a red flag in our scanner. If you maintain packages across registries, ensure consistent versioning.</p>
+
+<h3>Maintenance Activity</h3>
+<p>Ship regularly. Even small releases signal that someone is actively maintaining the project. Respond to issues — you don't have to fix everything, but acknowledging reports matters. Stale projects with months of silence lose points here regardless of how good the code is.</p>
+
+<h3>Operational Health</h3>
+<p>If your service exposes an API or endpoint, uptime and latency matter. Consistent behaviour matters even more. Services that return different responses to identical requests get penalised heavily — it's a common indicator of something wrong.</p>
+
+<h3>Adoption</h3>
+<p>Genuine organic growth is what we're looking for. Inflated download counts don't help as much as you'd think — our scoring normalises by category and weighs velocity over absolute numbers. Focus on making something people actually use, not on gaming metrics.</p>
+
+<h3>Transparency</h3>
+<p>Publish under a recognised open-source licence. Write a real README, not a placeholder. Add a SECURITY.md with a responsible disclosure policy. If you're building an API, publish schemas. If you're building a model, publish a model card. Every piece of documentation you add improves this signal.</p>
+
+<h3>Publisher Trust</h3>
+<p>Use a consistent identity across registries. Publish from an organisation account rather than an anonymous personal account. Verify your domain. Build a track record across multiple packages. This signal rewards longevity and consistency — there are no shortcuts.</p>
+
+<div class="callout">
+<strong>The common thread?</strong>
+<p>Every signal rewards the same thing: genuine, sustained, transparent engineering practice. There's no trick to gaming the score because the score is designed to measure exactly what good publishers already do.</p>
+</div>
 
 <h2>Data freshness</h2>
 
-<p>The scoring engine runs continuously against 10,000+ indexed services. Full dataset refresh runs daily via batch. Event-driven re-checks fire on three conditions: a new version release, a new CVE disclosure affecting the service's ecosystem, or a user search that returns stale data.</p>
+<p>The scoring engine runs continuously against 700+ indexed services and growing. Scores update automatically when conditions change — new version releases, new CVE disclosures, or shifts in operational behaviour all trigger re-evaluation. Some signals (like vulnerability data) refresh more aggressively than others (like publisher trust, which changes slowly by nature).</p>
 
-<p>Vulnerability data refreshes most aggressively — hourly syncs against advisory databases, with immediate re-scoring when a relevant CVE is published. Transparency and publisher trust change slowly and only need daily checks. Operational Health runs on a 15-minute cycle for high-traffic services.</p>
+<h2>Why we built it this way</h2>
 
-<h2>Custom weights</h2>
+<p>The Trust Index wasn't built in a weekend. The scoring methodology is the result of months of research into how trust actually works in software supply chains — and how it breaks down.</p>
 
-<p>Pro and Team plans can override default weights. If your use case prioritises speed over security, or cost over quality, you can rebalance the formula without changing the underlying data.</p>
+<p>We studied every major supply chain attack in the npm, PyPI, and MCP ecosystems over the past three years. We analysed how malware authors build credibility (inflated stars, cloned READMEs, typosquatted package names) and designed each signal to catch a different part of that playbook. The weight distribution was calibrated against hundreds of known-good and known-bad packages to minimise false positives without letting real threats through.</p>
 
-<div class="code"><pre>{
-  <span class="fn">"trustWeights"</span>: {
-    <span class="fn">"vulnerabilitySafety"</span>: <span class="str">0.40</span>,   <span class="cmt">// security-first config</span>
-    <span class="fn">"operationalHealth"</span>:  <span class="str">0.25</span>,
-    <span class="fn">"maintenance"</span>:        <span class="str">0.15</span>,
-    <span class="fn">"adoption"</span>:           <span class="str">0.10</span>,
-    <span class="fn">"transparency"</span>:       <span class="str">0.05</span>,
-    <span class="fn">"publisherTrust"</span>:     <span class="str">0.05</span>
-  }
-}</pre></div>
-
-<h2>Why this works</h2>
-
-<p>Spoofing one signal is easy. Download counts can be inflated overnight. GitHub stars can be purchased. A README can be polished in an hour. But spoofing all six simultaneously — passing vulnerability scans, maintaining consistent uptime, building genuine commit history, publishing from a verified org, showing transparent documentation, and exhibiting normal network behaviour — is almost impossible.</p>
+<p>The six-signal architecture exists because no single metric is trustworthy on its own. Spoofing one signal is easy. Download counts can be inflated overnight. GitHub stars can be purchased. A README can be polished in an hour. But spoofing all six simultaneously — passing vulnerability scans, maintaining consistent uptime, building genuine commit history, publishing from a verified org, showing transparent documentation, and exhibiting normal network behaviour — is almost impossible.</p>
 
 <p>That's the design principle. Not any single signal. The combination.</p>
+
+<p>The scoring engine continues to evolve. We regularly re-evaluate signal weights, add new data sources, and adjust for emerging attack patterns. Every time a new supply chain attack surfaces, we ask: would our scoring have caught it? If the answer is no, we improve it.</p>
 
 <div class="callout">
 <strong>No manual reviews. No paid placements.</strong>
@@ -320,7 +314,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <footer><div class="foot-inner">
 <div class="foot-l">&copy; 2026 Fabric Layer Technologies LTD. A <a href="https://motherbird.ai">Motherbird</a> product.</div>
-<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li><a href="/docs">Docs</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
+<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
 </div></footer>
 <script>
 const burger=document.getElementById('burgerBtn');const mobileMenu=document.getElementById('mobileMenu');

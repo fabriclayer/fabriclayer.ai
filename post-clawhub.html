@@ -42,6 +42,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .nav-links{display:flex;align-items:center;gap:1.5rem}
 .nav-links a{font-family:var(--mono);font-size:0.78rem;font-weight:400;color:var(--text-2);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--pink);text-decoration:none}
+.nav-links .nav-soon{color:#ccc;cursor:default;position:relative;font-family:var(--mono);font-size:0.78rem;font-weight:400}
+.nav-links .nav-soon:hover{color:#ccc}
+.nav-soon .tooltip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#111;color:#fff;font-family:var(--mono);font-size:0.6rem;padding:4px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.nav-soon .tooltip::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);border:4px solid transparent;border-bottom-color:#111}
+.nav-soon:hover .tooltip{opacity:1}
 .nav-right{display:flex;align-items:center;gap:0.75rem}
 .burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;transition:background .15s}
 .burger:hover{background:rgba(0,0,0,.04)}
@@ -222,20 +227,18 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
     <span class="nav-logo-text">blog</span>
   </div>
   <div class="nav-right">
-    <div class="nav-links">
-      <a href="https://www.fabriclayer.ai">Home</a>
+        <div class="nav-links">
       <a href="https://trust.fabriclayer.ai">Trust Index</a>
+      <span class="nav-soon">API<span class="tooltip">Coming soon</span></span>
       <a href="/docs">Docs</a>
-      <a href="/blog">Blog</a>
     </div>
     <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </div></nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="https://www.fabriclayer.ai">Home</a>
   <a href="https://trust.fabriclayer.ai">Trust Index</a>
+  <span class="nav-soon" style="display:block;padding:0.55rem 1.25rem;font-family:var(--mono);font-size:0.78rem;color:#ccc">API<span class="tooltip">Coming soon</span></span>
   <a href="/docs">Docs</a>
-  <a href="/blog">Blog</a>
 </div>
 
 <!-- ARTICLE -->
@@ -298,48 +301,41 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <div class="signals">
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Vulnerability &amp; Safety</span> <span class="signal-weight">×0.25</span></div>
+  <div class="signal-head"><span class="signal-name">Vulnerability &amp; Safety</span> <span class="signal-weight">highest weight</span></div>
   <div class="signal-score red">0.0</div>
-  <div class="signal-why">2 CRITICAL + 5 HIGH vulnerabilities. Active malware payload (Atomic Stealer). Silent curl | bash to attacker-controlled server with /dev/null redirect. Data exfiltration via external network call. Critical CVE = score floor at 1.0. Active malware = zero.</div>
+  <div class="signal-why">2 CRITICAL + 5 HIGH vulnerabilities. Active malware payload (Atomic Stealer). Silent curl | bash to attacker-controlled server with /dev/null redirect. Data exfiltration via external network call. Active malware scores zero.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Operational Health</span> <span class="signal-weight">×0.20</span></div>
+  <div class="signal-head"><span class="signal-name">Operational Health</span> <span class="signal-weight">moderate weight</span></div>
   <div class="signal-score red">0.5</div>
   <div class="signal-why">Fabric Monitor would detect outbound network calls to clawdhub-skill.com/log on first execution — anomalous traffic pattern for a skill that claims to be a joke generator. Behavioral inconsistency between declared function and actual network activity.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Maintenance Activity</span> <span class="signal-weight">×0.20</span></div>
+  <div class="signal-head"><span class="signal-name">Maintenance Activity</span> <span class="signal-weight">high weight</span></div>
   <div class="signal-score red">0.5</div>
   <div class="signal-why">Publisher account is 1 week old. 677 packages from a single account = automated bulk publishing. No genuine commit history, no issue responses, no organic development pattern. Volume without substance.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Adoption</span> <span class="signal-weight">×0.15</span></div>
+  <div class="signal-head"><span class="signal-name">Adoption</span> <span class="signal-weight">moderate weight</span></div>
   <div class="signal-score orange">2.0</div>
   <div class="signal-why">Thousands of downloads, ranked #1 on ClawHub. But this is the one signal the attacker successfully gamed. Raw download numbers inflate the score. This is exactly why adoption alone can never be the whole picture.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Transparency</span> <span class="signal-weight">×0.10</span></div>
+  <div class="signal-head"><span class="signal-name">Transparency</span> <span class="signal-weight">moderate weight</span></div>
   <div class="signal-score red">0.0</div>
   <div class="signal-why">Documentation appeared professional but contained hidden prompt injection instructions. Malicious code disguised as "security awareness demonstration." Deliberately deceptive provenance = zero.</div>
 </div>
 <div class="signal">
-  <div class="signal-head"><span class="signal-name">Publisher Trust</span> <span class="signal-weight">×0.10</span></div>
+  <div class="signal-head"><span class="signal-name">Publisher Trust</span> <span class="signal-weight">lower weight</span></div>
   <div class="signal-score red">0.0</div>
-  <div class="signal-why">1-week-old GitHub account. No organizational backing. No established history. 677 packages from one account is a red flag, not a trust signal. New provider penalty (0.8×) applied on top of already-zero base.</div>
+  <div class="signal-why">1-week-old GitHub account. No organizational backing. No established history. 677 packages from one account is a red flag, not a trust signal.</div>
 </div>
 </div>
 
-<div class="code"><pre><span class="cmt">// Score calculation</span>
-<span class="fn">trust_score</span> =
-  (<span class="red">0.0</span> × <span class="str">0.25</span>)   <span class="cmt">// vulnerability: active malware</span>
-+ (<span class="red">0.5</span> × <span class="str">0.20</span>)   <span class="cmt">// operational: anomalous traffic</span>
-+ (<span class="red">0.5</span> × <span class="str">0.20</span>)   <span class="cmt">// maintenance: bulk bot publishing</span>
-+ (<span class="fn">2.0</span> × <span class="str">0.15</span>)   <span class="cmt">// adoption: gamed downloads</span>
-+ (<span class="red">0.0</span> × <span class="str">0.10</span>)   <span class="cmt">// transparency: deceptive docs</span>
-+ (<span class="red">0.0</span> × <span class="str">0.10</span>)   <span class="cmt">// publisher: 1-week account</span>
-
-= <span class="fn">0.00</span> + <span class="fn">0.10</span> + <span class="fn">0.10</span> + <span class="fn">0.30</span> + <span class="fn">0.00</span> + <span class="fn">0.00</span>
-= <span class="red">0.50</span> <span class="cmt">// 🚫 Blocked — agents deny by default</span></pre></div>
+<div class="callout">
+<strong>Result: 0.50 / 5.00 — Blocked</strong>
+<p>Five of six signals scored near zero. Only Adoption (gamed downloads) provided any lift. The weighted composite came to 0.50 — well below the Blocked threshold. An agent using Fabric would have refused this tool before it ever ran.</p>
+</div>
 
 
 <h2>What would have happened with Fabric in place</h2>
@@ -410,7 +406,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <!-- FOOTER -->
 <footer><div class="foot-inner">
 <div class="foot-l">&copy; 2026 Fabric Layer Technologies LTD. A <a href="https://motherbird.ai">Motherbird</a> product.</div>
-<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li><a href="/docs">Docs</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
+<ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
 </div></footer>
 
 <script>
