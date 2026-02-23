@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Fabric — Trust scores for every AI service</title>
-<meta name="description" content="Free public trust scores on every AI service, model, and MCP skill. Search 10,000+ services. Know what's safe before your agents use it.">
+<meta name="description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fabriclayer.ai">
 <meta property="og:title" content="Fabric — Trust scores for every AI service">
-<meta property="og:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 10,000+ services. Know what's safe before your agents use it.">
+<meta property="og:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-home.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://fabriclayer.ai/og-home.png">
 <meta name="twitter:site" content="@fabriclayer">
 <meta name="twitter:title" content="Fabric — Trust scores for every AI service">
-<meta name="twitter:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 10,000+ services. Know what's safe before your agents use it.">
+<meta name="twitter:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--black:#000;--blue:#068cff;--pink:#fe83e0;--white:#fff;--bg:#f7f7f7;--text:#0a0a0a;--text-2:#555;--text-3:#999;--border:#e5e5e5;--green:#0dc956;--orange:#f7931e;--red:#e82d35;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'DM Mono','SF Mono',monospace}
@@ -120,6 +120,10 @@ h1{font-size:32px;font-weight:700;letter-spacing:-1.5px;line-height:1.05;margin-
 .score-num.caution{color:#f7931e}
 .score-num.blocked{color:#d03a3d}
 .card-updated{font-family:var(--mono);font-size:0.52rem;color:#ccc;margin-left:auto;white-space:nowrap}
+a.hero-card-wrap{display:block;text-decoration:none;color:inherit;cursor:pointer}
+a.hero-card-wrap:hover{text-decoration:none}
+a.hero-card-wrap .card-icon{overflow:hidden}
+a.hero-card-wrap img.card-icon{border:1px solid #e5e5e5;background:#f5f5f5;padding:4px}
 
 /* SECTIONS */
 .sec{max-width:1200px;margin:0 auto;padding:48px 20px}
@@ -374,61 +378,8 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <svg class="hero-icon" viewBox="0 0 250 250"><polygon points="136.46 192.26 112.19 148.94 112.04 192.1 98.6 192.16 98.59 146.98 125.31 146.92 150.97 192 136.46 192.26"/><polygon points="65.8 88.57 77.5 79.86 122.3 100.39 97.26 65.51 108.04 57.74 134.6 94.24 113.08 109.93 65.8 88.57"/><polygon points="174.45 81.12 185.22 88.89 158.67 125.48 137.18 109.81 142.86 58.17 154.74 66.73 149.1 115.71 174.45 81.12"/><polygon points="183.38 159.21 179.42 171.93 136.49 158.01 144.7 132.69 195.43 122.2 191.1 136.09 142.88 145.82 183.38 159.21"/><polygon points="66.11 157.52 99.68 121.04 58.72 134.14 54.57 121.53 97.52 107.61 105.73 132.89 70.79 171.25 66.11 157.52"/></svg>
 <h1>The trust layer for the<br><span class="grad">agent economy</span></h1>
 <p class="hero-sub">Free safety scores for every AI product, agent and service.<br>Know what's safe before you use it.</p>
-<div class="hero-cards">
-<div class="hero-card-wrap hero-card-side">
-  <div class="hcard">
-    <div class="card-top">
-      <div class="card-icon">C</div>
-      <div class="card-title-block">
-        <div class="card-name">claude-4-sonnet</div>
-        <div class="card-publisher">Anthropic</div>
-      </div>
-    </div>
-    <span class="card-tag">llm</span>
-    <div class="card-desc">Constitutional AI model optimized for helpfulness, harmlessness, and honesty with strong reasoning.</div>
-    <div class="card-score-row">
-      <div class="rating-boxes"><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:66%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div></div>
-      <span class="score-num trusted">4.66</span>
-      <span class="card-updated">2h ago</span>
-    </div>
-  </div>
-</div>
-<div class="hero-card-wrap hero-card-center">
-  <div class="hcard">
-    <div class="card-top">
-      <div class="card-icon">F</div>
-      <div class="card-title-block">
-        <div class="card-name">flux-pro</div>
-        <div class="card-publisher">Black Forest Labs</div>
-      </div>
-    </div>
-    <span class="card-tag">image generation</span>
-    <div class="card-desc">State-of-the-art text-to-image model with exceptional prompt adherence and photorealistic output quality.</div>
-    <div class="card-score-row">
-      <div class="rating-boxes"><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill caution" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill caution" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill caution" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill caution" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill caution" style="width:21%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div></div>
-      <span class="score-num caution">4.21</span>
-      <span class="card-updated">5h ago</span>
-    </div>
-  </div>
-</div>
-<div class="hero-card-wrap hero-card-side">
-  <div class="hcard">
-    <div class="card-top">
-      <div class="card-icon">S</div>
-      <div class="card-title-block">
-        <div class="card-name">stripe-api</div>
-        <div class="card-publisher">Stripe</div>
-      </div>
-    </div>
-    <span class="card-tag">data api</span>
-    <div class="card-desc">Payment processing platform with subscription billing, invoicing, and financial reporting.</div>
-    <div class="card-score-row">
-      <div class="rating-boxes"><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:100%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div><div class="rating-box"><div class="rating-bg"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div><div class="rating-fill trusted" style="width:78%"><svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg></div></div></div>
-      <span class="score-num trusted">4.78</span>
-      <span class="card-updated">1h ago</span>
-    </div>
-  </div>
-</div>
+<div class="hero-cards" id="heroCards">
+<!-- Populated by live Supabase data, static fallback below -->
 </div>
 <div class="hero-actions" style="margin-top:100px;margin-bottom:48px;animation:fadeUp .8s ease .9s both"><a href="https://trust.fabriclayer.ai" class="btn-p">Browse the Trust Index &rarr;</a></div>
 </section>
@@ -438,7 +389,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <!-- WHY TRUST MATTERS -->
 <div class="problem-wrap"><section class="sec" id="problem">
 <div class="sec-label">The problem</div>
-<div class="sec-title">10,000 AI services.<br>Which ones are safe?</div>
+<div class="sec-title">Thousands of AI services.<br>Which ones are safe?</div>
 <div class="sec-desc" style="margin-bottom:40px">New AI tools launch every day. Anyone can build one. Most are never reviewed for safety, privacy, or reliability. Until now, there was no easy way to check.</div>
 <div class="problems">
 <div class="problem"><div class="problem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fe83e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg></div><div><h3>No way to check</h3><p>There's no universal safety rating for AI tools. You're left to trust the marketing, read Reddit threads, or just hope for the best.</p></div></div>
@@ -481,62 +432,62 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Vulnerability & Safety</span><span class="sig-weight">×0.25</span></div>
+<div class="sig-header"><span class="sig-name">Vulnerability & Safety</span><span class="sig-weight">highest</span></div>
 <div class="sig-desc">Known risks, advisories, and dependency health.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:96%"></div></div></div>
 </div>
 <div class="sig-score-val sc-green">4.8</div>
-<div class="sig-contrib">+1.20</div>
+<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Operational Health</span><span class="sig-weight">×0.20</span></div>
+<div class="sig-header"><span class="sig-name">Operational Health</span><span class="sig-weight">high</span></div>
 <div class="sig-desc">Uptime, latency, and runtime behavior.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:90%"></div></div></div>
 </div>
 <div class="sig-score-val sc-green">4.5</div>
-<div class="sig-contrib">+0.90</div>
+<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Maintenance Activity</span><span class="sig-weight">×0.20</span></div>
+<div class="sig-header"><span class="sig-name">Maintenance Activity</span><span class="sig-weight">high</span></div>
 <div class="sig-desc">Release cadence and issue responsiveness.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill orange" style="width:68%"></div></div></div>
 </div>
 <div class="sig-score-val sc-orange">3.4</div>
-<div class="sig-contrib">+0.68</div>
+<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Adoption</span><span class="sig-weight">×0.15</span></div>
+<div class="sig-header"><span class="sig-name">Adoption</span><span class="sig-weight">moderate</span></div>
 <div class="sig-desc">Community usage and traction.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill red" style="width:42%"></div></div></div>
 </div>
 <div class="sig-score-val sc-red">2.1</div>
-<div class="sig-contrib">+0.32</div>
+<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Transparency</span><span class="sig-weight">×0.10</span></div>
+<div class="sig-header"><span class="sig-name">Transparency</span><span class="sig-weight">moderate</span></div>
 <div class="sig-desc">Openness, licensing, and documentation.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill orange" style="width:74%"></div></div></div>
 </div>
 <div class="sig-score-val sc-orange">3.7</div>
-<div class="sig-contrib">+0.37</div>
+<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Publisher Trust</span><span class="sig-weight">×0.10</span></div>
+<div class="sig-header"><span class="sig-name">Publisher Trust</span><span class="sig-weight">lower</span></div>
 <div class="sig-desc">Identity, track record, and verification.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:86%"></div></div></div>
 </div>
 <div class="sig-score-val sc-green">4.3</div>
-<div class="sig-contrib">+0.43</div>
+<div class="sig-contrib"></div>
 </div>
 
 </div>
@@ -547,8 +498,8 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <div class="stats"><div class="stats-inner">
 <div><div class="sv">Free</div><div class="sl">Always</div></div>
-<div><div class="sv">10,000+</div><div class="sl">Services indexed</div></div>
-<div><div class="sv">50+</div><div class="sl">Registries scanned</div></div>
+<div><div class="sv">700+</div><div class="sl">Services indexed</div></div>
+<div><div class="sv">5</div><div class="sl">Data sources</div></div>
 <div><div class="sv">24/7</div><div class="sl">Continuously monitored</div></div>
 </div></div>
 
@@ -589,6 +540,131 @@ const boxObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isInt
   boxObs.unobserve(e.target);
 }})},{threshold:0.2});
 document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>boxObs.observe(el));
+</script>
+
+<script>
+// Live hero cards from Supabase
+(function(){
+  const SUPABASE_URL = 'https://vtjijmkmnkxblusjlxkg.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0amlqbWttbmt4Ymx1c2pseGtnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MjA0ODUsImV4cCI6MjA4NzE5NjQ4NX0.L7Kbvsrbq23rBCX_AjrUOOCDL-8gONKd2AmPCqc-fcU';
+  const ICON_SVG = '<svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg>';
+
+  const container = document.getElementById('heroCards');
+
+  function statusClass(score) {
+    if (score >= 3.25) return 'trusted';
+    if (score >= 1.00) return 'caution';
+    return 'blocked';
+  }
+
+  function ratingBoxes(score, cls) {
+    let html = '<div class="rating-boxes">';
+    for (let i = 0; i < 5; i++) {
+      const full = score - i;
+      const pct = Math.min(100, Math.max(0, Math.round(full * 100)));
+      html += '<div class="rating-box"><div class="rating-bg">' + ICON_SVG + '</div>';
+      html += '<div class="rating-fill ' + cls + '" style="width:' + pct + '%">' + ICON_SVG + '</div></div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function timeAgo(dateStr) {
+    if (!dateStr) return '';
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return mins + 'm ago';
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return hrs + 'h ago';
+    return Math.floor(hrs / 24) + 'd ago';
+  }
+
+  function buildCard(svc, position) {
+    const cls = statusClass(svc.composite_score);
+    const initial = (svc.name || '?')[0].toUpperCase();
+    const posClass = position === 'center' ? 'hero-card-center' : 'hero-card-side';
+    const slug = svc.slug || svc.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const link = 'https://trust.fabriclayer.ai/service/' + slug;
+
+    return '<a href="' + link + '" class="hero-card-wrap ' + posClass + '" style="text-decoration:none;color:inherit">' +
+      '<div class="hcard">' +
+        '<div class="card-top">' +
+          '<div class="card-icon">' + initial + '</div>' +
+          '<div class="card-title-block">' +
+            '<div class="card-name">' + (svc.name || '') + '</div>' +
+            '<div class="card-publisher">' + (svc.publisher_name || '') + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<span class="card-tag">' + (svc.category || '') + '</span>' +
+        '<div class="card-desc">' + (svc.description || '') + '</div>' +
+        '<div class="card-score-row">' +
+          ratingBoxes(svc.composite_score, cls) +
+          '<span class="score-num ' + cls + '">' + svc.composite_score.toFixed(2) + '</span>' +
+          '<span class="card-updated">' + timeAgo(svc.updated_at || svc.last_scored_at) + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</a>';
+  }
+
+  async function loadHeroCards() {
+    try {
+      const res = await fetch(
+        SUPABASE_URL + '/rest/v1/services?select=name,slug,description,category,composite_score,status,publisher_name,logo_url,updated_at,last_scored_at&status=neq.pending&composite_score=gt.0&order=composite_score.desc&limit=3',
+        { headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY } }
+      );
+      if (!res.ok) throw new Error(res.status);
+      const data = await res.json();
+      if (!data || data.length < 3) throw new Error('Not enough services');
+
+      // Order: side, center (highest), side
+      const sorted = data.sort((a, b) => b.composite_score - a.composite_score);
+      const cards = [
+        buildCard(sorted[1], 'side'),
+        buildCard(sorted[0], 'center'),
+        buildCard(sorted[2], 'side')
+      ];
+      container.innerHTML = cards.join('\n');
+
+      // Re-init rating fill animation for new cards
+      container.querySelectorAll('.rating-fill').forEach(el => {
+        const w = el.style.width || '0';
+        el.style.setProperty('--target-w', w);
+        el.style.width = '0';
+      });
+      setTimeout(() => {
+        container.querySelectorAll('.rating-fill').forEach((b, i) => {
+          b.style.transitionDelay = (1.2 + i * 0.12) + 's';
+          requestAnimationFrame(() => b.classList.add('animated'));
+        });
+      }, 100);
+    } catch (e) {
+      console.warn('Hero cards fallback:', e);
+      // Show static fallback
+      container.innerHTML = FALLBACK_HTML;
+      container.querySelectorAll('.rating-fill').forEach(el => {
+        const w = el.style.width || '0';
+        el.style.setProperty('--target-w', w);
+        el.style.width = '0';
+      });
+      setTimeout(() => {
+        container.querySelectorAll('.rating-fill').forEach((b, i) => {
+          b.style.transitionDelay = (1.2 + i * 0.3) + 's';
+          requestAnimationFrame(() => b.classList.add('animated'));
+        });
+      }, 100);
+    }
+  }
+
+  // Static fallback cards
+  var FALLBACK_SERVICES = [
+    { name: 'langchain', slug: 'langchain', publisher_name: 'LangChain', category: 'agents', composite_score: 4.12, description: 'Framework for developing applications powered by large language models.', logo_url: null },
+    { name: 'openai', slug: 'openai', publisher_name: 'OpenAI', category: 'llm', composite_score: 4.45, description: 'GPT-4o and GPT-4o mini large language models for text generation and reasoning.', logo_url: null },
+    { name: 'anthropic-sdk', slug: 'anthropic-sdk', publisher_name: 'Anthropic', category: 'llm', composite_score: 4.38, description: 'Official SDK for Claude language models with streaming and tool use support.', logo_url: null }
+  ];
+  var FALLBACK_HTML = buildCard(FALLBACK_SERVICES[0], 'side') + buildCard(FALLBACK_SERVICES[1], 'center') + buildCard(FALLBACK_SERVICES[2], 'side');
+
+  loadHeroCards();
+})();
 </script>
 </body>
 </html>
