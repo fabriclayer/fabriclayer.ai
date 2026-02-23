@@ -40,6 +40,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .nav-links{display:flex;align-items:center;gap:1.5rem}
 .nav-links a{font-family:var(--mono);font-size:0.78rem;font-weight:400;color:var(--text-2);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--pink);text-decoration:none}
+.nav-soon{font-family:var(--mono);font-size:0.78rem;font-weight:400;color:var(--text-3);cursor:default;position:relative}.nav-soon:hover .soon-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.soon-tip{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);background:var(--black);color:var(--white);font-family:var(--mono);font-size:0.6rem;letter-spacing:.3px;padding:4px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .15s ease}
+.soon-tip::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:4px solid var(--black)}
+.mobile-menu .nav-soon{display:flex;align-items:center;gap:8px;padding:0.55rem 1.25rem;min-height:44px}
+.mobile-menu .soon-badge{font-family:var(--mono);font-size:0.55rem;color:var(--text-3);background:var(--bg);padding:2px 6px;border-radius:4px;letter-spacing:.3px}
 .nav-right{display:flex;align-items:center;gap:0.75rem}
 .burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;transition:background .15s}
 .burger:hover{background:rgba(0,0,0,.04)}
@@ -148,8 +153,8 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
   </div>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="https://www.fabriclayer.ai">Home</a>
       <a href="https://trust.fabriclayer.ai">Trust Index</a>
+      <span class="nav-soon">API<span class="soon-tip">Coming soon</span></span>
       <a href="/docs">Docs</a>
       
     </div>
@@ -157,8 +162,8 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
   </div>
 </div></nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="https://www.fabriclayer.ai">Home</a>
   <a href="https://trust.fabriclayer.ai">Trust Index</a>
+  <span class="nav-soon">API<span class="soon-badge">Coming soon</span></span>
   <a href="/docs">Docs</a>
   
 </div>
