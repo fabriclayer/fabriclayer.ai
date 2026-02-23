@@ -604,7 +604,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   function card(s,pos){
     var c=cls(s.composite_score);
     var slug=s.slug||s.name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
-    var url='https://trust.fabriclayer.ai/service/'+slug;
+    var url='https://trust.fabriclayer.ai/'+slug;
     var wrap=pos==='center'?'hero-card-center':'hero-card-side';
 
     return '<a href="'+url+'" class="hero-card-wrap '+wrap+'">'
