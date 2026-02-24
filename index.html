@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Fabric — Trust scores for every AI service</title>
-<meta name="description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
+<meta name="description" content="Free public trust scores on every AI service, model, and MCP skill. Search 3,000+ services. Know what's safe before your agents use it.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fabriclayer.ai">
 <meta property="og:title" content="Fabric — Trust scores for every AI service">
-<meta property="og:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
+<meta property="og:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 3,000+ services. Know what's safe before your agents use it.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-home.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://fabriclayer.ai/og-home.png">
 <meta name="twitter:site" content="@fabriclayer">
 <meta name="twitter:title" content="Fabric — Trust scores for every AI service">
-<meta name="twitter:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 700+ services. Know what's safe before your agents use it.">
+<meta name="twitter:description" content="Free public trust scores on every AI service, model, and MCP skill. Search 3,000+ services. Know what's safe before your agents use it.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--black:#000;--blue:#068cff;--pink:#fe83e0;--white:#fff;--bg:#f7f7f7;--text:#0a0a0a;--text-2:#555;--text-3:#999;--border:#e5e5e5;--green:#0dc956;--orange:#f7931e;--red:#e82d35;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'DM Mono','SF Mono',monospace}
@@ -253,6 +253,20 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .sc{background:rgba(0,0,0,.95);padding:24px 20px;transition:background .3s}.sc:hover{background:#060606}
 .sc .sn{font-size:15px;font-weight:600;margin-bottom:4px}.sc .sb{font-size:10px;color:rgba(255,255,255,.2);margin-bottom:8px;font-family:var(--mono);letter-spacing:.5px}.sc p{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
 
+/* API SECTION */
+.api-wrap{background:var(--bg);color:var(--black);position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.api-wrap::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(6,140,255,.04) 0%,transparent 60%);pointer-events:none}
+.api-wrap .sec-label{color:var(--text-2)}.api-wrap .sec-title{color:var(--black)}.api-wrap .sec-desc{color:var(--text-2)}
+.api-cols{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;align-items:start}
+.api-code{background:var(--black);border:1px solid var(--border);border-radius:14px;padding:24px;overflow-x:auto}
+.api-code pre{margin:0;font-family:var(--mono);font-size:12px;line-height:1.7;color:rgba(255,255,255,.6)}
+.api-code .cm{color:rgba(255,255,255,.25)}.api-code .kw{color:#fe83e0}.api-code .str{color:var(--blue)}.api-code .num{color:var(--green)}
+.api-features{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden}
+.api-feat{background:var(--white);padding:20px;transition:background .3s}.api-feat:hover{background:var(--bg)}
+.api-feat-title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px}
+.api-feat-desc{font-size:12px;color:var(--text-2);line-height:1.5}
+.api-badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.5px;padding:4px 10px;border-radius:6px;background:rgba(6,140,255,.12);color:var(--blue);margin-bottom:20px}
+
 /* FINAL CTA */
 .cta{text-align:center;padding:48px 20px;position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(6,140,255,.05) 0%,rgba(254,131,224,.03) 50%,transparent 70%);pointer-events:none}
@@ -292,6 +306,7 @@ nav{padding:0 1rem}
 .stats-inner{grid-template-columns:repeat(4,1fr);gap:32px}.sv{font-size:30px}
 .mid-cta{padding:64px 32px}
 .stats{padding:24px 32px}
+.api-cols{grid-template-columns:1fr 1fr;gap:48px}
 }
 
 /* DESKTOP */
@@ -312,6 +327,7 @@ h1{font-size:clamp(52px,7vw,76px);letter-spacing:-3px}.hero-sub{font-size:clamp(
 .mid-cta{padding:80px 40px}
 .stack-grid{grid-template-columns:repeat(4,1fr);margin-top:56px}.sc{padding:36px 28px}
 .cta{padding:100px 40px}.cta::before{width:800px;height:800px}.cta-icon{width:101px;height:101px;margin-bottom:32px}.cta .sec-title{margin-bottom:16px}.cta .sec-desc{margin-bottom:48px;font-size:18px}
+.api-cols{gap:56px}.api-code{padding:32px}.api-code pre{font-size:13px}.api-feat{padding:24px}
 footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;width:100%}.foot-l{font-size:13px}.foot-links li{font-size:13px}.foot-links a{font-size:13px}.foot-links{gap:24px}
 }
 
@@ -500,10 +516,50 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <div class="stats"><div class="stats-inner">
 <div><div class="sv">Free</div><div class="sl">Always</div></div>
-<div><div class="sv">700+</div><div class="sl">Services indexed</div></div>
-<div><div class="sv">5</div><div class="sl">Data sources</div></div>
+<div><div class="sv">3,000+</div><div class="sl">Services indexed</div></div>
+<div><div class="sv">500+</div><div class="sl">Alerts tracked</div></div>
 <div><div class="sv">24/7</div><div class="sl">Continuously monitored</div></div>
 </div></div>
+
+<!-- API -->
+<div class="api-wrap"><section class="sec" id="api">
+<div class="api-badge">COMING SOON</div>
+<div class="sec-title">The Fabric API.<br>Scores in your pipeline.</div>
+<div class="sec-desc">Query any service programmatically. Get the score, signals, and alerts in one call. Integrate safety checks into your agent workflows, CI/CD, or tool selection logic.</div>
+
+<div class="api-cols">
+<div class="api-code">
+<pre><span class="cm">// Check if a tool is safe before granting access</span>
+
+<span class="kw">const</span> res = <span class="kw">await</span> fetch(
+  <span class="str">'https://api.fabriclayer.ai/v1/lookup?slug=mcp-python-sdk'</span>
+)
+<span class="kw">const</span> { score, status, signals } = <span class="kw">await</span> res.json()
+
+<span class="cm">// score:  4.59</span>
+<span class="cm">// status: "trusted"</span>
+<span class="cm">// signals:</span>
+<span class="cm">//   vulnerability:     4.8</span>
+<span class="cm">//   maintenance:        5.0</span>
+<span class="cm">//   operational_health: 4.5</span>
+<span class="cm">//   adoption:           3.9</span>
+<span class="cm">//   transparency:       4.5</span>
+<span class="cm">//   publisher_trust:    4.3</span>
+
+<span class="kw">if</span> (status === <span class="str">'blocked'</span>) {
+  <span class="kw">throw new</span> Error(<span class="str">'Tool failed safety check'</span>)
+}</pre>
+</div>
+
+<div class="api-features">
+<div class="api-feat"><div class="api-feat-title">Lookup by slug</div><div class="api-feat-desc">Query any indexed service by name. Get the full score breakdown and current status instantly.</div></div>
+<div class="api-feat"><div class="api-feat-title">Signal breakdown</div><div class="api-feat-desc">All 6 trust signals returned with individual scores and weights. Full transparency on every check.</div></div>
+<div class="api-feat"><div class="api-feat-title">Active alerts</div><div class="api-feat-desc">Recent incidents for any service — CVEs, deprecations, ownership changes, downtime events.</div></div>
+<div class="api-feat"><div class="api-feat-title">Batch queries</div><div class="api-feat-desc">Check multiple services in one call. Score your entire dependency tree or tool selection set at once.</div></div>
+</div>
+</div>
+
+</section></div>
 
 <!-- FINAL CTA -->
 <section class="cta">
