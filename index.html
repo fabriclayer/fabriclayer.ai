@@ -702,7 +702,45 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'deepgram':'https://logo.clearbit.com/deepgram.com',
     'weaviate':'https://logo.clearbit.com/weaviate.io',
     'groq':'https://logo.clearbit.com/groq.com',
-    'unstructured':'https://logo.clearbit.com/unstructured.io'
+    'unstructured':'https://logo.clearbit.com/unstructured.io',
+    'stripe':'https://github.com/stripe.png?size=80',
+    'openai':'https://github.com/openai.png?size=80',
+    'anthropic':'https://github.com/anthropics.png?size=80',
+    'supabase':'https://github.com/supabase.png?size=80',
+    'vercel-ai':'https://github.com/vercel.png?size=80',
+    'mistralai':'https://github.com/mistralai.png?size=80',
+    'langchain':'https://github.com/langchain-ai.png?size=80',
+    'crewai':'https://github.com/crewAIInc.png?size=80',
+    'pinecone':'https://github.com/pinecone-io.png?size=80',
+    'cohere':'https://github.com/cohere-ai.png?size=80',
+    'replicate':'https://github.com/replicate.png?size=80',
+    'twilio':'https://github.com/twilio.png?size=80',
+    'mcp-python-sdk':'https://github.com/anthropics.png?size=80',
+    'google-generativeai':'https://github.com/google.png?size=80',
+    'transformers':'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
+    'numpy':'https://github.com/numpy.png?size=80',
+    'pandas':'https://github.com/pandas-dev.png?size=80',
+    'scikit-learn':'https://github.com/scikit-learn.png?size=80',
+    'pytorch':'https://github.com/pytorch.png?size=80',
+    'torch':'https://github.com/pytorch.png?size=80',
+    'tensorflow':'https://github.com/tensorflow.png?size=80',
+    'fastapi':'https://github.com/tiangolo.png?size=80',
+    'pydantic':'https://github.com/pydantic.png?size=80',
+    'prisma':'https://github.com/prisma.png?size=80',
+    'next':'https://github.com/vercel.png?size=80',
+    'axios':'https://github.com/axios.png?size=80',
+    'zod':'https://logo.clearbit.com/zod.dev',
+    'llamaindex':'https://github.com/run-llama.png?size=80',
+    'llama-index':'https://github.com/run-llama.png?size=80',
+    'chromadb':'https://github.com/chroma-core.png?size=80',
+    'qdrant':'https://github.com/qdrant.png?size=80',
+    'modal':'https://logo.clearbit.com/modal.com',
+    'fireworks-ai':'https://logo.clearbit.com/fireworks.ai',
+    'databricks':'https://github.com/databricks.png?size=80',
+    'snowflake':'https://github.com/snowflakedb.png?size=80',
+    'elastic':'https://github.com/elastic.png?size=80',
+    'redis':'https://github.com/redis.png?size=80',
+    'mongodb':'https://github.com/mongodb.png?size=80'
   };
 
   var LOGOS={
@@ -726,15 +764,20 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     var name=(svc.name||'').toLowerCase().trim();
     if(svc.logo_url) return svc.logo_url;
     var slug=(svc.slug||'').toLowerCase().trim();
+    // 1. Direct URL overrides (most reliable)
     if(LOGO_URLS[slug]) return LOGO_URLS[slug];
+    if(LOGO_URLS[name]) return LOGO_URLS[name];
+    // 2. Known GitHub org mapping
     var normPub=pub.replace(/,?\s*(inc\.?|pbc\.?|ltd\.?|llc\.?|co\.?)$/i,'').trim();
     if(LOGOS[pub]) return 'https://github.com/'+LOGOS[pub]+'.png?size=80';
     if(LOGOS[normPub]) return 'https://github.com/'+LOGOS[normPub]+'.png?size=80';
     if(LOGOS[name]) return 'https://github.com/'+LOGOS[name]+'.png?size=80';
     if(LOGOS[slug]) return 'https://github.com/'+LOGOS[slug]+'.png?size=80';
+    // 3. Try GitHub avatar from cleaned publisher (works for many orgs)
     var clean=normPub.replace(/[^a-z0-9-]/g,'');
-    if(clean) return 'https://github.com/'+clean+'.png?size=80';
-    return null;
+    if(clean && clean.length>1) return 'https://github.com/'+clean+'.png?size=80';
+    // 4. Try Clearbit from slug
+    return 'https://logo.clearbit.com/'+slug.replace(/[^a-z0-9]/g,'')+'.com';
   }
 
   var CONTAIN={'twilio':1,'twilio-dx':1,'crewai':1,'huggingface':1,'the huggingface team':1,'hugging face':1,'together ai':1,'togethercomputer':1,'together-ai':1};
@@ -747,7 +790,10 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     var sl=(svc.slug||'').toLowerCase().trim();
     var normPub=pub.replace(/,?\s*(inc\.?|pbc\.?|ltd\.?|llc\.?|co\.?)$/i,'').trim();
     var cls=(CONTAIN[pub]||CONTAIN[normPub]||CONTAIN[sl])?' contain':'';
-    return '<div class="card-icon"><img class="'+cls+'" src="'+url+'" alt="" onerror="this.remove();this.parentElement.textContent=\''+ini+'\'"></div>';
+    // Build Clearbit fallback URL from slug or publisher name
+    var cbDomain=sl.replace(/[^a-z0-9]/g,'')+'.com';
+    var cbUrl='https://logo.clearbit.com/'+cbDomain;
+    return '<div class="card-icon"><img class="'+cls+'" src="'+url+'" alt="" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src=\''+cbUrl+'\';}else{this.remove();this.parentElement.textContent=\''+ini+'\'}"></div>';
   }
 
   function cls(s){return s>=3.25?'trusted':s>=1?'caution':'blocked'}
