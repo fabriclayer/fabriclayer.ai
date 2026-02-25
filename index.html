@@ -667,7 +667,12 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'stanfordnlp':'stanfordnlp','langchain':'langchain-ai','twilio-dx':'twilio',
     'twilio':'twilio','stripe':'stripe','the huggingface team':'huggingface',
     'dmlc':'dmlc','cohere':'cohere','pinecone':'pinecone-io',
-    'modelcontextprotocol':'modelcontextprotocol','crewai':'crewAIInc'
+    'modelcontextprotocol':'modelcontextprotocol','crewai':'crewAIInc',
+    'together ai':'togethercomputer','together':'togethercomputer','togethercomputer':'togethercomputer',
+    'groq':'groq','deepgram':'deepgram','weaviate':'weaviate','replicate':'replicate',
+    'unstructured':'Unstructured-IO','vercel':'vercel',
+    'together-ai':'togethercomputer','huggingface':'huggingface',
+    'google-generativeai':'google','mcp-python-sdk':'anthropics'
   };
 
   function logoUrl(svc){
@@ -676,8 +681,10 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     // Check logo_url first
     if(svc.logo_url) return svc.logo_url;
     // Check known map
+    var slug=(svc.slug||'').toLowerCase().trim();
     if(LOGOS[pub]) return 'https://github.com/'+LOGOS[pub]+'.png?size=80';
     if(LOGOS[name]) return 'https://github.com/'+LOGOS[name]+'.png?size=80';
+    if(LOGOS[slug]) return 'https://github.com/'+LOGOS[slug]+'.png?size=80';
     // Try publisher as GitHub org (strip non-alphanumeric except dashes)
     var clean=pub.replace(/[^a-z0-9-]/g,'');
     if(clean) return 'https://github.com/'+clean+'.png?size=80';
