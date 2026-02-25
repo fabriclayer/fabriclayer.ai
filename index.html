@@ -811,7 +811,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   }
 
   // Single clean query — safe columns only
-  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at,logo_url&slug=in.(anthropic,langchain,crewai)',{
+  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at&slug=in.%28anthropic%2Clangchain%2Ccrewai%29',{
     headers:{apikey:KEY,Authorization:'Bearer '+KEY}
   })
   .then(function(r){
@@ -825,8 +825,8 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .catch(function(err){
     console.warn('Hero cards fallback:',err);
     render([
-      {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.60,description:'The official Python SDK for the Anthropic API — Claude models and tool use.'},
-      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:2.59,description:'Building applications with LLMs through composability — chains, agents, and retrieval.'},
+      {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.36,description:'The official Python SDK for the Anthropic API — Claude models and tool use.'},
+      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:3.39,description:'Building applications with LLMs through composability — chains, agents, and retrieval.'},
       {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.00,description:'Framework for orchestrating role-playing, autonomous AI agents.'}
     ]);
   });
