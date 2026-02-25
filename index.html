@@ -103,8 +103,8 @@ h1{font-size:32px;font-weight:700;letter-spacing:-1.5px;line-height:1.05;margin-
 .hero-card-center .score-num{font-size:1.12rem}
 .card-top{display:flex;align-items:flex-start;gap:0.6rem}
 .card-icon{width:36px;height:36px;border-radius:9px;background:#f5f5f5;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;font-size:0.88rem;flex-shrink:0;font-weight:600;color:#999;font-family:var(--sans);text-transform:uppercase;overflow:hidden}
-.card-icon img{width:100%;height:100%;object-fit:contain;padding:3px;display:block}
-.hero-card-center .card-icon img{padding:4px}
+.card-icon img{width:115%;height:115%;object-fit:cover;display:block}
+.hero-card-center .card-icon img{width:115%;height:115%}
 a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .card-title-block{flex:1;min-width:0}
 .card-name{font-size:0.85rem;font-weight:600;color:var(--text);letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -236,7 +236,7 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .mid-cta{text-align:center;padding:48px 20px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .mid-cta .sec-title{margin-bottom:12px}
 .mid-cta .sec-desc{margin:0 auto 32px;text-align:center}
-.btn-p{background:var(--black);color:var(--white);padding:14px 32px;border-radius:12px;font-size:15px;font-weight:600;transition:all .25s;display:inline-block}.btn-p:hover{background:#1a1a1a;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.btn-p{background:var(--black);color:var(--white);padding:16px 36px;border-radius:12px;font-size:16px;font-weight:600;transition:all .25s;display:inline-block;box-shadow:0 4px 16px rgba(0,0,0,.15)}.btn-p:hover{background:#1a1a1a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2)}
 .hero-actions .btn-p,.btn-pulse{animation:btnPulse 2.5s ease-in-out infinite}.hero-actions .btn-p:hover,.btn-pulse:hover{animation-play-state:paused}
 
 /* CLAIM PROFILE */
@@ -705,7 +705,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'anthropic':'anthropics','anthropic, pbc.':'anthropics','anthropic pbc':'anthropics',
     'openai':'openai','microsoft':'microsoft','google':'google','meta':'meta',
     'mistralai':'mistralai','mistral ai':'mistralai','milvus-io':'milvus-io',
-    'stanfordnlp':'stanfordnlp','langchain':'langchain','twilio-dx':'twilio',
+    'stanfordnlp':'stanfordnlp','langchain':'langchain-ai','twilio-dx':'twilio',
     'twilio':'twilio','stripe':'stripe','the huggingface team':'huggingface',
     'dmlc':'dmlc','cohere':'cohere','pinecone':'pinecone-io',
     'modelcontextprotocol':'modelcontextprotocol'
@@ -801,13 +801,17 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   }
 
   function render(data){
-    var sorted=data.sort(function(a,b){return b.composite_score-a.composite_score});
-    el.innerHTML=card(sorted[1]||sorted[0],'side')+card(sorted[0],'center')+card(sorted[2]||sorted[0],'side');
+    var map={};
+    data.forEach(function(s){map[s.slug]=s});
+    var center=map['openai']||data[0];
+    var left=map['langchain']||data[1]||data[0];
+    var right=map['anthropic-sdk']||data[2]||data[0];
+    el.innerHTML=card(left,'side')+card(center,'center')+card(right,'side');
     animate(el);
   }
 
   // Single clean query — safe columns only
-  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at&order=composite_score.desc&limit=3',{
+  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at,logo_url&slug=in.(openai,langchain,anthropic-sdk)',{
     headers:{apikey:KEY,Authorization:'Bearer '+KEY}
   })
   .then(function(r){
@@ -821,9 +825,9 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .catch(function(err){
     console.warn('Hero cards fallback:',err);
     render([
-      {name:'Supabase',slug:'supabase',publisher_name:'supabase',category:'infra',composite_score:4.71,description:'The open source Firebase alternative.'},
-      {name:'datasets',slug:'datasets',publisher_name:'Hugging Face',category:'data api',composite_score:4.68,description:'HuggingFace community-driven open-source library of datasets.'},
-      {name:'MCP Python SDK',slug:'mcp-python-sdk',publisher_name:'Anthropic, PBC.',category:'framework',composite_score:4.59,description:'Model Context Protocol SDK for Python.'}
+      {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.72,description:'The official Python library for the OpenAI API — GPT, DALL·E, Whisper, and more.'},
+      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:4.65,description:'Building applications with LLMs through composability — chains, agents, and retrieval.'},
+      {name:'Anthropic SDK',slug:'anthropic-sdk',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.60,description:'The official Python SDK for the Anthropic API — Claude models and tool use.'}
     ]);
   });
 })();
