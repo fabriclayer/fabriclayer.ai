@@ -708,7 +708,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'stanfordnlp':'stanfordnlp','langchain':'langchain-ai','twilio-dx':'twilio',
     'twilio':'twilio','stripe':'stripe','the huggingface team':'huggingface',
     'dmlc':'dmlc','cohere':'cohere','pinecone':'pinecone-io',
-    'modelcontextprotocol':'modelcontextprotocol'
+    'modelcontextprotocol':'modelcontextprotocol','crewai':'crewAIInc'
   };
 
   function logoUrl(svc){
@@ -803,15 +803,15 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   function render(data){
     var map={};
     data.forEach(function(s){map[s.slug]=s});
-    var center=map['openai']||data[0];
+    var center=map['anthropic']||data[0];
     var left=map['langchain']||data[1]||data[0];
-    var right=map['anthropic-sdk']||data[2]||data[0];
+    var right=map['crewai']||data[2]||data[0];
     el.innerHTML=card(left,'side')+card(center,'center')+card(right,'side');
     animate(el);
   }
 
   // Single clean query — safe columns only
-  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at,logo_url&slug=in.(openai,langchain,anthropic-sdk)',{
+  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at,logo_url&slug=in.(anthropic,langchain,crewai)',{
     headers:{apikey:KEY,Authorization:'Bearer '+KEY}
   })
   .then(function(r){
@@ -825,9 +825,9 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .catch(function(err){
     console.warn('Hero cards fallback:',err);
     render([
-      {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.72,description:'The official Python library for the OpenAI API — GPT, DALL·E, Whisper, and more.'},
-      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:4.65,description:'Building applications with LLMs through composability — chains, agents, and retrieval.'},
-      {name:'Anthropic SDK',slug:'anthropic-sdk',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.60,description:'The official Python SDK for the Anthropic API — Claude models and tool use.'}
+      {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.60,description:'The official Python SDK for the Anthropic API — Claude models and tool use.'},
+      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:2.59,description:'Building applications with LLMs through composability — chains, agents, and retrieval.'},
+      {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.00,description:'Framework for orchestrating role-playing, autonomous AI agents.'}
     ]);
   });
 })();
