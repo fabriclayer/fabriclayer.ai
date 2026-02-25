@@ -253,6 +253,15 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .sc{background:rgba(0,0,0,.95);padding:24px 20px;transition:background .3s}.sc:hover{background:#060606}
 .sc .sn{font-size:15px;font-weight:600;margin-bottom:4px}.sc .sb{font-size:10px;color:rgba(255,255,255,.2);margin-bottom:8px;font-family:var(--mono);letter-spacing:.5px}.sc p{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
 
+/* LOGO MARQUEE */
+.marquee-wrap{border-bottom:1px solid var(--border);padding:32px 0;overflow:hidden;background:var(--white)}
+.marquee-track{display:flex;align-items:center;width:max-content;animation:marqueeScroll 45s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-track a{display:flex;flex-shrink:0}
+.marquee-logo{height:63px;margin:0 28px;border-radius:50%;transition:all .3s}
+.marquee-track a:hover .marquee-logo{transform:scale(1.1)}
+
 /* API SECTION */
 .api-wrap{background:var(--bg);color:var(--black);position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .api-wrap::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(6,140,255,.04) 0%,transparent 60%);pointer-events:none}
@@ -414,8 +423,6 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <div class="hero-cards" id="heroCards"></div>
 <div class="hero-actions" style="margin-top:100px;margin-bottom:48px;animation:fadeUp .8s ease .9s both"><a href="https://trust.fabriclayer.ai" class="btn-p">Browse the Trust Index &rarr;</a></div>
 </section>
-
-<!-- STATS -->
 
 <!-- WHY TRUST MATTERS -->
 <div class="problem-wrap"><section class="sec" id="problem">
@@ -584,6 +591,39 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 </div>
 
 </section></div>
+
+<!-- LOGO MARQUEE -->
+<div class="marquee-wrap">
+<div class="marquee-track" id="marqueeTrack">
+<a href="https://trust.fabriclayer.ai/openai"><img class="marquee-logo" src="https://github.com/openai.png?size=160" alt="OpenAI"></a>
+<a href="https://trust.fabriclayer.ai/anthropic-sdk"><img class="marquee-logo" src="https://github.com/anthropics.png?size=160" alt="Anthropic"></a>
+<a href="https://trust.fabriclayer.ai/google-generativeai"><img class="marquee-logo" src="https://github.com/google.png?size=160" alt="Google"></a>
+<a href="https://trust.fabriclayer.ai/huggingface"><img class="marquee-logo" src="https://github.com/huggingface.png?size=160" alt="Hugging Face"></a>
+<a href="https://trust.fabriclayer.ai/langchain"><img class="marquee-logo" src="https://github.com/langchain-ai.png?size=160" alt="LangChain"></a>
+<a href="https://trust.fabriclayer.ai/mistralai"><img class="marquee-logo" src="https://github.com/mistralai.png?size=160" alt="Mistral"></a>
+<a href="https://trust.fabriclayer.ai/vercel-ai"><img class="marquee-logo" src="https://github.com/vercel.png?size=160" alt="Vercel"></a>
+<a href="https://trust.fabriclayer.ai/supabase"><img class="marquee-logo" src="https://github.com/supabase.png?size=160" alt="Supabase"></a>
+<a href="https://trust.fabriclayer.ai/replicate"><img class="marquee-logo" src="https://github.com/replicate.png?size=160" alt="Replicate"></a>
+<a href="https://trust.fabriclayer.ai/cohere"><img class="marquee-logo" src="https://github.com/cohere-ai.png?size=160" alt="Cohere"></a>
+<a href="https://trust.fabriclayer.ai/pinecone"><img class="marquee-logo" src="https://github.com/pinecone-io.png?size=160" alt="Pinecone"></a>
+<a href="https://trust.fabriclayer.ai/groq"><img class="marquee-logo" src="https://github.com/groq.png?size=160" alt="Groq"></a>
+<a href="https://trust.fabriclayer.ai/mcp-python-sdk"><img class="marquee-logo" src="https://github.com/modelcontextprotocol.png?size=160" alt="MCP"></a>
+<!-- duplicate for seamless loop -->
+<a href="https://trust.fabriclayer.ai/openai"><img class="marquee-logo" src="https://github.com/openai.png?size=160" alt="OpenAI"></a>
+<a href="https://trust.fabriclayer.ai/anthropic-sdk"><img class="marquee-logo" src="https://github.com/anthropics.png?size=160" alt="Anthropic"></a>
+<a href="https://trust.fabriclayer.ai/google-generativeai"><img class="marquee-logo" src="https://github.com/google.png?size=160" alt="Google"></a>
+<a href="https://trust.fabriclayer.ai/huggingface"><img class="marquee-logo" src="https://github.com/huggingface.png?size=160" alt="Hugging Face"></a>
+<a href="https://trust.fabriclayer.ai/langchain"><img class="marquee-logo" src="https://github.com/langchain-ai.png?size=160" alt="LangChain"></a>
+<a href="https://trust.fabriclayer.ai/mistralai"><img class="marquee-logo" src="https://github.com/mistralai.png?size=160" alt="Mistral"></a>
+<a href="https://trust.fabriclayer.ai/vercel-ai"><img class="marquee-logo" src="https://github.com/vercel.png?size=160" alt="Vercel"></a>
+<a href="https://trust.fabriclayer.ai/supabase"><img class="marquee-logo" src="https://github.com/supabase.png?size=160" alt="Supabase"></a>
+<a href="https://trust.fabriclayer.ai/replicate"><img class="marquee-logo" src="https://github.com/replicate.png?size=160" alt="Replicate"></a>
+<a href="https://trust.fabriclayer.ai/cohere"><img class="marquee-logo" src="https://github.com/cohere-ai.png?size=160" alt="Cohere"></a>
+<a href="https://trust.fabriclayer.ai/pinecone"><img class="marquee-logo" src="https://github.com/pinecone-io.png?size=160" alt="Pinecone"></a>
+<a href="https://trust.fabriclayer.ai/groq"><img class="marquee-logo" src="https://github.com/groq.png?size=160" alt="Groq"></a>
+<a href="https://trust.fabriclayer.ai/mcp-python-sdk"><img class="marquee-logo" src="https://github.com/modelcontextprotocol.png?size=160" alt="MCP"></a>
+</div>
+</div>
 
 <!-- FINAL CTA -->
 <section class="cta">
