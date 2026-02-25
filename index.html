@@ -257,15 +257,28 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .api-wrap{background:var(--bg);color:var(--black);position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .api-wrap::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(6,140,255,.04) 0%,transparent 60%);pointer-events:none}
 .api-wrap .sec-label{color:var(--text-2)}.api-wrap .sec-title{color:var(--black)}.api-wrap .sec-desc{color:var(--text-2)}
-.api-cols{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;align-items:start}
+.api-cols{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;align-items:stretch}
+.api-cols>div{display:flex;flex-direction:column}
 .api-code{background:var(--black);border:1px solid var(--border);border-radius:14px;padding:24px;overflow-x:auto}
 .api-code pre{margin:0;font-family:var(--mono);font-size:12px;line-height:1.7;color:rgba(255,255,255,.6)}
 .api-code .cm{color:rgba(255,255,255,.25)}.api-code .kw{color:#fe83e0}.api-code .str{color:var(--blue)}.api-code .num{color:var(--green)}
-.api-features{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden}
+.api-features{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
 .api-feat{background:var(--white);padding:20px;transition:background .3s}.api-feat:hover{background:var(--bg)}
 .api-feat-title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px}
 .api-feat-desc{font-size:12px;color:var(--text-2);line-height:1.5}
 .api-badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.5px;padding:4px 10px;border-radius:6px;background:rgba(6,140,255,.12);color:var(--blue);margin-bottom:20px}
+.api-waitlist{margin-top:32px;padding:28px 24px;background:var(--white);border:1px solid var(--border);border-radius:14px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.api-waitlist-title{font-size:16px;font-weight:600;color:var(--black);margin-bottom:6px}
+.api-waitlist-sub{font-size:13px;color:var(--text-2);margin-bottom:16px}
+.api-form{display:flex;gap:8px}
+.api-form input{flex:1;min-width:0;padding:12px 16px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--sans);background:var(--white);color:var(--black);outline:none;transition:border .2s}
+.api-form input:focus{border-color:var(--blue)}
+.api-form input::placeholder{color:var(--text-3)}
+.api-form button{padding:12px 24px;border:none;border-radius:10px;background:var(--black);color:var(--white);font-size:14px;font-weight:600;font-family:var(--sans);cursor:pointer;white-space:nowrap;transition:all .2s}
+.api-form button:hover{background:#1a1a1a;transform:translateY(-1px)}
+.api-form button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.api-form-msg{font-size:13px;margin-top:10px;font-weight:500}
+.api-form-msg.ok{color:var(--green)}.api-form-msg.err{color:#e82d35}
 
 /* FINAL CTA */
 .cta{text-align:center;padding:48px 20px;position:relative;overflow:hidden}
@@ -551,11 +564,22 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 }</pre>
 </div>
 
+<div>
 <div class="api-features">
 <div class="api-feat"><div class="api-feat-title">Lookup by slug</div><div class="api-feat-desc">Query any indexed service by name. Get the full score breakdown and current status instantly.</div></div>
 <div class="api-feat"><div class="api-feat-title">Signal breakdown</div><div class="api-feat-desc">All 6 trust signals returned with individual scores and weights. Full transparency on every check.</div></div>
 <div class="api-feat"><div class="api-feat-title">Active alerts</div><div class="api-feat-desc">Recent incidents for any service — CVEs, deprecations, ownership changes, downtime events.</div></div>
 <div class="api-feat"><div class="api-feat-title">Batch queries</div><div class="api-feat-desc">Check multiple services in one call. Score your entire dependency tree or tool selection set at once.</div></div>
+</div>
+
+<div class="api-waitlist">
+<div class="api-waitlist-title">Get early API access</div>
+<div class="api-waitlist-sub">We'll notify you when the API launches. No spam.</div>
+<form class="api-form" id="waitlistForm">
+<input type="email" id="waitlistEmail" placeholder="you@company.com" required>
+<button type="submit" id="waitlistBtn">Notify me &rarr;</button>
+</form>
+<div class="api-form-msg" id="waitlistMsg"></div>
 </div>
 </div>
 
@@ -605,6 +629,34 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
 (function(){
   var SB='https://vtjijmkmnkxblusjlxkg.supabase.co/rest/v1';
   var KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0amlqbWttbmt4Ymx1c2pseGtnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MjA0ODUsImV4cCI6MjA4NzE5NjQ4NX0.L7Kbvsrbq23rBCX_AjrUOOCDL-8gONKd2AmPCqc-fcU';
+
+  // Waitlist form
+  var wf=document.getElementById('waitlistForm');
+  if(wf) wf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=document.getElementById('waitlistBtn');
+    var msg=document.getElementById('waitlistMsg');
+    var email=document.getElementById('waitlistEmail').value.trim();
+    if(!email)return;
+    btn.disabled=true;btn.textContent='Sending…';msg.textContent='';msg.className='api-form-msg';
+    fetch(SB+'/waitlist',{
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({email:email,source:'api-waitlist'})
+    }).then(function(r){
+      if(r.ok||r.status===201){
+        msg.textContent='You\'re on the list. We\'ll be in touch.';msg.className='api-form-msg ok';
+        document.getElementById('waitlistEmail').value='';
+      }else if(r.status===409){
+        msg.textContent='You\'re already on the list!';msg.className='api-form-msg ok';
+      }else{ throw new Error('HTTP '+r.status); }
+    }).catch(function(){
+      msg.textContent='Something went wrong. Try again.';msg.className='api-form-msg err';
+    }).finally(function(){
+      btn.disabled=false;btn.textContent='Notify me \u2192';
+    });
+  });
+
   var IC='<svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg>';
   var el=document.getElementById('heroCards');
 
