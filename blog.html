@@ -90,7 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .featured:hover .post-title{color:var(--pink)}
 .featured .post-excerpt{color:rgba(255,255,255,.5);font-size:15px}
 .featured .post-read{color:var(--pink)}
-.featured .score-badge{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--red);background:rgba(232,45,53,.15);padding:6px 14px;border-radius:8px;display:inline-block;margin-bottom:16px;letter-spacing:-.5px}
+
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 20px}
@@ -134,7 +134,6 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 .post-desc{font-size:13px}
 .post-meta{font-size:10px}
 .post-tag{font-size:9px;padding:2px 7px}
-.score-badge{font-size:18px;padding:6px 12px}
 }
 nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
 @media(max-width:768px){footer{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
@@ -176,50 +175,18 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p class="subtitle">Case studies, security research, and product updates from the Fabric team.</p>
 
 <!-- FEATURED -->
-<a href="/blog/clawhub-malware-case-study" class="featured">
-  <div class="post-meta">
-    <span class="post-tag security">Case Study</span>
-    <span class="post-date">February 2026</span>
-  </div>
-  <span class="score-badge">Trust Score: 0.50 / 5.00 — Blocked</span>
-  <div class="post-title">The #1 skill on OpenClaw's marketplace was malware. Fabric would have blocked it.</div>
-  <div class="post-excerpt">In January 2026, Cisco researchers discovered that the most downloaded skill on ClawHub was silently stealing SSH keys, crypto wallets, and opening reverse shells. 1,184 malicious packages. One attacker uploaded 677 alone. Here's exactly how Fabric's six-signal scoring would have stopped it.</div>
-  <span class="post-read">Read case study →</span>
-</a>
-
-<!-- POST LIST -->
-<div class="posts">
-
-<a href="/blog/how-trust-scoring-works" class="post">
-  <div class="post-meta">
-    <span class="post-tag product">Product</span>
-    <span class="post-date">February 2026</span>
-  </div>
-  <div class="post-title">How our trust scoring works — six signals, no black boxes</div>
-  <div class="post-excerpt">Every AI service indexed by Fabric gets a score from 0.00 to 5.00 across six independently weighted signals. Here's the methodology — what we measure, how we weight it, and why any single metric can be gamed but all six together can't.</div>
-  <span class="post-read">Read post →</span>
-</a>
-
-<a href="/blog/mcp-supply-chain-attacks-timeline" class="post">
-  <div class="post-meta">
-    <span class="post-tag research">Research</span>
-    <span class="post-date">February 2026</span>
-  </div>
-  <div class="post-title">MCP supply chain attacks: a timeline of what's happened so far</div>
-  <div class="post-excerpt">From the postmark-mcp email exfiltration to mcp-runcommand-server's hidden reverse shell to GitHub MCP server prompt injection — a consolidated timeline of every major MCP security breach and what they reveal about the new threat surface.</div>
-  <span class="post-read">Read post →</span>
-</a>
-
-<a href="/blog/introducing-trust-index" class="post">
+<a href="/blog/introducing-trust-index" class="featured">
   <div class="post-meta">
     <span class="post-tag announcement">Announcement</span>
     <span class="post-date">February 2026</span>
   </div>
-  <div class="post-title">Introducing the Fabric Trust Index — free public scores on 10,000+ AI services</div>
-  <div class="post-excerpt">Search, browse, and compare trust scores on every AI service, model, and MCP skill. Open access. No account required. Updated continuously from public data sources.</div>
+  <div class="post-title">Introducing the Fabric Trust Index — open-source trust scores for 5,000+ AI services</div>
+  <div class="post-excerpt">The Trust Index is an open-source scoring engine that rates every AI service, model, and MCP tool from 0.00 to 5.00 across six independently weighted signals. With supply chain protection, CVE monitoring in under five minutes, and eight automated discovery sources — it's the safety layer the agent economy is missing. Free, public, no account required.</div>
   <span class="post-read">Read post →</span>
 </a>
 
+<!-- POST LIST -->
+<div class="posts">
 </div>
 </div>
 
