@@ -183,7 +183,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>This Disclaimer is governed by the laws of the British Virgin Islands. Nothing in this Disclaimer is intended to exclude, restrict, or modify any rights or remedies that cannot be excluded or limited under applicable law in your jurisdiction. Where our liability cannot be excluded, it is limited to the maximum extent permitted by law.</p>
 
 <h2>12. Contact</h2>
-<p>If you have questions about this Disclaimer or the information provided through the Service, contact us at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670b0200060b27010605150e040b061e021549060e">[email&#160;protected]</a></strong>.</p>
+<p>If you have questions about this Disclaimer or the information provided through the Service, contact us at <strong><a href="mailto:legal@fabriclayer.ai">legal@fabriclayer.ai</a></strong>.</p>
 
 </div>
 
@@ -192,6 +192,10 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <ul class="foot-links"><li><a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a></li><li><a href="/docs">Docs</a></li><li class="foot-sep"></li><li><a href="/terms">Terms</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
 </div></footer>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const burger=document.getElementById('burgerBtn');const mobileMenu=document.getElementById('mobileMenu');
-burger.addEventListener('click',()=>{burger.classLi
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileMenu.classList.toggle('open')});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileMenu.classList.remove('open')}));
+</script>
+</body>
+</html>

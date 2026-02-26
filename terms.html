@@ -204,7 +204,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>Nothing in these Terms is intended to exclude, restrict, or modify any rights or remedies that cannot be excluded or limited under applicable law. Where any provision of these Terms is found to be unenforceable or void under applicable law, that provision shall be severed and the remaining provisions shall continue in full force and effect. To the extent that our liability cannot be excluded under applicable law, our total liability is limited (at our option) to re-supplying the Service or paying the cost of having the Service re-supplied.</p>
 
 <h2>15. Contact</h2>
-<p>For questions about these Terms, contact us at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e58980828489a5838487978c8689849c8097cb848c">[email&#160;protected]</a></strong>.</p>
+<p>For questions about these Terms, contact us at <strong><a href="mailto:legal@fabriclayer.ai">legal@fabriclayer.ai</a></strong>.</p>
 
 </div>
 
@@ -214,6 +214,10 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 </div></footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const burger=document.getElementById('burgerBtn');const mobileMenu=document.getElementById('mobileMenu');
-burger.addEventListener('click',()=>{burger.classLi
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileMenu.classList.toggle('open')});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileMenu.classList.remove('open')}));
+</script>
+</body>
+</html>
