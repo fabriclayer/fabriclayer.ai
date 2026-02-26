@@ -683,7 +683,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'together-ai':'https://logo.clearbit.com/together.ai',
     'deepgram':'https://logo.clearbit.com/deepgram.com',
     'weaviate':'https://logo.clearbit.com/weaviate.io',
-    'groq':'https://logo.clearbit.com/groq.com',
+    'groq':'https://github.com/groq.png?size=80',
     'unstructured':'https://logo.clearbit.com/unstructured.io',
     'stripe':'https://github.com/stripe.png?size=80',
     'openai':'https://github.com/openai.png?size=80',
@@ -722,7 +722,17 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'snowflake':'https://github.com/snowflakedb.png?size=80',
     'elastic':'https://github.com/elastic.png?size=80',
     'redis':'https://github.com/redis.png?size=80',
-    'mongodb':'https://github.com/mongodb.png?size=80'
+    'mongodb':'https://github.com/mongodb.png?size=80',
+    'azure-mcp':'https://github.com/microsoft.png?size=80',
+    'notionhq-notion-mcp-server':'https://www.google.com/s2/favicons?domain=notion.so&sz=128',
+    'datasets':'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
+    'langchain-core':'https://github.com/langchain-ai.png?size=80',
+    'brave-brave-search-mcp-server':'https://github.com/brave.png?size=80',
+    'github-mcp-server':'https://github.com/github.png?size=80',
+    'claude-team':'https://github.com/anthropics.png?size=80',
+    'streamlit':'https://github.com/streamlit.png?size=80',
+    'upstash':'https://github.com/upstash.png?size=80',
+    'fabric-trust-index':'https://github.com/fabriclayer.png?size=80'
   };
 
   var LOGOS={
@@ -738,7 +748,9 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'groq':'groq','deepgram':'deepgram','weaviate':'weaviate','replicate':'replicate',
     'unstructured':'Unstructured-IO','vercel':'vercel',
     'together-ai':'togethercomputer','huggingface':'huggingface',
-    'google-generativeai':'google','mcp-python-sdk':'anthropics'
+    'google-generativeai':'google','mcp-python-sdk':'anthropics',
+    'notion':'notionhq','notionhq':'notionhq','brave':'brave',
+    'streamlit':'streamlit','upstash':'upstash','github':'github'
   };
 
   function logoUrl(svc){
@@ -762,7 +774,9 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     return 'https://logo.clearbit.com/'+slug.replace(/[^a-z0-9]/g,'')+'.com';
   }
 
-  var CONTAIN={'twilio':1,'twilio-dx':1,'crewai':1,'huggingface':1,'the huggingface team':1,'hugging face':1,'together ai':1,'togethercomputer':1,'together-ai':1};
+  var CONTAIN={'twilio':1,'twilio-dx':1,'crewai':1,'huggingface':1,'the huggingface team':1,'hugging face':1,'together ai':1,'togethercomputer':1,'together-ai':1,'datasets':1,'fabric-trust-index':1,'tensorflow':1};
+  var BG_DARK={'fabric-trust-index':1};
+  var SIZE_LG={'fabric-trust-index':1};
 
   function logoHtml(svc){
     var ini=(svc.name||'?')[0].toUpperCase();
@@ -772,10 +786,12 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     var sl=(svc.slug||'').toLowerCase().trim();
     var normPub=pub.replace(/,?\s*(inc\.?|pbc\.?|ltd\.?|llc\.?|co\.?)$/i,'').trim();
     var cls=(CONTAIN[pub]||CONTAIN[normPub]||CONTAIN[sl])?' contain':'';
+    var imgStyle=(SIZE_LG[sl])?' style="width:96%;height:96%"':'';
+    var bgStyle=(BG_DARK[sl])?' style="background:#000;border-color:#000"':'';
     // Build Clearbit fallback URL from slug or publisher name
     var cbDomain=sl.replace(/[^a-z0-9]/g,'')+'.com';
     var cbUrl='https://logo.clearbit.com/'+cbDomain;
-    return '<div class="card-icon"><img class="'+cls+'" src="'+url+'" alt="" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src=\''+cbUrl+'\';}else{this.remove();this.parentElement.textContent=\''+ini+'\'}"></div>';
+    return '<div class="card-icon"'+bgStyle+'><img class="'+cls+'"'+imgStyle+' src="'+url+'" alt="" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src=\''+cbUrl+'\';}else{this.remove();this.parentElement.textContent=\''+ini+'\'}"></div>';
   }
 
   function cls(s){return s>=3.25?'trusted':s>=1?'caution':'blocked'}
@@ -845,10 +861,9 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   }
 
   function render(data){
-    var sorted=data.sort(function(a,b){return b.composite_score-a.composite_score});
-    var half=Math.ceil(sorted.length/2);
-    var row1=sorted.slice(0,half);
-    var row2=sorted.slice(half);
+    var half=Math.ceil(data.length/2);
+    var row1=data.slice(0,half);
+    var row2=data.slice(half);
     var html1=row1.map(function(s){return card(s)}).join('');
     var html2=row2.map(function(s){return card(s)}).join('');
     el.innerHTML=html1+html1;
@@ -857,43 +872,44 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     animate(el2);
   }
 
-  // Fetch top 20 scored services for two rows
-  fetch(SB+'/services?select=name,slug,description,category,composite_score,publisher_name,updated_at&composite_score=not.is.null&order=composite_score.desc&limit=20',{
+  // Curated 21 — fixed order, live scores
+  var CURATED=[
+    {name:'Supabase',slug:'supabase',publisher_name:'supabase',category:'infra',composite_score:4.68,description:'The open source Firebase alternative.'},
+    {name:'Datasets',slug:'datasets',publisher_name:'Hugging Face',category:'ml platform',composite_score:4.55,description:'The largest hub for ML datasets.'},
+    {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.51,description:'The official Python library for the OpenAI API.'},
+    {name:'Fabric Trust Index',slug:'fabric-trust-index',publisher_name:'Fabric',category:'trust layer',composite_score:4.80,description:'Trust scores for every AI service in the agent economy.'},
+    {name:'Stripe',slug:'stripe',publisher_name:'Stripe',category:'infra',composite_score:4.50,description:'Payment processing platform for the internet.'},
+    {name:'Claude Team',slug:'claude-team',publisher_name:'Anthropic, PBC.',category:'mcp server',composite_score:4.45,description:'Claude model for team collaboration workflows.'},
+    {name:'Pinecone',slug:'pinecone',publisher_name:'Pinecone',category:'infra',composite_score:4.45,description:'Vector database for machine learning applications.'},
+    {name:'Azure MCP',slug:'azure-mcp',publisher_name:'Microsoft',category:'mcp server',composite_score:4.40,description:'Model Context Protocol server for Azure services.'},
+    {name:'Vercel AI',slug:'vercel-ai',publisher_name:'Vercel',category:'framework',composite_score:4.40,description:'Build AI-powered applications with React and Next.js.'},
+    {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.36,description:'The official Python SDK for the Anthropic API.'},
+    {name:'Notion MCP',slug:'notionhq-notion-mcp-server',publisher_name:'Notion',category:'mcp server',composite_score:4.35,description:'MCP server for the Notion API.'},
+    {name:'Mistral',slug:'mistralai',publisher_name:'Mistral AI',category:'ai sdk',composite_score:4.30,description:'Open and portable generative AI for devs.'},
+    {name:'Brave Search MCP',slug:'brave-brave-search-mcp-server',publisher_name:'Brave',category:'mcp server',composite_score:4.30,description:'MCP server for the Brave Search API.'},
+    {name:'Twilio',slug:'twilio',publisher_name:'Twilio',category:'infra',composite_score:4.25,description:'Cloud communications platform for messaging and voice.'},
+    {name:'GitHub MCP',slug:'github-mcp-server',publisher_name:'GitHub',category:'mcp server',composite_score:4.20,description:'MCP server for the GitHub API.'},
+    {name:'Upstash',slug:'upstash',publisher_name:'Upstash',category:'infra',composite_score:4.20,description:'Serverless Redis and Kafka for modern apps.'},
+    {name:'Streamlit',slug:'streamlit',publisher_name:'Streamlit',category:'framework',composite_score:4.15,description:'The fastest way to build and share data apps.'},
+    {name:'Groq',slug:'groq',publisher_name:'Groq',category:'infra',composite_score:4.10,description:'Fast AI inference on LPU hardware.'},
+    {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.00,description:'Framework for orchestrating autonomous AI agents.'},
+    {name:'TensorFlow',slug:'tensorflow',publisher_name:'Google',category:'ml platform',composite_score:3.50,description:'An end-to-end open source machine learning platform.'},
+    {name:'LangChain Core',slug:'langchain-core',publisher_name:'LangChain',category:'framework',composite_score:3.45,description:'Core abstractions for building with LLMs.'}
+  ];
+
+  // Fetch live scores, merge into curated order, fallback to static
+  var slugs=CURATED.map(function(c){return 'slug.eq.'+c.slug}).join(',');
+  fetch(SB+'/services?select=slug,composite_score&or=('+slugs+')',{
     headers:{apikey:KEY,Authorization:'Bearer '+KEY}
   })
-  .then(function(r){
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
+  .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
+  .then(function(live){
+    var map={};
+    live.forEach(function(s){if(s.composite_score)map[s.slug]=s.composite_score});
+    CURATED.forEach(function(c){if(map[c.slug])c.composite_score=map[c.slug]});
+    render(CURATED);
   })
-  .then(function(data){
-    if(!data||!data.length) throw new Error('empty');
-    render(data);
-  })
-  .catch(function(err){
-    console.warn('Hero cards fallback:',err);
-    render([
-      {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.51,description:'The official Python library for the OpenAI API.'},
-      {name:'Supabase',slug:'supabase',publisher_name:'supabase',category:'infra',composite_score:4.68,description:'The open source Firebase alternative.'},
-      {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.36,description:'The official Python SDK for the Anthropic API.'},
-      {name:'Hugging Face',slug:'huggingface',publisher_name:'Hugging Face',category:'ml platform',composite_score:4.55,description:'The AI community building the future.'},
-      {name:'Vercel AI',slug:'vercel-ai',publisher_name:'Vercel',category:'framework',composite_score:4.40,description:'Build AI-powered applications with React and Next.js.'},
-      {name:'Mistral',slug:'mistralai',publisher_name:'Mistral AI',category:'ai sdk',composite_score:4.30,description:'Open and portable generative AI for devs.'},
-      {name:'LangChain',slug:'langchain',publisher_name:'LangChain',category:'framework',composite_score:3.39,description:'Building applications with LLMs through composability.'},
-      {name:'Replicate',slug:'replicate',publisher_name:'Replicate',category:'ml platform',composite_score:4.20,description:'Run and fine-tune open-source AI models.'},
-      {name:'Cohere',slug:'cohere',publisher_name:'Cohere',category:'ai sdk',composite_score:4.15,description:'Enterprise AI for search, generation, and classification.'},
-      {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.00,description:'Framework for orchestrating autonomous AI agents.'},
-      {name:'Pinecone',slug:'pinecone',publisher_name:'Pinecone',category:'infra',composite_score:4.45,description:'Vector database for machine learning applications.'},
-      {name:'Groq',slug:'groq',publisher_name:'Groq',category:'infra',composite_score:4.10,description:'Fast AI inference on LPU hardware.'},
-      {name:'Google GenAI',slug:'google-generativeai',publisher_name:'Google',category:'ai sdk',composite_score:4.35,description:'Google Generative AI SDK for Gemini models.'},
-      {name:'MCP Python SDK',slug:'mcp-python-sdk',publisher_name:'Anthropic, PBC.',category:'framework',composite_score:4.59,description:'Model Context Protocol SDK for Python.'},
-      {name:'Stripe',slug:'stripe',publisher_name:'Stripe',category:'infra',composite_score:4.50,description:'Payment processing platform for the internet.'},
-      {name:'Twilio',slug:'twilio',publisher_name:'Twilio',category:'infra',composite_score:4.25,description:'Cloud communications platform for messaging and voice.'},
-      {name:'Together AI',slug:'together-ai',publisher_name:'Together AI',category:'ml platform',composite_score:4.18,description:'Run open-source AI models with fast inference.'},
-      {name:'Deepgram',slug:'deepgram',publisher_name:'Deepgram',category:'ai sdk',composite_score:4.05,description:'Speech-to-text and text-to-speech AI APIs.'},
-      {name:'Weaviate',slug:'weaviate',publisher_name:'Weaviate',category:'infra',composite_score:4.12,description:'Open-source vector database for AI applications.'},
-      {name:'Unstructured',slug:'unstructured',publisher_name:'Unstructured',category:'data api',composite_score:3.95,description:'ETL for unstructured data — PDFs, images, and documents.'}
-    ]);
-  });
+  .catch(function(){render(CURATED)});
 })();
 </script>
 </body>
