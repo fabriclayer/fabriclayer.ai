@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Fabric Documentation — Trust Index scoring methodology</title>
-<meta name="description" content="Technical documentation for the Fabric Trust Index — how trust scores work, the six scoring signals, thresholds, and data freshness.">
+<meta name="description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fabriclayer.ai/docs">
 <meta property="og:title" content="Fabric Documentation — Trust Index scoring methodology">
-<meta property="og:description" content="Technical documentation for the Fabric Trust Index — how trust scores work, the six scoring signals, thresholds, and data freshness.">
+<meta property="og:description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-docs.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://fabriclayer.ai/og-docs.png">
 <meta name="twitter:site" content="@fabriclayer">
 <meta name="twitter:title" content="Fabric Documentation — Trust Index scoring methodology">
-<meta name="twitter:description" content="Technical documentation for the Fabric Trust Index — how trust scores work, the six scoring signals, thresholds, and data freshness.">
+<meta name="twitter:description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -208,15 +208,15 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <a href="#trust-signals" class="nav-item">Six signals</a>
 <a href="#trust-formula" class="nav-item">How scoring works</a>
 <a href="#trust-thresholds" class="nav-item">Score thresholds</a>
+<a href="#supply-chain" class="nav-item">Supply chain protection</a>
 <a href="#trust-refresh" class="nav-item">Data freshness</a></div>
 <div class="nav-group"><div class="nav-group-title">Understanding Profiles</div>
 <a href="#reading-profiles" class="nav-item">How to read a profile</a>
 <a href="#categories" class="nav-item">Categories</a>
 <a href="#data-sources" class="nav-item">Data sources</a></div>
 <div class="nav-group"><div class="nav-group-title">For Publishers</div>
-<a href="#claiming" class="nav-item">Claim your profile</a>
 <a href="#improving-score" class="nav-item">Improving your score</a>
-<a href="#badges" class="nav-item">Trust badges</a></div>
+</div>
 <div class="nav-group"><div class="nav-group-title">Reference</div>
 <a href="#faq" class="nav-item">FAQ</a>
 <a href="#changelog" class="nav-item">Changelog</a>
@@ -225,7 +225,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <main class="content">
 <h1 id="overview">Fabric Documentation</h1>
-<p class="subtitle">The Fabric Trust Index is a public directory of trust scores for AI tools, models, MCP servers, and API services. Over 700 indexed services each receive a composite score from 0.00 to 5.00, computed from six independently weighted signals — all generated automatically from public data sources.</p>
+<p class="subtitle">The Fabric Trust Index is an open-source, public directory of trust scores for AI tools, models, MCP servers, and API services. Over 5,000 indexed services each receive a composite score from 0.00 to 5.00, computed from six independently weighted signals — all generated automatically from public data sources. The scoring engine, collectors, and discovery pipeline are all <a href="https://github.com/fabriclayer">open source under AGPL-3.0</a>.</p>
 
 <h2 id="trust-overview">Trust Score</h2>
 <p>The Fabric Trust Score is the core of the Trust Index. It determines whether a service is trusted, flagged for caution, or blocked outright.</p>
@@ -289,17 +289,30 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <tr><td>Below ~1.00</td><td><span class="tag tag-r">Blocked</span></td><td>Significant risks detected. Deny by default.</td></tr></table>
 <p>The scoring engine also applies override rules that can force a status downward (never upward). Certain critical risk signals — such as active unpatched vulnerabilities — can result in an automatic block regardless of the composite score. Services with insufficient data are held in a Pending state until initial collection completes.</p>
 
+<h2 id="supply-chain">Supply chain protection</h2>
+<p>Beyond standard scoring, Fabric runs three supply chain override checks that can force a service into Blocked status regardless of its composite score. These exist because certain conditions represent such severe risk that no combination of other signals should override them.</p>
+
+<table class="doc-table"><tr><th>Override</th><th>Trigger</th><th>Effect</th></tr>
+<tr><td><strong>Archived repository</strong></td><td>The service's GitHub repository has been archived by its owner</td><td>Score capped at 0.99 — automatically Blocked. Archived repos receive no maintenance, no security patches, and no issue responses.</td></tr>
+<tr><td><strong>Deprecated package</strong></td><td>The service's npm package is flagged as deprecated by its maintainer</td><td>Score capped at 0.99 — automatically Blocked. The maintainer has explicitly told users to stop using this package.</td></tr>
+<tr><td><strong>Repository transfer</strong></td><td>The GitHub repository has been transferred to a different owner</td><td>Score frozen (can only decrease), −1.0 modifier applied, flagged for manual review. Repo transfers are the most common vector for supply chain attacks — without this check, the scoring engine would see improved metrics on the new owner's repo and <em>increase</em> the trust score.</td></tr>
+</table>
+
+<div class="callout pink"><p><strong>Why repo transfers matter.</strong> A legitimate repository transfer (e.g. a solo developer moving to an organisation account) looks identical to a malicious takeover at the API level. Fabric distinguishes between same-owner renames (no penalty) and different-owner transfers (frozen + penalty), but all transfers trigger review. This is the single most important safety mechanism in the scoring engine.</p></div>
+
 <h2 id="trust-refresh">Data freshness</h2>
 <p>The scoring engine runs on a fixed schedule across all indexed services. Different signals are refreshed at different intervals depending on how quickly the underlying data changes.</p>
 
 <table class="doc-table"><tr><th>Job</th><th>Schedule</th><th>What it does</th></tr>
-<tr><td>Health checks</td><td>Multiple times per hour</td><td>HTTP pings to service endpoints for uptime and latency</td></tr>
-<tr><td>CVE scanning</td><td>Hourly</td><td>Checks for new vulnerabilities affecting indexed packages</td></tr>
-<tr><td>Full collection</td><td>Daily</td><td>Runs all six signal collectors across every service</td></tr>
-<tr><td>Service discovery</td><td>Daily</td><td>Scans registries for new AI services to add to the index</td></tr>
+<tr><td>Health checks</td><td>Every 15 minutes</td><td>HTTP pings to service endpoints for uptime and latency</td></tr>
+<tr><td>CVE fast-path</td><td>Every 5 minutes</td><td>Checks OSV.dev delta feeds for new vulnerabilities affecting indexed packages — triggers immediate rescore on significant drops</td></tr>
+<tr><td>CVE full scan</td><td>Hourly</td><td>Full vulnerability scan across all indexed packages and their dependency trees</td></tr>
+<tr><td>Full collection</td><td>Daily (2am)</td><td>Runs all six signal collectors across every service and recomputes scores</td></tr>
+<tr><td>Watchdog</td><td>Daily (3am)</td><td>Anomaly detection across all scores — auto-fixes data quality issues and flags suspicious changes</td></tr>
+<tr><td>Service discovery</td><td>Daily (4am–6am)</td><td>Scans 8 sources for new AI services: npm, PyPI, GitHub topics, curated watchlist, GitHub Trending, Show HN, Product Hunt, and YC Launches</td></tr>
 </table>
 
-<p>When a new CVE is published that affects an indexed package, the hourly scan picks it up and triggers a score recomputation. Most scores reflect data that is at most 24 hours old, with vulnerability and uptime data being significantly fresher.</p>
+<p>When a new CVE is published that affects an indexed package, the fast-path scanner picks it up within 5 minutes and triggers an immediate score recomputation. Most scores reflect data that is at most 24 hours old, with vulnerability data being as fresh as 5 minutes and uptime data refreshed every 15 minutes.</p>
 
 <div class="callout"><p><strong>No manual reviews. No paid placements.</strong> Trust scores are fully automated. Providers cannot pay for a higher score, request manual review, or influence their ranking. The only way to improve a score is to improve the underlying signals.</p></div>
 
@@ -349,38 +362,17 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>Every trust score is built from publicly available data. No private data. No paid data feeds. No provider self-reporting. Here are the sources Fabric uses, what we pull from them, and how often.</p>
 
 <table class="doc-table"><tr><th>Source</th><th>What we pull</th><th>Refresh</th></tr>
-<tr><td><strong>OSV.dev</strong></td><td>CVE advisories, severity scores, affected versions, dependency vulnerabilities</td><td>Hourly</td></tr>
-<tr><td><strong>GitHub API</strong></td><td>Commit frequency, release cadence, issue response time, contributor count, licence, stars, org info</td><td>Daily</td></tr>
-<tr><td><strong>npm Registry</strong></td><td>Weekly downloads, version history, dependency tree, package metadata</td><td>Daily</td></tr>
+<tr><td><strong>OSV.dev</strong></td><td>CVE advisories, severity scores, affected versions, dependency vulnerabilities</td><td>Every 5 min (fast-path) + hourly (full)</td></tr>
+<tr><td><strong>GitHub API</strong></td><td>Commit frequency, release cadence, issue response time, contributor count, licence, stars, org info, archive status, ownership changes</td><td>Daily</td></tr>
+<tr><td><strong>npm Registry</strong></td><td>Weekly downloads, version history, dependency tree, package metadata, deprecation status</td><td>Daily</td></tr>
 <tr><td><strong>PyPI + PyPI Stats</strong></td><td>Download counts, version history, project metadata, classifiers</td><td>Daily</td></tr>
-<tr><td><strong>Fabric Monitor</strong></td><td>Uptime %, latency, HTTP status codes, endpoint reachability</td><td>Multiple times per hour</td></tr></table>
+<tr><td><strong>Fabric Monitor</strong></td><td>Uptime %, latency, HTTP status codes, endpoint reachability</td><td>Every 15 minutes</td></tr>
+<tr><td><strong>VirusTotal</strong></td><td>Malware scanning, URL reputation, content safety analysis (for ClawHub skills)</td><td>On discovery</td></tr></table>
 
 <div class="callout pink"><p><strong>Fabric Monitor is first-party data.</strong> Every other source above is public — anyone could build a scoring system from OSV + GitHub + npm. Fabric Monitor is the only signal generated by our own infrastructure. We actively ping service endpoints, measure latency, and detect downtime. No provider can fake this data because they don't control the measurement.</p></div>
 
 <h3>Source reliability</h3>
 <p>Not all sources are always available. When a source is temporarily unreachable (e.g. GitHub API rate limit), Fabric uses a fallback value rather than zero — this prevents a temporary data collection failure from unfairly tanking a score. The score is flagged as "stale" for that signal until fresh data is collected on the next run.</p>
-
-<h2 id="claiming">Claim your profile</h2>
-<p>Every service in the Trust Index is indexed automatically — publishers don't need to opt in. But claiming your profile unlocks additional capabilities and gives you more control over how your service appears.</p>
-
-<h3>What claiming gives you</h3>
-<ul>
-<li><strong>Verified publisher badge</strong> — a blue checkmark confirming you own this service, visible on your profile and in directory cards</li>
-<li><strong>Enhanced profile</strong> — add a custom description, logo, documentation links, and pricing information</li>
-<li><strong>Incident response</strong> — get notified when your score changes significantly and respond to incidents directly on your profile</li>
-<li><strong>Score insights</strong> — detailed breakdown of what's helping and hurting your score, with actionable recommendations</li>
-<li><strong>Priority re-scoring</strong> — request an immediate score refresh after fixing a vulnerability or resolving an outage</li>
-</ul>
-
-<h3>How to claim</h3>
-<ol>
-<li>Navigate to your service's profile page on the Trust Index</li>
-<li>Click <strong>"Claim Provider"</strong> at the bottom of the page</li>
-<li>Verify ownership via one of: DNS TXT record, GitHub repository admin access, or package registry maintainer status</li>
-<li>Once verified, your profile is marked as claimed and you can manage it from the publisher dashboard</li>
-</ol>
-
-<div class="callout"><p><strong>Claiming is free.</strong> There is no cost to claim your profile. Claiming does not influence your trust score in any way — it only affects the supplementary profile information and gives you access to insights and notifications.</p></div>
 
 <h2 id="improving-score">Improving your score</h2>
 <p>Trust scores are fully automated. There is no manual review process, no paid placement, and no way to influence your score other than improving the underlying signals. Here's what actually moves the needle.</p>
@@ -431,55 +423,44 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <div class="callout pink"><p><strong>You cannot pay for a higher score.</strong> Not now, not ever. The only way to improve is to genuinely improve the underlying signals. This is the entire point of Fabric — scores that mean something because they can't be bought.</p></div>
 
-<h2 id="badges">Trust badges</h2>
-<p>Publishers can embed a live trust badge on their website, README, or documentation to signal their Fabric trust score. Badges update automatically when your score changes.</p>
-
-<h3>Markdown (for READMEs)</h3>
-<div class="code"><span class="code-label">markdown</span><pre>[![Fabric Trust Score](https://trust.fabriclayer.ai/badge/{your-slug}.svg)](https://trust.fabriclayer.ai/{your-slug})</pre></div>
-
-<h3>HTML (for websites)</h3>
-<div class="code"><span class="code-label">html</span><pre><span class="kw">&lt;a</span> <span class="fn">href</span>=<span class="str">"https://trust.fabriclayer.ai/{your-slug}"</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;img</span> <span class="fn">src</span>=<span class="str">"https://trust.fabriclayer.ai/badge/{your-slug}.svg"</span>
-       <span class="fn">alt</span>=<span class="str">"Fabric Trust Score"</span> <span class="kw">/&gt;</span>
-<span class="kw">&lt;/a&gt;</span></pre></div>
-
-<h3>Badge variants</h3>
-<table class="doc-table"><tr><th>Style</th><th>URL</th><th>Use case</th></tr>
-<tr><td>Default</td><td><span class="inline-code">/badge/{slug}.svg</span></td><td>Score + status, standard size</td></tr>
-<tr><td>Compact</td><td><span class="inline-code">/badge/{slug}.svg?style=compact</span></td><td>Score only, smaller footprint</td></tr>
-<tr><td>Detailed</td><td><span class="inline-code">/badge/{slug}.svg?style=detailed</span></td><td>Score + all six signal bars</td></tr></table>
-
-<div class="callout"><p><strong>Badges are free for everyone.</strong> You don't need to claim your profile to use a badge. Any service in the index has a badge URL available. Claimed profiles get the verified checkmark in their badge.</p></div>
-
 <h2 id="faq">FAQ</h2>
 
 <h3>Is the Trust Index free?</h3>
 <p>Yes. The Trust Index website is completely free to browse. Every score, signal breakdown, incident history, and data source is publicly accessible with no account required.</p>
 
+<h3>Is the scoring engine open source?</h3>
+<p>Yes. The entire Fabric Trust Index — the scoring engine, all six collectors, the discovery pipeline, the override system, and the watchdog — is open source under the <a href="https://github.com/fabriclayer">AGPL-3.0 licence</a>. You can audit exactly how scores are computed, verify our methodology, or build on top of the scoring infrastructure for your own use. We believe trust infrastructure should be transparent and verifiable — not a black box.</p>
+
 <h3>How often are scores updated?</h3>
-<p>Health checks (uptime/latency) run multiple times per hour. CVE scanning runs hourly. All six signal collectors run a full sweep daily. When the daily collection completes, scores are automatically recomputed with the latest data. This means most scores reflect data that is at most 24 hours old, with vulnerability and uptime data being significantly fresher.</p>
+<p>Health checks (uptime/latency) run every 15 minutes. CVE fast-path scanning runs every 5 minutes, checking OSV.dev delta feeds for newly published vulnerabilities — if a significant drop is detected, a rescore is triggered immediately. The full CVE scan runs hourly. All six signal collectors run a full sweep daily at 2am, followed by a watchdog pass at 3am that detects and auto-fixes data quality anomalies. This means vulnerability data is at most 5 minutes old, uptime data is at most 15 minutes old, and all other signals are at most 24 hours old.</p>
 
 <h3>Can providers game the score?</h3>
-<p>It's extremely difficult. Gaming one signal (like inflating download counts) has minimal effect because five other independent signals would need to be simultaneously spoofed. The highest-weighted signal (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Health is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the override system can automatically block services that exhibit certain critical risk patterns, regardless of how strong their other signals are.</p>
+<p>It's extremely difficult. Gaming one signal (like inflating download counts) has minimal effect because five other independent signals would need to be simultaneously spoofed. The highest-weighted signal (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Health is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the supply chain override system can automatically block services that exhibit critical risk patterns (archived repos, deprecated packages, suspicious ownership transfers), regardless of how strong their other signals are. The entire scoring engine is open source, so you can verify exactly how scores are computed.</p>
 
 <h3>What if my score is wrong?</h3>
-<p>Scores are algorithmically generated and may occasionally reflect stale data or edge cases. If you believe your score is inaccurate, you can: (1) claim your profile and request a priority re-score, or (2) use the "Report Issue" button on any profile page. We investigate all reports. Score adjustments only happen through updated data — the system has safety overrides that can cap scores downward (e.g. for critical CVEs), but no mechanism to manually inflate them.</p>
+<p>Scores are algorithmically generated and may occasionally reflect stale data or edge cases. If you believe your score is inaccurate, you can use the "Report Issue" button on any profile page. We investigate all reports. Score adjustments only happen through updated data — the system has safety overrides that can cap scores downward (e.g. for critical CVEs), but no mechanism to manually inflate them.</p>
 
 <h3>Does being in the index require my consent?</h3>
 <p>No. The Trust Index scores services using publicly available data. It operates similarly to a search engine — if your service has a public GitHub repository, a package on npm, or a listing on Hugging Face, it may be indexed automatically. You can request delisting by contacting us, though this does not remove the underlying public data.</p>
 
 <h3>How are services discovered and added?</h3>
-<p>Fabric runs automated discovery scans daily against package registries (npm, PyPI) and GitHub, searching for AI-related packages, MCP servers, and agent tools. High-priority services are also manually linked to ensure comprehensive coverage of the most important tools. When a new service is detected, it enters the scoring pipeline and appears in the index once initial data collection is complete — typically within 24–48 hours. Users can also submit services for inclusion via the Trust Index.</p>
+<p>Fabric runs automated discovery scans daily against eight sources: package registries (npm, PyPI), GitHub topic search, a curated watchlist of high-profile AI platforms, GitHub Trending (Python and TypeScript), Show HN posts on Hacker News, Product Hunt AI launches, and YC Launch HN announcements. MCP servers are additionally discovered via Smithery.ai, mcp.so, and the ClawHub skills registry. When a new service is detected, it enters a metadata enrichment pipeline that automatically resolves its GitHub repository, npm package, and PyPI package from its organisation name — then it enters the scoring pipeline and appears in the index once initial data collection completes, typically within 24–48 hours. Users can also submit services for inclusion via the Trust Index.</p>
 
 <h3>What does "Blocked" actually mean?</h3>
-<p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active vulnerabilities, malware indicators, or a combination of abandonment and security issues. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it.</p>
+<p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active vulnerabilities, malware indicators, an archived repository, a deprecated package, or a suspicious ownership transfer. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it. Some services are blocked purely because they've been abandoned by their maintainers — the code may be fine today, but nobody is patching it if a vulnerability is found tomorrow.</p>
 
 <h2 id="changelog">Changelog</h2>
 <p>Notable changes to scoring methodology, data sources, and the Trust Index platform.</p>
 
 <table class="doc-table"><tr><th>Date</th><th>Change</th></tr>
-<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scoring engine v2.0.</strong> Added override system for critical risk patterns. Improved fallback handling for stale data. Transparent methodology documentation published.</td></tr>
-<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scale milestone: 700+ services scored.</strong> Full publisher coverage with zero pending or unknown-publisher services remaining.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scoring engine v4.0.</strong> Supply chain override system — services with archived repos, deprecated npm packages, or suspicious ownership transfers are automatically blocked. Two-tier repo transfer detection distinguishes same-owner renames from different-owner transfers.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>CVE fast-path scanner.</strong> Vulnerability detection latency reduced from 24 hours to 5 minutes. OSV.dev delta feeds are polled every 5 minutes; significant score drops trigger immediate rescore.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>8-source discovery engine.</strong> Services are now discovered from npm, PyPI, GitHub topics, curated watchlist, GitHub Trending, Show HN, Product Hunt, and YC Launches — plus MCP-specific sources (Smithery.ai, mcp.so, ClawHub).</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Metadata enrichment engine.</strong> Automatic resolution of GitHub repos, npm packages, and PyPI packages from organisation names. 350 services enriched in initial backfill, resolving "No data" signals for platform-only services.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Watchdog auto-remediation.</strong> Continuous scoring watchdog with 6 anomaly detectors and 3 auto-fixers. Telegram alerts for critical events. Golden set validation ensures 38 reference services stay correctly scored.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Open sourced under AGPL-3.0.</strong> Full scoring engine, collectors, discovery pipeline, and override system published on GitHub.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scale milestone: 5,000+ services scored.</strong> Full publisher coverage across AI tools, MCP servers, agent frameworks, and ClawHub skills.</td></tr>
+<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Public API v1 launched.</strong> Five read-only endpoints with API key authentication and rate limiting. Access scores, signal breakdowns, and service metadata programmatically.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Trust Index launch.</strong> Public directory with initial AI service coverage. Six-signal scoring engine with data from OSV.dev, GitHub, npm, PyPI, and Fabric Monitor. Three status tiers: Trusted, Caution, Blocked.</td></tr>
 </table>
 
