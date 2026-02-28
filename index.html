@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .hero-split{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
 .hero-text{flex:none;text-align:center}
 .hero-asterisk-wrap{display:none}
-h1{font-size:28px;font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease .2s both}
+h1{font-size:45px;font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease .2s both}
 .grad{background:linear-gradient(135deg,#c084fc 0%,#7c8cf8 50%,#60a5fa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding:6px 0;display:inline-block}
 .hero-sub{font-size:15px;color:var(--text-2);max-width:460px;line-height:1.55;margin-bottom:32px;animation:fadeUp .8s ease .4s both;margin-left:auto;margin-right:auto}
 .hero-actions-inline{animation:fadeUp .8s ease .5s both;margin-bottom:68px}
@@ -299,7 +299,7 @@ nav{padding:0 1rem;height:48px}
 
 /* TABLET */
 @media(min-width:600px){
-.hero{padding:180px 32px 0}h1{font-size:38px;letter-spacing:-1.8px}.hero-sub{font-size:17px;max-width:500px}
+.hero{padding:180px 32px 0}h1{font-size:61px;letter-spacing:-1.8px}.hero-sub{font-size:17px;max-width:500px}
 .hero-split{flex-direction:column;align-items:center;gap:24px;padding:0 32px}
 .hero-text{text-align:center}
 .sec{padding:64px 32px}.sec-title{font-size:36px;letter-spacing:-1.5px}.sec-desc{font-size:17px}
@@ -318,14 +318,14 @@ nav{padding:0 1rem;height:48px}
 /* LARGE TABLET */
 @media(min-width:768px){
 .hero{padding:200px 32px 0}
-h1{font-size:42px;letter-spacing:-2px}
+h1{font-size:67px;letter-spacing:-2px}
 }
 
 /* DESKTOP */
 @media(min-width:901px){
 nav{padding:0 40px}
 .hero{min-height:100vh;padding:220px 40px 0}.hero::before{width:800px;height:800px}
-h1{font-size:clamp(49px,6.65vw,72px);letter-spacing:-3px;white-space:nowrap;line-height:1.0}.hero-sub{font-size:clamp(17px,2vw,20px);max-width:560px;margin-bottom:40px}
+h1{font-size:clamp(78px,10.6vw,115px);letter-spacing:-3px;white-space:nowrap;line-height:1.0}.hero-sub{font-size:clamp(17px,2vw,20px);max-width:560px;margin-bottom:40px}
 .hero-split{gap:20px;padding:0 40px;justify-content:center}
 .sec{padding:80px 40px}.sec-label{font-size:13px;margin-bottom:16px}.sec-title{font-size:clamp(36px,4.5vw,52px);letter-spacing:-2px;margin-bottom:20px}.sec-desc{font-size:18px}
 .problems{grid-template-columns:repeat(4,1fr);gap:20px}.problem{padding:32px 24px}
@@ -349,7 +349,7 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 /* ── INDEX MOBILE ENHANCED ── */
 @media(max-width:480px){
 .hero{padding:100px 14px 0}
-h1{font-size:24px;letter-spacing:-1px;line-height:1.1}
+h1{font-size:38px;letter-spacing:-1px;line-height:1.1}
 .hero-sub{font-size:14px;margin-bottom:20px;line-height:1.5}
 .hero-split{gap:16px;padding:0 14px}
 .hero-actions-inline{margin-bottom:32px}
@@ -374,12 +374,15 @@ footer{padding:16px 14px}
 }
 nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
 @media(max-width:360px){
-h1{font-size:22px}
+h1{font-size:35px}
 .hero-sub{font-size:13px}
 .hero-split{padding:0 10px}
 .card-marquee-track .hero-card-wrap{width:180px}
 }
 @media(max-width:768px){footer{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
+@media(max-width:768px){.burger{min-width:44px;min-height:44px;align-items:center;justify-content:center}}
+.mobile-menu a{min-height:44px;display:flex;align-items:center}
+@media(prefers-reduced-motion:reduce){.sig-bar-fill{transition:none}.card-marquee-track{animation:none}.rating-fill,.rt-fill{transition:none}*{transition-duration:0s!important;animation-duration:0s!important}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Fabric","legalName":"Fabric Layer Technologies LTD","url":"https://fabriclayer.ai","logo":"https://fabriclayer.ai/logo.png","description":"Trust scores for every AI service. The trust layer for the agent economy.","sameAs":["https://x.com/fabriclayer","https://github.com/fabriclayer"],"parentOrganization":{"@type":"Organization","name":"Motherbird","url":"https://motherbird.ai"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Fabric","url":"https://fabriclayer.ai","description":"Free public trust scores on every AI service, model, and MCP skill.","potentialAction":{"@type":"SearchAction","target":"https://trust.fabriclayer.ai/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
@@ -753,11 +756,39 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     'streamlit':'streamlit','upstash':'upstash','github':'github'
   };
 
+  // Local logos for curated hero cards — no external requests needed
+  var LOCAL_LOGOS={
+    'supabase':'logos/supabase.png',
+    'datasets':'logos/huggingface.svg',
+    'openai':'logos/openai.png',
+    'fabric-trust-index':'logos/fabric.png',
+    'stripe':'logos/stripe.png',
+    'claude-team':'logos/anthropic.png',
+    'pinecone':'logos/pinecone.png',
+    'azure-mcp':'logos/microsoft.png',
+    'vercel-ai':'logos/vercel.png',
+    'anthropic':'logos/anthropic.png',
+    'notionhq-notion-mcp-server':'logos/notion.png',
+    'mistralai':'logos/mistral.png',
+    'brave-brave-search-mcp-server':'logos/brave.png',
+    'twilio':'logos/twilio.png',
+    'github-mcp-server':'logos/github.png',
+    'upstash':'logos/upstash.png',
+    'streamlit':'logos/streamlit.png',
+    'groq':'logos/groq.png',
+    'crewai':'logos/crewai.png',
+    'tensorflow':'logos/tensorflow.png',
+    'langchain-core':'logos/langchain.png',
+    'google-generativeai':'logos/google.png'
+  };
+
   function logoUrl(svc){
     var pub=(svc.publisher_name||svc.publisher||'').toLowerCase().trim();
     var name=(svc.name||'').toLowerCase().trim();
     if(svc.logo_url) return svc.logo_url;
     var slug=(svc.slug||'').toLowerCase().trim();
+    // 0. Local logos (instant, no network)
+    if(LOCAL_LOGOS[slug]) return LOCAL_LOGOS[slug];
     // 1. Direct URL overrides (most reliable)
     if(LOGO_URLS[slug]) return LOGO_URLS[slug];
     if(LOGO_URLS[name]) return LOGO_URLS[name];
@@ -897,7 +928,10 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     {name:'LangChain Core',slug:'langchain-core',publisher_name:'LangChain',category:'framework',composite_score:3.45,description:'Core abstractions for building with LLMs.'}
   ];
 
-  // Fetch live scores, merge into curated order, fallback to static
+  // Render immediately with static scores so cards appear instantly
+  render(CURATED);
+
+  // Then fetch live scores and update in-place
   var slugs=CURATED.map(function(c){return 'slug.eq.'+c.slug}).join(',');
   fetch(SB+'/services?select=slug,composite_score&or=('+slugs+')',{
     headers:{apikey:KEY,Authorization:'Bearer '+KEY}
@@ -906,10 +940,11 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .then(function(live){
     var map={};
     live.forEach(function(s){if(s.composite_score)map[s.slug]=s.composite_score});
-    CURATED.forEach(function(c){if(map[c.slug])c.composite_score=map[c.slug]});
-    render(CURATED);
+    var changed=false;
+    CURATED.forEach(function(c){if(map[c.slug]&&map[c.slug]!==c.composite_score){c.composite_score=map[c.slug];changed=true}});
+    if(changed)render(CURATED);
   })
-  .catch(function(){render(CURATED)});
+  .catch(function(){});
 })();
 </script>
 </body>
