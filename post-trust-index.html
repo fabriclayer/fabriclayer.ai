@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Introducing the Fabric Trust Index — free scores on 5,800+ AI services</title>
-<meta name="description" content="Free, automated trust scores for every AI service. Six signals, one score, 5,800+ services indexed. The safety layer the agent economy is missing.">
+<title>Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)</title>
+<meta name="description" content="23 sub-signals across 6 dimensions scoring 5,800+ AI services. Public beta — actively evolving.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://fabriclayer.ai/blog/introducing-trust-index">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-02-26T00:00:00Z">
+<meta property="article:published_time" content="2026-03-02T00:00:00Z">
 <meta property="article:author" content="Fabric">
 <meta property="og:url" content="https://fabriclayer.ai/blog/introducing-trust-index">
-<meta property="og:title" content="Introducing the Fabric Trust Index — free scores on 5,800+ AI services">
-<meta property="og:description" content="Free, automated trust scores for every AI service. Six signals, one score, 5,800+ services indexed. The safety layer the agent economy is missing.">
+<meta property="og:title" content="Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)">
+<meta property="og:description" content="23 sub-signals across 6 dimensions scoring 5,800+ AI services. Public beta — actively evolving.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-introducing-trust-index.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://fabriclayer.ai/og-introducing-trust-index.png">
 <meta name="twitter:site" content="@fabriclayer">
-<meta name="twitter:title" content="Introducing the Fabric Trust Index — free scores on 5,800+ AI services">
-<meta name="twitter:description" content="Free, automated trust scores for every AI service. Six signals, one score, 5,800+ services indexed.">
+<meta name="twitter:title" content="Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)">
+<meta name="twitter:description" content="23 sub-signals across 6 dimensions scoring 5,800+ AI services. Public beta — actively evolving.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--black:#000;--blue:#068cff;--pink:#fe83e0;--white:#fff;--bg:#f7f7f7;--text:#0a0a0a;--text-2:#555;--text-3:#999;--border:#e5e5e5;--green:#0dc956;--orange:#f7931e;--red:#e82d35;--sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'DM Mono','SF Mono',monospace}
@@ -142,7 +142,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 @media(max-width:768px){.burger{min-width:44px;min-height:44px;align-items:center;justify-content:center}}
 .mobile-menu a{min-height:44px;display:flex;align-items:center}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Introducing the Fabric Trust Index — free scores on 5,800+ AI services","description":"Free, automated trust scores for every AI service. Six signals, one score, 5,800+ services indexed.","url":"https://fabriclayer.ai/blog/introducing-trust-index","image":"https://fabriclayer.ai/og-introducing-trust-index.png","datePublished":"2026-02-26","dateModified":"2026-02-26","author":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"},"publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai","logo":{"@type":"ImageObject","url":"https://fabriclayer.ai/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://fabriclayer.ai/blog/introducing-trust-index"},"keywords":["Trust Index","AI trust scores","MCP tools","AI safety","supply chain security"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)","description":"23 sub-signals across 6 dimensions scoring 5,800+ AI services. Public beta — actively evolving.","url":"https://fabriclayer.ai/blog/introducing-trust-index","image":"https://fabriclayer.ai/og-introducing-trust-index.png","datePublished":"2026-03-02","dateModified":"2026-03-02","author":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"},"publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai","logo":{"@type":"ImageObject","url":"https://fabriclayer.ai/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://fabriclayer.ai/blog/introducing-trust-index"},"keywords":["Trust Index","AI trust scores","MCP tools","AI safety","supply chain security","sub-signals","beta"]}</script>
 </head>
 <body>
 
@@ -176,67 +176,80 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <a href="/blog" class="article-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>All posts</a>
 <div class="article-meta">
   <span class="article-tag announcement">Announcement</span>
-  <span>February 2026</span>
+  <span>March 2026</span>
   <span>·</span>
-  <span>5 min read</span>
+  <span>6 min read</span>
 </div>
 
-<h1>Introducing the Fabric Trust Index — free public scores on 5,800+ AI services</h1>
+<h1>Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)</h1>
 
-<p class="lead">Today we're launching the Fabric Trust Index: a free, searchable scoring engine for every AI service, SDK, agent tool, and MCP skill we can find. Six signals, one score, fully automated. No account required.</p>
+<p class="lead">The Fabric Trust Index is now in public beta — 23 sub-signals across 6 dimensions scoring 5,800+ AI services, SDKs, agent tools, and MCP skills. Full transparency, no defaults, actively evolving. No account required.</p>
 
 <h2>Why we built this</h2>
 
-<p>The AI ecosystem is scaling faster than anyone can audit. New AI tools launch every week. Anyone can build one. Most are never reviewed for safety, privacy, or reliability. A slick landing page doesn't mean a tool is safe, and a tool that was safe last month can push a bad update, change its privacy policy, or get acquired by someone with different intentions — and nobody tells you.</p>
+<p>The AI ecosystem is scaling faster than anyone can audit. New tools launch every week. Anyone can build one. Most are never reviewed for safety, privacy, or reliability. A slick landing page doesn't mean a tool is safe, and a tool that was safe last month can push a bad update, change its privacy policy, or get acquired by someone with different intentions — and nobody tells you.</p>
 
 <p>Right now, the answer to "is this tool safe?" is mostly vibes. Download counts. GitHub stars. A README that looks professional. None of these are trust signals — they're popularity signals, and they're trivially gamed.</p>
 
 <p>We think the ecosystem deserves better. So we built it.</p>
 
-<h2>Six signals. One score.</h2>
+<h2>23 sub-signals. Six dimensions. One score.</h2>
 
-<p>Every service in the index receives a trust score from 0.00 to 5.00, computed from six independently weighted signals. The signals are weighted by risk — security carries more weight than popularity — and the combination makes gaming the system extremely difficult. An attacker would need to simultaneously spoof all six to pass.</p>
+<p>Every service in the index receives a trust score from 0.00 to 5.00, computed from 23 independently scored sub-signals grouped into six weighted dimensions. The dimensions are weighted by risk — security carries more weight than popularity — and the granularity makes gaming the system extremely difficult. An attacker would need to simultaneously spoof all 23 sub-signals to pass.</p>
+
+<p>Each sub-signal is scored independently, and when a sub-signal lacks data, its weight is redistributed proportionally to sub-signals that do have data. No defaults, no faking coverage — every score reflects exactly what we can verify.</p>
 
 <div class="signals">
   <div class="sig">
-    <div class="sig-name">Vulnerability & Safety</div>
+    <div class="sig-name">Vulnerability &amp; Safety</div>
     <div class="sig-weight">×0.25 · highest weight</div>
-    <div class="sig-desc">Known CVEs, malware indicators, and dependency chain risk across the full package tree. Supply chain depth matters.</div>
+    <div class="sig-desc">CVE severity, patch availability, dependency tree depth, malware signatures, and typosquatting indicators. The full supply chain, not just direct deps.</div>
+  </div>
+  <div class="sig">
+    <div class="sig-name">Operational Reliability</div>
+    <div class="sig-weight">×0.15</div>
+    <div class="sig-desc">Fabric monitors uptime, latency (p50/p99), and behavioural consistency directly. No provider can fake this — we run the pings ourselves on a 15-minute cycle.</div>
   </div>
   <div class="sig">
     <div class="sig-name">Maintenance Activity</div>
-    <div class="sig-weight">×0.20</div>
-    <div class="sig-desc">Commit frequency, release cadence, issue responsiveness, and PR velocity over a rolling 90-day window.</div>
-  </div>
-  <div class="sig">
-    <div class="sig-name">Operational Health</div>
     <div class="sig-weight">×0.15</div>
-    <div class="sig-desc">Fabric monitors uptime, latency, and behavioural consistency directly. No provider can fake this — we run the pings ourselves.</div>
+    <div class="sig-desc">Commit frequency, release cadence, issue responsiveness, PR merge velocity, and contributor breadth over a rolling 90-day window.</div>
   </div>
   <div class="sig">
     <div class="sig-name">Adoption</div>
     <div class="sig-weight">×0.15</div>
-    <div class="sig-desc">Community traction on a logarithmic scale normalised against ecosystem peers. Download velocity matters more than raw count.</div>
+    <div class="sig-desc">Download volume, growth velocity, and unique callers on a logarithmic scale normalised against category peers. Velocity matters more than raw count.</div>
   </div>
   <div class="sig">
     <div class="sig-name">Transparency</div>
     <div class="sig-weight">×0.15</div>
-    <div class="sig-desc">Source code availability, licensing, documentation quality, SECURITY.md, published schemas, and API docs.</div>
+    <div class="sig-desc">Source code availability, licensing, documentation quality, SECURITY.md, published schemas, model cards, and API docs.</div>
   </div>
   <div class="sig">
     <div class="sig-name">Publisher Trust</div>
-    <div class="sig-weight">×0.10</div>
-    <div class="sig-desc">Account age, organisational membership, cross-registry identity consistency, and prior security incidents.</div>
+    <div class="sig-weight">×0.15</div>
+    <div class="sig-desc">Organisation maturity, external credibility (followers, total stars), cross-registry identity consistency, track record, and prior security incidents.</div>
   </div>
 </div>
 
-<p>Services score into three tiers: <strong>Trusted</strong> (3.25–5.00), <strong>Caution</strong> (1.00–3.24), and <strong>Blocked</strong> (0.00–0.99). For AI agents, every service includes a single <code>decision</code> field — allow, review, or block — so an agent can route without parsing scores.</p>
+<p>Services score into three tiers: <strong>Trusted</strong> (3.00–5.00), <strong>Caution</strong> (1.00–2.99), and <strong>Blocked</strong> (0.00–0.99). For AI agents, every service includes a single <code>decision</code> field — allow, review, or block — so an agent can route without parsing scores.</p>
+
+<h2>Why sub-signals matter</h2>
+
+<p>The original scoring engine used six flat signals. It worked, but it was a black box — you could see that "Maintenance Activity" scored 3.2 but not <em>why</em>. The sub-signal architecture breaks each dimension into independently verifiable components. On any service page, you can expand each signal to see exactly which sub-signals contributed to the score, which had data, and which didn't.</p>
+
+<p>When a sub-signal lacks data (e.g., no PyPI downloads for an npm-only package), its weight doesn't default to zero or some placeholder — it redistributes proportionally to the sub-signals that do have data. This means a service scored with 3 of 4 sub-signals isn't penalised for missing data. It's scored accurately on what we can verify.</p>
+
+<div class="callout">
+<strong>No defaults. No faking coverage.</strong>
+<p>Every sub-signal score reflects real, verified data. If we can't verify it, we redistribute the weight — we don't guess.</p>
+</div>
 
 <h2>Supply chain protection</h2>
 
 <p>The most dangerous attack vector in AI isn't a suspicious new tool — it's a trusted one that changes hands. A repo transfer is the most common vector for supply chain attacks. The attacker transfers a popular repo to their account, publishes a new version with malicious code, and the package manager trusts it because the repo looks the same.</p>
 
-<p>Fabric detects this. Our override system evaluates eight hard safety rules after every scoring cycle, including three designed for supply chain integrity:</p>
+<p>Fabric detects this. Our override system evaluates hard safety rules after every scoring cycle, including three designed for supply chain integrity:</p>
 
 <ul>
   <li><strong>Archived repositories</strong> — if a GitHub repo is archived, the service is blocked at 0.99 regardless of other signals.</li>
@@ -254,11 +267,11 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <p>The index grows daily through eight automated discovery sources. Registry crawlers search npm and PyPI by AI-relevant keywords. A news scanner checks GitHub Trending, Product Hunt, YC Launches, and Show HN for day-one catches. ClawHub skills and MCP servers from Smithery.ai and mcp.so are crawled separately. A curated watchlist catches platform-only products like Cursor, Perplexity, and Bolt.new that have no package to find in a registry.</p>
 
-<p>A new AI tool launched on Product Hunt at 9am can be discovered, enriched with metadata, scored across all six signals, and assessed — all by the next morning. No human intervention at any step.</p>
+<p>A new AI tool launched on Product Hunt at 9am can be discovered, enriched with metadata, scored across all 23 sub-signals, and assessed — all by the next morning. No human intervention at any step.</p>
 
 <div class="stats">
   <div class="stat"><div class="stat-val">5,800+</div><div class="stat-lbl">Services indexed</div></div>
-  <div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Discovery sources</div></div>
+  <div class="stat"><div class="stat-val">23</div><div class="stat-lbl">Sub-signals scored</div></div>
   <div class="stat"><div class="stat-val">10</div><div class="stat-lbl">Data sources</div></div>
   <div class="stat"><div class="stat-val">&lt;5m</div><div class="stat-lbl">CVE detection</div></div>
 </div>
@@ -274,17 +287,21 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <p>Data flows in from 10 sources: OSV.dev for vulnerabilities, GitHub API for maintenance and transparency, npm and PyPI for adoption, VirusTotal for malware scanning, ClawHub for AI skill analysis, HTTP pings for operational health, and Claude for AI-generated trust assessments that explain scores in plain English.</p>
 
-<h2>What's next</h2>
+<h2>This is a beta</h2>
 
-<p>The Trust Index is the foundation — the scoring engine everything else builds on. Coming next: publisher profiles so you can claim your service and verify your identity, custom scoring weights to match your priorities, MCP integration for agents to check trust inline, and a public API for programmatic access.</p>
+<p>The scoring engine is in active beta. Signals, sub-signal weights, and thresholds are being calibrated in real time as coverage expands across the index. Scores may shift between versions as new data sources come online and scoring logic is refined.</p>
+
+<p>What's live now (Phase 1): the core sub-signal architecture — 23 sub-signals across 6 dimensions with full weight redistribution for missing data. What's next (Phase 2): permission scope analysis, expanded collection sources, publisher verification, and a public API for programmatic access.</p>
 
 <p>The full scoring methodology, data sources, and technical architecture are documented at <a href="/docs">fabriclayer.ai/docs</a>. Everything is transparent because trust infrastructure should be.</p>
 
-<p>If you have feedback or want to integrate — reach out on <a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a> or <a href="https://x.com/fabriclayer" target="_blank" rel="noopener">Twitter / X</a>.</p>
+<h2>Work with us</h2>
+
+<p>If you have feedback, want to integrate, or want to discuss the scoring methodology — reach out at <a href="mailto:hello@fabriclayer.ai">hello@fabriclayer.ai</a>, on <a href="https://github.com/fabriclayer" target="_blank" rel="noopener">GitHub</a>, or on <a href="https://x.com/fabriclayer" target="_blank" rel="noopener">X</a>.</p>
 
 <div class="article-cta">
   <h3>Is this AI tool safe to use?</h3>
-  <p>Search 5,800+ AI services. Free. No account required.</p>
+  <p>Search 5,800+ AI services. 23 sub-signals. Free. No account required.</p>
   <a href="https://trust.fabriclayer.ai" class="btn-p">Browse the Trust Index →</a>
 </div>
 </article>
