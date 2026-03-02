@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Fabric Documentation — Trust Index scoring methodology</title>
-<meta name="description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
+<meta name="description" content="Technical documentation for the Fabric Trust Index — 23 sub-signals across 6 dimensions scoring 5,800+ AI services. Sub-signal architecture, supply chain protection, and real-time CVE monitoring.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fabriclayer.ai/docs">
 <meta property="og:title" content="Fabric Documentation — Trust Index scoring methodology">
-<meta property="og:description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
+<meta property="og:description" content="Technical documentation for the Fabric Trust Index — 23 sub-signals across 6 dimensions scoring 5,800+ AI services. Sub-signal architecture, supply chain protection, and real-time CVE monitoring.">
 <meta property="og:site_name" content="Fabric">
 <meta property="og:image" content="https://fabriclayer.ai/og-docs.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://fabriclayer.ai/og-docs.png">
 <meta name="twitter:site" content="@fabriclayer">
 <meta name="twitter:title" content="Fabric Documentation — Trust Index scoring methodology">
-<meta name="twitter:description" content="Technical documentation for the Fabric Trust Index — an open-source trust scoring engine for 5,000+ AI services. Six signals, supply chain protection, and real-time CVE monitoring.">
+<meta name="twitter:description" content="Technical documentation for the Fabric Trust Index — 23 sub-signals across 6 dimensions scoring 5,800+ AI services. Sub-signal architecture, supply chain protection, and real-time CVE monitoring.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -119,6 +119,11 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 .doc-footer{border-top:1px solid var(--border);padding:24px 0;margin-top:48px;font-family:var(--mono);font-size:0.65rem;color:var(--text-3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .doc-footer a{color:var(--text-2);text-decoration:none}.doc-footer a:hover{color:var(--text)}
 
+.sub-table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:12.5px}
+.sub-table th{text-align:left;padding:6px 10px;background:var(--bg);font-family:var(--mono);font-weight:500;font-size:0.58rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);border-bottom:1px solid var(--border)}
+.sub-table td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12.5px}
+.sub-table tr:last-child td{border-bottom:none}
+
 @media(max-width:768px){
 .nav-links{display:none!important}.burger{display:flex}nav{padding:0 1rem}
 }
@@ -136,6 +141,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 .code pre{font-size:13px;line-height:1.8}
 .callout{padding:16px 22px;margin:16px 0 24px}.callout p{font-size:14px}.callout strong{font-size:14px}
 .doc-table{font-size:14px;display:table}.doc-table th{padding:11px 16px}.doc-table td{padding:11px 16px;white-space:normal}
+.sub-table{font-size:13px}.sub-table th{padding:7px 12px}.sub-table td{padding:7px 12px}
 .param{padding:12px 16px;font-size:14px}.param-name{font-size:13.5px}.param-desc{font-size:13.5px}
 .doc-footer{padding:32px 0;margin-top:64px}
 .inline-code{font-size:0.82em;padding:2px 7px}
@@ -156,6 +162,8 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 .callout p{font-size:12.5px!important}
 .doc-table{font-size:12px}
 .doc-table th,.doc-table td{padding:8px 10px}
+.sub-table{font-size:11.5px}
+.sub-table th,.sub-table td{padding:5px 8px}
 .param{padding:10px 12px}
 .param-name{font-size:12px}
 .param-desc{font-size:12px}
@@ -170,7 +178,7 @@ a,button{-webkit-tap-highlight-color:transparent}
 nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
 @media(max-width:768px){footer{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"Fabric Documentation","headline":"Fabric Documentation \u2014 Trust Index scoring methodology","description":"Technical documentation for the Fabric Trust Index \u2014 how trust scores work, the six scoring signals, thresholds, and data freshness.","url":"https://fabriclayer.ai/docs","publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","name":"Fabric Documentation","headline":"Fabric Documentation \u2014 Trust Index scoring methodology","description":"Technical documentation for the Fabric Trust Index \u2014 23 sub-signals across 6 dimensions scoring 5,800+ AI services. Sub-signal architecture, thresholds, and data freshness.","url":"https://fabriclayer.ai/docs","publisher":{"@type":"Organization","name":"Fabric","url":"https://fabriclayer.ai"}}</script>
 </head>
 <body>
 
@@ -205,10 +213,11 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <a href="#overview" class="nav-item active">Overview</a></div>
 <div class="nav-group"><div class="nav-group-title">Trust Score</div>
 <a href="#trust-overview" class="nav-item">How it works</a>
-<a href="#trust-signals" class="nav-item">Six signals</a>
+<a href="#trust-signals" class="nav-item">Six dimensions</a>
+<a href="#sub-signals" class="nav-item">23 sub-signals</a>
 <a href="#trust-formula" class="nav-item">How scoring works</a>
 <a href="#trust-thresholds" class="nav-item">Score thresholds</a>
-<a href="#supply-chain" class="nav-item">Supply chain protection</a>
+<a href="#supply-chain" class="nav-item">Safety overrides</a>
 <a href="#trust-refresh" class="nav-item">Data freshness</a></div>
 <div class="nav-group"><div class="nav-group-title">Understanding Profiles</div>
 <a href="#reading-profiles" class="nav-item">How to read a profile</a>
@@ -225,92 +234,162 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <main class="content">
 <h1 id="overview">Fabric Documentation</h1>
-<p class="subtitle">The Fabric Trust Index is an open-source, public directory of trust scores for AI tools, models, MCP servers, and API services. Over 5,000 indexed services each receive a composite score from 0.00 to 5.00, computed from six independently weighted signals — all generated automatically from public data sources. The scoring engine, collectors, and discovery pipeline are all <a href="https://github.com/fabriclayer">open source under AGPL-3.0</a>.</p>
+<p class="subtitle">The Fabric Trust Index is an open-source, public directory of trust scores for AI tools, models, MCP servers, and API services. Over 5,800 indexed services each receive a composite score from 0.00 to 5.00, computed from <strong>23 independently scored sub-signals</strong> grouped into six weighted dimensions — all generated automatically from public data sources. The scoring engine is in <strong>active beta</strong> and is <a href="https://github.com/fabriclayer">open source under AGPL-3.0</a>.</p>
 
 <h2 id="trust-overview">Trust Score</h2>
 <p>The Fabric Trust Score is the core of the Trust Index. It determines whether a service is trusted, flagged for caution, or blocked outright.</p>
-<p>Every AI service indexed by Fabric receives a composite score from <strong>0.00 to 5.00</strong>, computed from six independently weighted signals. Each signal scores 0–5 individually, then is multiplied by its weight. The six weighted contributions sum to the final score.</p>
+<p>Every AI service indexed by Fabric receives a composite score from <strong>0.00 to 5.00</strong>, computed from 23 independently scored sub-signals grouped into six weighted dimensions. Each sub-signal scores 0–5 individually, then is combined with its weight within its dimension. The six dimension scores are then multiplied by their respective weights and summed to produce the final composite score.</p>
 <p>All scoring data is generated automatically from public sources. No manual reviews. No paid placements. No provider involvement required. A provider doesn't need to opt in — or even know they're being scored — for Fabric to evaluate them.</p>
 
-<div class="callout"><p><strong>Why six signals?</strong> Any single metric can be gamed. Download counts can be inflated. GitHub stars can be bought. Even vulnerability databases have blind spots. By combining six independent signals across security, operations, maintenance, adoption, transparency, and publisher identity — an attacker would need to simultaneously spoof all of them to pass. That's the point.</p></div>
+<div class="callout"><p><strong>Why 23 sub-signals?</strong> Any single metric can be gamed. Download counts can be inflated. GitHub stars can be bought. Even vulnerability databases have blind spots. The original engine used six flat signals — it worked, but was a black box. The sub-signal architecture breaks each dimension into independently verifiable components, making the scoring rationale transparent and gaming the system exponentially harder. An attacker would need to simultaneously spoof all 23 sub-signals across all six dimensions.</p></div>
 
-<h2 id="trust-signals">The six signals</h2>
+<h2 id="trust-signals">The six dimensions</h2>
+<p>Each dimension groups related sub-signals that measure a specific aspect of trust. Dimensions are weighted by risk — security carries more weight than popularity.</p>
 
-<h3>1. Vulnerability &amp; Safety</h3>
-<p>The highest-weighted signal. Measures known security vulnerabilities across the package and its entire dependency tree using the OSV.dev CVE database.</p>
-<p>Fabric scans for open CVEs at every severity level — critical, high, medium, and low. Unpatched critical vulnerabilities carry the heaviest penalty and can single-handedly drop a service into Blocked status. Even patched vulnerabilities incur smaller deductions, because they indicate the dependency was once vulnerable.</p>
+<h3>1. Vulnerability &amp; Safety <span class="tag tag-p">×0.25</span></h3>
+<p>The highest-weighted dimension. Measures known security vulnerabilities across the package and its entire dependency tree using the OSV.dev CVE database.</p>
+<p>Fabric scans for open CVEs at every severity level — critical, high, medium, and low. Unpatched critical vulnerabilities carry the heaviest penalty and can single-handedly drop a service into Blocked status. Even patched vulnerabilities incur smaller deductions, because they indicate the dependency was once vulnerable. Deductions scale by the square root of CVE count to avoid over-penalising high-CVE packages with many patched issues.</p>
 <div class="callout"><p><strong>Supply chain depth matters.</strong> Fabric traces the full dependency tree from npm and PyPI. A package with zero direct vulnerabilities can still score poorly if its dependencies are compromised. Transitive vulnerabilities are weighted lower than direct ones, but they still count.</p></div>
 
-<h3>2. Operational Health</h3>
-<p>The only signal generated by Fabric's own infrastructure. We actively ping service endpoints for uptime, latency, and HTTP status — no provider can fake this one.</p>
-<p>Services with a real, publicly reachable endpoint can achieve the highest scores. Services that only have a registry listing (e.g. an npm page with no live API) are capped below the maximum. Uptime is the primary driver, with strong uptime scoring well and downtime events accumulating penalties over a rolling window.</p>
+<h3>2. Operational Reliability <span class="tag tag-p">×0.15</span></h3>
+<p>The only dimension generated by Fabric's own infrastructure. We actively ping service endpoints for uptime, latency, error rates, and incident history — no provider can fake this one.</p>
+<p>Services with a real, publicly reachable endpoint can achieve the highest scores. Services that only have a registry listing (e.g. an npm page with no live API) are capped below the maximum. Uptime is the primary driver, measured over a rolling 30-day window. Latency is evaluated at the p99 level — we care about worst-case, not average.</p>
 <p>Services with no endpoint to monitor (CLI tools, local packages) receive a fallback value rather than zero, which prevents them from being unfairly penalised.</p>
 
-<h3>3. Maintenance Activity</h3>
-<p>Is anyone home? Abandoned software is a security risk regardless of how clean the code is today. This signal captures the human factor behind a project.</p>
-<p>Fabric evaluates four factors: how recently the last commit was made, overall commit frequency over the past several months, how quickly the maintainers respond to issues, and whether releases follow a regular cadence. Recent activity and consistent releases score well. Long periods of inactivity drop the score significantly.</p>
-<p>Stable, mature projects with low commit frequency aren't penalised as heavily — release cadence and issue responsiveness carry more weight than raw commit volume.</p>
+<h3>3. Maintenance Activity <span class="tag tag-p">×0.15</span></h3>
+<p>Is anyone home? Abandoned software is a security risk regardless of how clean the code is today. This dimension captures the human factor behind a project.</p>
+<p>Fabric evaluates commit recency, release cadence, issue responsiveness, and CI/CD presence. Recent activity and consistent releases score well. Long periods of inactivity drop the score significantly.</p>
+<p>Stable, mature projects with low commit frequency aren't penalised as heavily — release cadence and issue responsiveness carry more weight than raw commit volume. CI/CD presence (GitHub Actions workflows) is a strong signal of professional maintenance practices.</p>
 
-<h3>4. Adoption</h3>
+<h3>4. Adoption <span class="tag tag-p">×0.15</span></h3>
 <p>Not a security signal per se, but a strong proxy for how many eyes are on the project. High adoption means more users finding and reporting issues, more pressure to maintain quality, and a larger blast radius if something goes wrong — which motivates faster fixes.</p>
-<p>Download counts are scored on logarithmic tiers — this means the difference between 1,000 and 10,000 downloads matters more than the difference between 10 million and 100 million. Download velocity (growth or decline trend) also factors in. For categories with enough services, scores are normalised so niche tools aren't penalised for being specialised.</p>
+<p>Download volume is scored on logarithmic tiers — this means the difference between 1,000 and 10,000 downloads matters more than the difference between 10 million and 100 million. GitHub stars, download growth velocity, and category normalisation all factor in. Niche tools aren't penalised for being specialised — they're compared against peers in their category.</p>
 
-<div class="callout"><p><strong>Adoption is gameable.</strong> This is the one signal attackers can most easily inflate — which is why it's weighted lower than the safety and operational signals. The other five signals act as independent checks.</p></div>
+<div class="callout"><p><strong>Adoption is gameable.</strong> This is the one dimension attackers can most easily inflate — which is why it's weighted the same as operational and maintenance, not higher. The other five dimensions act as independent checks.</p></div>
 
-<h3>5. Transparency</h3>
+<h3>5. Transparency <span class="tag tag-p">×0.15</span></h3>
 <p>Can you see what it does before you run it? Open source projects with clear documentation, proper licensing, and published schemas are inherently more trustworthy than black boxes.</p>
-<p>Fabric evaluates a checklist of transparency items including whether source code is publicly available, whether a recognised licence is used, whether documentation exists, and whether the project follows security disclosure best practices. AI model categories have additional requirements such as published model cards. Each checklist item contributes to the signal score.</p>
+<p>Fabric evaluates source code availability, licence type (OSI-approved permissive licences score highest), documentation quality and size, security disclosure practices (SECURITY.md), and changelog presence. AI model categories have additional requirements such as published model cards.</p>
 
-<h3>6. Publisher Trust</h3>
+<h3>6. Publisher Trust <span class="tag tag-p">×0.15</span></h3>
 <p>Who built this? A first-time anonymous account publishing a critical infrastructure tool is a very different risk profile than a verified organisation with many other maintained packages.</p>
-<p>Fabric evaluates the publisher's account age, whether they operate as an organisation or individual, their publishing track record across repositories, and whether their identity is consistent across registries like GitHub and npm. Established publishers with long track records and verified organisational presence score highest.</p>
+<p>Fabric evaluates the publisher's organisation maturity (account age, organisation vs. individual), external credibility (followers, total stars across all repos), community standing (number of public repos), cross-platform identity consistency (presence on GitHub, npm, PyPI), and track record across sibling services in the index. Established publishers with long track records and verified organisational presence score highest.</p>
+
+<h2 id="sub-signals">The 23 sub-signals</h2>
+<p>Each dimension is composed of independently scored sub-signals. Every sub-signal has its own weight within its dimension. On any service's profile page, you can expand each dimension to see exactly which sub-signals contributed to the score.</p>
+
+<div class="callout"><p><strong>Weight redistribution.</strong> When a sub-signal has no data (e.g. no PyPI downloads for an npm-only package), its weight is proportionally redistributed to the sub-signals within that dimension that do have data. No defaults, no faking coverage — every score reflects exactly what can be verified. A service scored with 3 of 4 sub-signals isn't penalised for missing data. It's scored accurately on what we can verify.</p></div>
+
+<h3>Vulnerability &amp; Safety <span class="tag tag-p">×0.25</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Known CVEs</strong></td><td>0.40</td><td>Starts at 5.0 with deductions per CVE based on severity and patch status. Critical unpatched: −2.0, high unpatched: −0.5, etc. Deductions scale by √count. All-patched floor: 2.5</td></tr>
+<tr><td><strong>Dependency health</strong></td><td>0.30</td><td>Total dependency count. &lt;20: 5.0 (minimal), 20–49: 4.0 (low), 50–99: 3.0 (moderate), 100–300: 2.0, &gt;300: 1.0</td></tr>
+<tr><td><strong>Supply chain basics</strong></td><td>0.30</td><td>Transitive CVE penalties from the full dependency tree. Critical unpatched transitive: −0.5 per CVE. Max penalty capped at −0.25</td></tr></table>
+
+<h3>Operational Reliability <span class="tag tag-p">×0.15</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Uptime</strong></td><td>0.35</td><td>30-day rolling uptime %. ≥99.9%: 5.0, ≥99.5%: 4.5, ≥99.0%: 4.0, ≥95%: 3.0, ≥90%: 2.0, &lt;90%: 1.0</td></tr>
+<tr><td><strong>Response latency</strong></td><td>0.25</td><td>p99 latency over 30 days. &lt;200ms: 5.0, 200–500ms: 4.0, 500ms–1s: 3.0, 1–3s: 2.0, &gt;3s: 1.0</td></tr>
+<tr><td><strong>Error rate</strong></td><td>0.20</td><td>% of non-2xx responses in 30 days. 0%: 5.0, &lt;1%: 4.0, 1–5%: 3.0, 5–10%: 2.0, &gt;10%: 1.0</td></tr>
+<tr><td><strong>Incident history</strong></td><td>0.20</td><td>Count of incidents in last 90 days. 0: 5.0, 1: 4.0, 2–3: 3.0, 4–5: 2.0, &gt;5: 1.0</td></tr></table>
+
+<h3>Maintenance Activity <span class="tag tag-p">×0.15</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Commit recency</strong></td><td>0.30</td><td>Days since last push to GitHub. &lt;7d: 5.0, 7–30d: 4.0, 30–90d: 3.0, 90–180d: 2.0, 180–365d: 1.0, &gt;1y: 0.0</td></tr>
+<tr><td><strong>Release cadence</strong></td><td>0.25</td><td>Days since last GitHub release. Same tier scoring as commit recency</td></tr>
+<tr><td><strong>Issue responsiveness</strong></td><td>0.20</td><td>Median time to close issues. &lt;24h: 5.0, 24–72h: 4.0, 72h–1w: 3.0, 1w–1mo: 2.0, &gt;1mo: 1.0</td></tr>
+<tr><td><strong>CI/CD presence</strong></td><td>0.25</td><td>Whether .github/workflows/ directory exists. Yes: 5.0, No: 2.0</td></tr></table>
+
+<h3>Adoption <span class="tag tag-p">×0.15</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Download volume</strong></td><td>0.30</td><td>Weekly downloads (npm + PyPI combined). Log scale: ≥10M: 5.0, ≥1M: 4.5, ≥100k: 4.0, ≥10k: 3.5, ≥1k: 3.0, ≥100: 2.0, &lt;100: 1.0</td></tr>
+<tr><td><strong>GitHub stars</strong></td><td>0.25</td><td>&gt;10k: 5.0, ≥5k: 4.0, ≥1k: 3.0, ≥100: 2.0, ≥10: 1.0, &lt;10: 0.0</td></tr>
+<tr><td><strong>Dependent packages</strong></td><td>0.30</td><td>Number of packages that depend on this service. <em>Phase 2 — not yet available; weight is redistributed</em></td></tr>
+<tr><td><strong>Growth trend</strong></td><td>0.15</td><td>Week-over-week download growth rate. &gt;+20%: 5.0, +5–20%: 4.0, −5 to +5%: 3.0, −20 to −5%: 2.0, &lt;−20%: 1.0</td></tr></table>
+
+<h3>Transparency <span class="tag tag-p">×0.15</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Open source</strong></td><td>0.30</td><td>Licence tier. Permissive OSI (MIT, Apache, BSD): 5.0, Copyleft (GPL): 4.0, Source-available (BSL, SSPL): 3.0, No licence: 2.0, Closed: 0–1.0</td></tr>
+<tr><td><strong>Documentation</strong></td><td>0.25</td><td>README size + docs presence. Docs site + README &gt;2kb + examples: 5.0, README &gt;5kb: 4.0, README &gt;500b: 3.0, &lt;100b: 1.0. +0.5 bonus for model card (AI categories)</td></tr>
+<tr><td><strong>Security policy</strong></td><td>0.20</td><td>Whether SECURITY.md exists. Yes: 5.0, No: 2.0</td></tr>
+<tr><td><strong>Changelog</strong></td><td>0.25</td><td>CHANGELOG.md + releases: 5.0, Releases only: 4.0, Changelog only: 3.0, Neither: 2.0</td></tr></table>
+
+<h3>Publisher Trust <span class="tag tag-p">×0.15</span></h3>
+<table class="sub-table"><tr><th>Sub-signal</th><th>Weight</th><th>What it measures</th></tr>
+<tr><td><strong>Track record</strong></td><td>0.30</td><td>Uses max(internal, external) score. Internal: sibling services in Fabric index. External: GitHub followers + total org stars. Verified publishers floor at 4.0</td></tr>
+<tr><td><strong>Org maturity</strong></td><td>0.30</td><td>GitHub account age. ≥5y: 5.0, ≥2y: 4.0, ≥1y: 3.0, ≥6mo: 2.0, &lt;6mo: 1.0. +0.5 bonus for Organisation accounts</td></tr>
+<tr><td><strong>Community standing</strong></td><td>0.20</td><td>Public repos count. &gt;100: 5.0, ≥50: 4.0, ≥10: 3.0, ≥3: 2.0, &lt;3: 1.0</td></tr>
+<tr><td><strong>Cross-platform presence</strong></td><td>0.20</td><td>Number of platforms (GitHub, npm, PyPI). ≥3: 5.0, 2: 3.0, 1: 1.0</td></tr></table>
 
 <h2 id="trust-formula">How scoring works</h2>
-<p>The final score is a weighted sum of all six signals. Each signal is scored independently on a 0–5 scale, then multiplied by its weight. The weights sum to 1.00, producing a final composite score between 0.00 and 5.00.</p>
+<p>The final score is a weighted sum of all six dimensions. Within each dimension, sub-signals are independently scored on a 0–5 scale, combined by their sub-signal weights, and the resulting dimension score is multiplied by the dimension weight. The dimension weights sum to 1.00, producing a final composite score between 0.00 and 5.00.</p>
 
-<table class="doc-table"><tr><th>Signal</th><th>Relative weight</th><th>Primary source</th></tr>
-<tr><td>Vulnerability &amp; Safety</td><td>Highest</td><td>OSV.dev CVE database</td></tr>
-<tr><td>Maintenance Activity</td><td>High</td><td>GitHub API</td></tr>
-<tr><td>Operational Health</td><td>Moderate</td><td>Fabric Monitor (HTTP pings)</td></tr>
-<tr><td>Adoption</td><td>Moderate</td><td>npm / PyPI download stats</td></tr>
-<tr><td>Transparency</td><td>Moderate</td><td>GitHub repo analysis</td></tr>
-<tr><td>Publisher Trust</td><td>Lower</td><td>GitHub + npm identity</td></tr>
-</table>
+<table class="doc-table"><tr><th>Dimension</th><th>Weight</th><th>Sub-signals</th><th>Primary source</th></tr>
+<tr><td>Vulnerability &amp; Safety</td><td><strong>25%</strong></td><td>3</td><td>OSV.dev CVE database</td></tr>
+<tr><td>Operational Reliability</td><td><strong>15%</strong></td><td>4</td><td>Fabric Monitor (HTTP pings)</td></tr>
+<tr><td>Maintenance Activity</td><td><strong>15%</strong></td><td>4</td><td>GitHub API</td></tr>
+<tr><td>Adoption</td><td><strong>15%</strong></td><td>4</td><td>npm / PyPI download stats</td></tr>
+<tr><td>Transparency</td><td><strong>15%</strong></td><td>4</td><td>GitHub repo analysis</td></tr>
+<tr><td>Publisher Trust</td><td><strong>15%</strong></td><td>4</td><td>GitHub + npm identity</td></tr></table>
 
-<p>Security and maintenance signals are weighted most heavily because they directly affect safety. Adoption and reputation are supporting evidence, not primary drivers. When a signal has no data available (e.g. no npm package for download stats), the system applies a fallback value rather than zero — this prevents unfair penalisation for services that simply don't have a presence on a particular registry.</p>
+<p>When a sub-signal has no data (e.g. no PyPI downloads for an npm-only package), its weight is proportionally redistributed to the other sub-signals within the same dimension that do have data. This weight redistribution mechanism replaces the previous fallback value system — it ensures scores are never penalised for missing data, and every score reflects exactly what can be verified.</p>
+
+<div class="callout"><p><strong>Confidence levels.</strong> The system tracks how many dimensions have real data. Services with 5–6 dimensions scoring are rated <span class="tag tag-g">high confidence</span>, 3–4 are <span class="tag tag-o">medium</span>, 1–2 are <span class="tag tag-r">low</span>, and 0 are <span class="tag tag-r">unverified</span>. Confidence is displayed on each service profile.</p></div>
 
 <div class="callout"><p><strong>How to improve a score.</strong> Fix known vulnerabilities. Maintain uptime. Keep the project active with regular releases. Improve documentation. Verify your publisher identity. There are no shortcuts — the only way to raise a score is to improve the underlying signals.</p></div>
 
 <h2 id="trust-thresholds">Score thresholds</h2>
 <p>Every indexed service falls into one of three tiers based on its composite score. These labels are shown publicly on the Trust Index.</p>
 <table class="doc-table"><tr><th>Score</th><th>Status</th><th>Meaning</th></tr>
-<tr><td>~3.25+</td><td><span class="tag tag-g">Trusted</span></td><td>Low risk across all signals. Auto-approve for agent use.</td></tr>
-<tr><td>~1.00 – 3.24</td><td><span class="tag tag-o">Caution</span></td><td>Some signals flagged. Require human confirmation before granting access.</td></tr>
-<tr><td>Below ~1.00</td><td><span class="tag tag-r">Blocked</span></td><td>Significant risks detected. Deny by default.</td></tr></table>
-<p>The scoring engine also applies override rules that can force a status downward (never upward). Certain critical risk signals — such as active unpatched vulnerabilities — can result in an automatic block regardless of the composite score. Services with insufficient data are held in a Pending state until initial collection completes.</p>
+<tr><td>3.00 – 5.00</td><td><span class="tag tag-g">Trusted</span></td><td>Low risk across all signals. Auto-approve for agent use.</td></tr>
+<tr><td>1.00 – 2.99</td><td><span class="tag tag-o">Caution</span></td><td>Some signals flagged. Require human confirmation before granting access.</td></tr>
+<tr><td>0.00 – 0.99</td><td><span class="tag tag-r">Blocked</span></td><td>Significant risks detected. Deny by default.</td></tr></table>
 
-<h2 id="supply-chain">Supply chain protection</h2>
-<p>Beyond standard scoring, Fabric runs three supply chain override checks that can force a service into Blocked status regardless of its composite score. These exist because certain conditions represent such severe risk that no combination of other signals should override them.</p>
+<h3>Trusted gate</h3>
+<p>Achieving <span class="tag tag-g">Trusted</span> status requires more than just a composite score above 3.00. The scoring engine applies a "trusted gate" — a data sufficiency check that prevents services with insufficient coverage from being labelled trusted prematurely.</p>
+<p>To qualify for Trusted status, a service must:</p>
+<ul>
+<li>Have vulnerability data (the vulnerability dimension must have real data, not fallbacks)</li>
+<li>Have at least 4 out of 6 dimensions with real data</li>
+<li>Pass all safety override rules (no active critical CVEs, no deprecated packages, etc.)</li>
+</ul>
+<p>If any of these conditions fail, the score is capped at 2.99 and the status is downgraded to <span class="tag tag-o">Caution</span>, regardless of the raw composite score.</p>
 
+<h2 id="supply-chain">Safety overrides</h2>
+<p>Beyond standard scoring, Fabric runs seven safety override rules that can force a service's status downward (never upward). These exist because certain conditions represent such severe risk that no combination of other signals should override them.</p>
+
+<h3>Vulnerability overrides (3-tier)</h3>
+<table class="doc-table"><tr><th>Tier</th><th>Trigger</th><th>Effect</th></tr>
+<tr><td><strong>Critical/high unpatched</strong></td><td>Any CVE with severity critical or high and no patch available</td><td>Vulnerability signal forced to 0, composite score capped at 0.99, status forced to <span class="tag tag-r">Blocked</span></td></tr>
+<tr><td><strong>Critical/high patch available</strong></td><td>CVE with severity critical or high, patch exists but not applied</td><td>Vulnerability signal capped at 1.5, composite score capped at 2.99, status downgraded to <span class="tag tag-o">Caution</span></td></tr>
+<tr><td><strong>All patched</strong></td><td>All known CVEs have been patched</td><td>No override — normal scoring applies</td></tr></table>
+
+<h3>Supply chain overrides</h3>
 <table class="doc-table"><tr><th>Override</th><th>Trigger</th><th>Effect</th></tr>
-<tr><td><strong>Archived repository</strong></td><td>The service's GitHub repository has been archived by its owner</td><td>Score capped at 0.99 — automatically Blocked. Archived repos receive no maintenance, no security patches, and no issue responses.</td></tr>
-<tr><td><strong>Deprecated package</strong></td><td>The service's npm package is flagged as deprecated by its maintainer</td><td>Score capped at 0.99 — automatically Blocked. The maintainer has explicitly told users to stop using this package.</td></tr>
-<tr><td><strong>Repository transfer</strong></td><td>The GitHub repository has been transferred to a different owner</td><td>Score frozen (can only decrease), −1.0 modifier applied, flagged for manual review. Repo transfers are the most common vector for supply chain attacks — without this check, the scoring engine would see improved metrics on the new owner's repo and <em>increase</em> the trust score.</td></tr>
-</table>
+<tr><td><strong>Archived repository</strong></td><td>The service's GitHub repository has been archived by its owner</td><td>Score capped at 0.99 — automatically <span class="tag tag-r">Blocked</span>. Archived repos receive no maintenance, no security patches, and no issue responses.</td></tr>
+<tr><td><strong>Deprecated package</strong></td><td>The service's npm package is flagged as deprecated by its maintainer</td><td>Score capped at 0.99 — automatically <span class="tag tag-r">Blocked</span>. The maintainer has explicitly told users to stop using this package.</td></tr>
+<tr><td><strong>Repository transfer</strong></td><td>The GitHub repository has been transferred to a different owner</td><td>Score frozen (can only decrease), −1.0 modifier applied, capped at 2.99, flagged for manual review. Telegram alert sent.</td></tr>
+<tr><td><strong>npm maintainer change</strong></td><td>A maintainer has been removed from the npm package</td><td>Score frozen (can only decrease), −0.5 modifier applied, capped at 2.99. Telegram alert sent.</td></tr></table>
+
+<h3>Additional overrides</h3>
+<table class="doc-table"><tr><th>Override</th><th>Trigger</th><th>Effect</th></tr>
+<tr><td><strong>Zero signal override</strong></td><td>Any dimension has a genuine zero score (not a default) and status is Trusted</td><td>Downgraded to <span class="tag tag-o">Caution</span>, score capped at 2.99. A service with any dimension at absolute zero shouldn't be marked trusted.</td></tr>
+<tr><td><strong>Trusted gate</strong></td><td>Status is Trusted but service lacks vulnerability data OR has fewer than 4 dimensions with data</td><td>Downgraded to <span class="tag tag-o">Caution</span>, score capped at 2.99. Ensures sufficient data coverage before granting trusted status.</td></tr></table>
 
 <div class="callout pink"><p><strong>Why repo transfers matter.</strong> A legitimate repository transfer (e.g. a solo developer moving to an organisation account) looks identical to a malicious takeover at the API level. Fabric distinguishes between same-owner renames (no penalty) and different-owner transfers (frozen + penalty), but all transfers trigger review. This is the single most important safety mechanism in the scoring engine.</p></div>
+
+<div class="callout"><p><strong>Overrides only push scores down.</strong> No override rule can increase a score or upgrade a status. The system is designed to be cautious — it will flag false positives that can be reviewed and cleared, but it will never miss a critical risk by applying an upward adjustment.</p></div>
 
 <h2 id="trust-refresh">Data freshness</h2>
 <p>The scoring engine runs on a fixed schedule across all indexed services. Different signals are refreshed at different intervals depending on how quickly the underlying data changes.</p>
 
 <table class="doc-table"><tr><th>Job</th><th>Schedule</th><th>What it does</th></tr>
-<tr><td>Health checks</td><td>Every 15 minutes</td><td>HTTP pings to service endpoints for uptime and latency</td></tr>
+<tr><td>Health checks</td><td>Every 15 minutes</td><td>HTTP pings to service endpoints for uptime, latency, and error rate</td></tr>
 <tr><td>CVE fast-path</td><td>Every 5 minutes</td><td>Checks OSV.dev delta feeds for new vulnerabilities affecting indexed packages — triggers immediate rescore on significant drops</td></tr>
 <tr><td>CVE full scan</td><td>Hourly</td><td>Full vulnerability scan across all indexed packages and their dependency trees</td></tr>
-<tr><td>Full collection</td><td>Daily (2am)</td><td>Runs all six signal collectors across every service and recomputes scores</td></tr>
+<tr><td>Full collection</td><td>Daily (2am)</td><td>Runs all 23 sub-signal collectors across every service and recomputes scores</td></tr>
 <tr><td>Watchdog</td><td>Daily (3am)</td><td>Anomaly detection across all scores — auto-fixes data quality issues and flags suspicious changes</td></tr>
-<tr><td>Service discovery</td><td>Daily (4am–6am)</td><td>Scans 8 sources for new AI services: npm, PyPI, GitHub topics, curated watchlist, GitHub Trending, Show HN, Product Hunt, and YC Launches</td></tr>
-</table>
+<tr><td>Service discovery</td><td>Daily (4am–6am)</td><td>Scans 8+ sources for new AI services: npm, PyPI, GitHub topics, curated watchlist, GitHub Trending, Show HN, Product Hunt, YC Launches, plus MCP-specific sources</td></tr></table>
 
 <p>When a new CVE is published that affects an indexed package, the fast-path scanner picks it up within 5 minutes and triggers an immediate score recomputation. Most scores reflect data that is at most 24 hours old, with vulnerability data being as fresh as 5 minutes and uptime data refreshed every 15 minutes.</p>
 
@@ -320,10 +399,13 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>Every service in the Trust Index has a dedicated profile page. Here's what each section tells you and how to use it.</p>
 
 <h3>Score ring</h3>
-<p>The large circular score at the top right of every profile. The ring fills proportionally to the score (0–5) and is colour-coded by status: <span class="tag tag-g">Trusted</span> green, <span class="tag tag-o">Caution</span> orange, or <span class="tag tag-r">Blocked</span> red. The number in the centre is the composite score to two decimal places. Below it you'll see the status label and a timestamp showing when the score was last recalculated.</p>
+<p>The large circular score at the top right of every profile. The ring fills proportionally to the score (0–5) and is colour-coded by status: <span class="tag tag-g">Trusted</span> green, <span class="tag tag-o">Caution</span> orange, or <span class="tag tag-r">Blocked</span> red. The number in the centre is the composite score to two decimal places. Below it you'll see the status label, a confidence badge (high / medium / low / unverified), and a timestamp showing when the score was last recalculated. A <span class="tag tag-b">Beta</span> badge indicates the scoring engine is in active beta.</p>
 
 <h3>Signal breakdown</h3>
-<p>Six horizontal bars showing each signal's individual score (0–5) alongside its weight. This is where you look to understand <em>why</em> a service scored the way it did. A service might have a great overall score but a weak Maintenance Activity signal — meaning it's good today but may not be actively maintained. Bars animate on scroll to draw attention to relative strengths and weaknesses.</p>
+<p>Six expandable cards showing each dimension's individual score (0–5) alongside its weight percentage. Click any card to expand it and see the individual sub-signals that contributed to that dimension's score. Each sub-signal shows its name, effective weight (after redistribution), score bar, score number, a detail description, and the data source. Sub-signals without data are clearly marked and show "weight redistributed" — their weight was proportionally distributed to the sub-signals with real data.</p>
+
+<h3>About this score</h3>
+<p>A collapsible section below the signal breakdown showing the total number of sub-signals analysed for this service, the scoring engine version, and the current phase roadmap.</p>
 
 <h3>Privacy &amp; compliance grid</h3>
 <p>A six-cell grid showing binary compliance signals: Training Opt-out, Retention Policy, SOC 2, GDPR, Model Card, and HIPAA. Each cell shows a green checkmark (confirmed), red X (not available), or grey "Unknown" (insufficient data). These are not factored into the trust score — they're supplementary context for your own evaluation.</p>
@@ -335,13 +417,13 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>A 90-day line chart showing the service's composite score over time. The gradient fill below the line is colour-coded by status. Hover over any point to see the exact score and date. Look for sudden drops (incidents), gradual declines (abandonment), or steady climbs (active improvement).</p>
 
 <h3>Community metrics</h3>
-<p>Aggregate usage data pulled from public sources: total downloads or runs, known integrations with agent frameworks, and community ratings from registries. These numbers provide context for the Adoption signal — but they're shown separately so you can evaluate them independently.</p>
+<p>Aggregate usage data pulled from public sources: total downloads or runs, known integrations with agent frameworks, and community ratings from registries. These numbers provide context for the Adoption dimension — but they're shown separately so you can evaluate them independently.</p>
 
 <h3>Data sources</h3>
 <p>A list of every source we pulled data from to generate this profile's score. Each entry shows the source name and key stats (e.g. "GitHub · 34.2k ★ · 412 contributors"). This is our transparency layer — you can verify any claim by clicking through to the original source.</p>
 
 <h2 id="categories">Categories</h2>
-<p>Every indexed service is assigned to one of eleven categories. Categories help you filter the directory and compare like-for-like — an LLM's Adoption signal is normalised against other LLMs, not against the entire index.</p>
+<p>Every indexed service is assigned to one of eleven categories. Categories help you filter the directory and compare like-for-like — an LLM's Adoption dimension is normalised against other LLMs, not against the entire index.</p>
 
 <table class="doc-table"><tr><th>Category</th><th>What it includes</th><th>Examples</th></tr>
 <tr><td><span class="tag tag-b">LLMs</span></td><td>Large language models and text generation APIs</td><td>Claude, GPT-4o, Gemini, Llama, Mistral</td></tr>
@@ -356,69 +438,72 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <tr><td><span class="tag tag-b">Infrastructure</span></td><td>Model hosting, inference, and compute platforms</td><td>Replicate, Together AI, Modal, Hugging Face Inference</td></tr>
 <tr><td><span class="tag tag-b">MCP Tools</span></td><td>Model Context Protocol servers and tool integrations</td><td>Filesystem MCP, GitHub MCP, Slack MCP, Brave MCP</td></tr></table>
 
-<div class="callout"><p><strong>Category-normalised scoring.</strong> The Adoption signal uses logarithmic normalisation against category peers. A niche MCP tool with 500 downloads isn't penalised against an LLM with 50 million — it's compared against other MCP tools. This prevents category bias in the overall score.</p></div>
+<div class="callout"><p><strong>Category-normalised scoring.</strong> The Adoption dimension uses logarithmic normalisation against category peers. A niche MCP tool with 500 downloads isn't penalised against an LLM with 50 million — it's compared against other MCP tools. This prevents category bias in the overall score.</p></div>
 
 <h2 id="data-sources">Data sources</h2>
 <p>Every trust score is built from publicly available data. No private data. No paid data feeds. No provider self-reporting. Here are the sources Fabric uses, what we pull from them, and how often.</p>
 
 <table class="doc-table"><tr><th>Source</th><th>What we pull</th><th>Refresh</th></tr>
-<tr><td><strong>OSV.dev</strong></td><td>CVE advisories, severity scores, affected versions, dependency vulnerabilities</td><td>Every 5 min (fast-path) + hourly (full)</td></tr>
-<tr><td><strong>GitHub API</strong></td><td>Commit frequency, release cadence, issue response time, contributor count, licence, stars, org info, archive status, ownership changes</td><td>Daily</td></tr>
-<tr><td><strong>npm Registry</strong></td><td>Weekly downloads, version history, dependency tree, package metadata, deprecation status</td><td>Daily</td></tr>
-<tr><td><strong>PyPI + PyPI Stats</strong></td><td>Download counts, version history, project metadata, classifiers</td><td>Daily</td></tr>
-<tr><td><strong>Fabric Monitor</strong></td><td>Uptime %, latency, HTTP status codes, endpoint reachability</td><td>Every 15 minutes</td></tr>
-<tr><td><strong>VirusTotal</strong></td><td>Malware scanning, URL reputation, content safety analysis (for ClawHub skills)</td><td>On discovery</td></tr></table>
+<tr><td><strong>OSV.dev</strong></td><td>CVE advisories, severity scores, affected versions, patch availability, dependency vulnerabilities</td><td>Every 5 min (fast-path) + hourly (full)</td></tr>
+<tr><td><strong>GitHub API</strong></td><td>Commit frequency, release cadence, issue response time, contributor count, licence, stars, org info, archive status, ownership changes, CI/CD workflows, README size, SECURITY.md, CHANGELOG.md</td><td>Daily</td></tr>
+<tr><td><strong>npm Registry</strong></td><td>Weekly downloads, version history, dependency tree, package metadata, deprecation status, maintainer list</td><td>Daily</td></tr>
+<tr><td><strong>PyPI + PyPI Stats</strong></td><td>Download counts, version history, project metadata, classifiers, yanked releases</td><td>Daily</td></tr>
+<tr><td><strong>Fabric Monitor</strong></td><td>Uptime %, p50/p99 latency, error rate, HTTP status codes, endpoint reachability</td><td>Every 15 minutes</td></tr>
+<tr><td><strong>VirusTotal</strong></td><td>Malware scanning, URL reputation, content safety analysis (for ClawHub skills)</td><td>On discovery</td></tr>
+<tr><td><strong>Smithery.ai</strong></td><td>MCP server metadata, security scan results</td><td>Daily</td></tr></table>
 
-<div class="callout pink"><p><strong>Fabric Monitor is first-party data.</strong> Every other source above is public — anyone could build a scoring system from OSV + GitHub + npm. Fabric Monitor is the only signal generated by our own infrastructure. We actively ping service endpoints, measure latency, and detect downtime. No provider can fake this data because they don't control the measurement.</p></div>
+<div class="callout pink"><p><strong>Fabric Monitor is first-party data.</strong> Every other source above is public — anyone could build a scoring system from OSV + GitHub + npm. Fabric Monitor is the only dimension generated by our own infrastructure. We actively ping service endpoints, measure latency at p50/p99, and detect downtime on a 15-minute cycle. No provider can fake this data because they don't control the measurement.</p></div>
 
 <h3>Source reliability</h3>
-<p>Not all sources are always available. When a source is temporarily unreachable (e.g. GitHub API rate limit), Fabric uses a fallback value rather than zero — this prevents a temporary data collection failure from unfairly tanking a score. The score is flagged as "stale" for that signal until fresh data is collected on the next run.</p>
+<p>Not all sources are always available. When a source is temporarily unreachable (e.g. GitHub API rate limit), the sub-signal is marked as "no data" and its weight is redistributed to the other sub-signals in the same dimension. This prevents a temporary data collection failure from unfairly tanking a score.</p>
 
 <h2 id="improving-score">Improving your score</h2>
-<p>Trust scores are fully automated. There is no manual review process, no paid placement, and no way to influence your score other than improving the underlying signals. Here's what actually moves the needle.</p>
+<p>Trust scores are fully automated. There is no manual review process, no paid placement, and no way to influence your score other than improving the underlying signals. Here's what actually moves the needle, ordered by impact.</p>
 
-<h3>Highest impact (Vulnerability &amp; Safety)</h3>
+<h3>Highest impact — Vulnerability &amp; Safety (25% weight)</h3>
 <ul>
-<li><strong>Patch known CVEs promptly</strong> — unpatched critical vulnerabilities carry the steepest penalties and can trigger automatic blocking</li>
+<li><strong>Patch known CVEs promptly</strong> — unpatched critical vulnerabilities carry the steepest penalties (−2.0 per CVE) and can trigger automatic blocking</li>
 <li><strong>Audit your dependency tree</strong> — transitive vulnerabilities (in your dependencies' dependencies) also count against your score</li>
-<li>Remove unnecessary dependencies to reduce attack surface</li>
-<li>Add a <span class="inline-code">SECURITY.md</span> with a responsible disclosure process</li>
+<li>Remove unnecessary dependencies to reduce attack surface and lower your dependency count sub-signal</li>
+<li>Add a <span class="inline-code">SECURITY.md</span> with a responsible disclosure process (boosts the Transparency dimension's security policy sub-signal)</li>
 </ul>
 
-<h3>High impact (Maintenance Activity)</h3>
+<h3>High impact — Maintenance Activity (15% weight)</h3>
 <ul>
-<li>Commit regularly — recent activity scores significantly higher than stale repositories</li>
-<li>Release regularly — a consistent release cadence is a positive signal</li>
-<li>Respond to issues promptly — fast median response times boost the score</li>
-<li>Don't go quiet — extended periods of inactivity trigger steep penalties</li>
+<li>Commit regularly — the commit recency sub-signal scores &lt;7 days as 5.0 and drops steeply after 30 days</li>
+<li>Release regularly — a consistent release cadence is a strong positive signal</li>
+<li>Respond to issues promptly — &lt;24h median response time scores 5.0</li>
+<li>Add CI/CD workflows — the CI/CD presence sub-signal gives 5.0 for GitHub Actions workflows vs. 2.0 without</li>
 </ul>
 
-<h3>Moderate impact (Operational Health)</h3>
+<h3>Moderate impact — Operational Reliability (15% weight)</h3>
 <ul>
-<li>Maintain strong uptime — the higher the better, measured over a rolling window</li>
+<li>Maintain strong uptime — ≥99.9% scores 5.0, measured over a rolling 30-day window</li>
 <li>Ensure your endpoint URL is reachable — services with a live, monitored endpoint score higher than registry-only listings</li>
-<li>Keep latency consistent</li>
+<li>Keep p99 latency consistent and under 500ms</li>
 </ul>
 
-<h3>Moderate impact (Adoption)</h3>
+<h3>Moderate impact — Adoption (15% weight)</h3>
 <ul>
 <li>Grow real usage organically — the signal uses logarithmic tiers and is category-normalised</li>
 <li>Sustained growth in downloads is a positive signal; sustained decline is a negative one</li>
+<li>GitHub stars contribute — ≥5k stars scores 4.0, ≥10k scores 5.0</li>
 </ul>
 
-<h3>Moderate impact (Transparency)</h3>
+<h3>Moderate impact — Transparency (15% weight)</h3>
 <ul>
-<li>Open source your code</li>
-<li>Use a recognised OSI licence</li>
-<li>Write proper documentation with code examples</li>
-<li>For AI models: publish a model card</li>
+<li>Open source your code — permissive OSI licences (MIT, Apache) score highest at 5.0</li>
+<li>Write thorough documentation with code examples — README &gt;2kb with docs site scores 5.0</li>
+<li>For AI models: publish a model card (+0.5 bonus)</li>
+<li>Add a CHANGELOG.md alongside GitHub releases for maximum score</li>
 </ul>
 
-<h3>Lower impact (Publisher Trust)</h3>
+<h3>Moderate impact — Publisher Trust (15% weight)</h3>
 <ul>
-<li>Use an organisation account rather than a personal account</li>
-<li>Build a track record — account age and number of maintained repositories matter</li>
-<li>Keep identity consistent across registries</li>
+<li>Use an organisation account rather than a personal account (+0.5 bonus)</li>
+<li>Build a track record — account age and number of maintained repositories matter (≥5 years scores 5.0)</li>
+<li>Keep identity consistent across registries — presence on GitHub + npm + PyPI scores 5.0</li>
+<li>Grow your organisation's external credibility (followers, total stars across repos)</li>
 </ul>
 
 <div class="callout pink"><p><strong>You cannot pay for a higher score.</strong> Not now, not ever. The only way to improve is to genuinely improve the underlying signals. This is the entire point of Fabric — scores that mean something because they can't be bought.</p></div>
@@ -426,16 +511,19 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <h2 id="faq">FAQ</h2>
 
 <h3>Is the Trust Index free?</h3>
-<p>Yes. The Trust Index website is completely free to browse. Every score, signal breakdown, incident history, and data source is publicly accessible with no account required.</p>
+<p>Yes. The Trust Index website is completely free to browse. Every score, sub-signal breakdown, incident history, and data source is publicly accessible with no account required.</p>
 
 <h3>Is the scoring engine open source?</h3>
-<p>Yes. The entire Fabric Trust Index — the scoring engine, all six collectors, the discovery pipeline, the override system, and the watchdog — is open source under the <a href="https://github.com/fabriclayer">AGPL-3.0 licence</a>. You can audit exactly how scores are computed, verify our methodology, or build on top of the scoring infrastructure for your own use. We believe trust infrastructure should be transparent and verifiable — not a black box.</p>
+<p>Yes. The entire Fabric Trust Index — the scoring engine, all 23 sub-signal collectors, the discovery pipeline, the override system, and the watchdog — is open source under the <a href="https://github.com/fabriclayer">AGPL-3.0 licence</a>. You can audit exactly how scores are computed, verify our methodology, or build on top of the scoring infrastructure for your own use. We believe trust infrastructure should be transparent and verifiable — not a black box.</p>
+
+<h3>What are sub-signals?</h3>
+<p>Sub-signals are the individual, independently scored components within each of the six dimensions. For example, the Vulnerability &amp; Safety dimension has three sub-signals: Known CVEs, Dependency Health, and Supply Chain Basics. Each sub-signal has its own weight within its dimension, and when a sub-signal lacks data, its weight is redistributed proportionally to the sub-signals that do have data. You can see every sub-signal's score by expanding the dimension cards on any service's profile page.</p>
 
 <h3>How often are scores updated?</h3>
-<p>Health checks (uptime/latency) run every 15 minutes. CVE fast-path scanning runs every 5 minutes, checking OSV.dev delta feeds for newly published vulnerabilities — if a significant drop is detected, a rescore is triggered immediately. The full CVE scan runs hourly. All six signal collectors run a full sweep daily at 2am, followed by a watchdog pass at 3am that detects and auto-fixes data quality anomalies. This means vulnerability data is at most 5 minutes old, uptime data is at most 15 minutes old, and all other signals are at most 24 hours old.</p>
+<p>Health checks (uptime/latency) run every 15 minutes. CVE fast-path scanning runs every 5 minutes, checking OSV.dev delta feeds for newly published vulnerabilities — if a significant drop is detected, a rescore is triggered immediately. The full CVE scan runs hourly. All 23 sub-signal collectors run a full sweep daily at 2am, followed by a watchdog pass at 3am that detects and auto-fixes data quality anomalies. This means vulnerability data is at most 5 minutes old, uptime data is at most 15 minutes old, and all other signals are at most 24 hours old.</p>
 
 <h3>Can providers game the score?</h3>
-<p>It's extremely difficult. Gaming one signal (like inflating download counts) has minimal effect because five other independent signals would need to be simultaneously spoofed. The highest-weighted signal (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Health is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the supply chain override system can automatically block services that exhibit critical risk patterns (archived repos, deprecated packages, suspicious ownership transfers), regardless of how strong their other signals are. The entire scoring engine is open source, so you can verify exactly how scores are computed.</p>
+<p>It's extremely difficult. Gaming one sub-signal has minimal effect because 22 other independent sub-signals across five other dimensions would need to be simultaneously spoofed. The highest-weighted dimension (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Reliability is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the safety override system can automatically block services that exhibit critical risk patterns (archived repos, deprecated packages, suspicious ownership transfers, npm maintainer changes), regardless of how strong their other signals are. The entire scoring engine is open source, so you can verify exactly how scores are computed.</p>
 
 <h3>What if my score is wrong?</h3>
 <p>Scores are algorithmically generated and may occasionally reflect stale data or edge cases. If you believe your score is inaccurate, you can use the "Report Issue" button on any profile page. We investigate all reports. Score adjustments only happen through updated data — the system has safety overrides that can cap scores downward (e.g. for critical CVEs), but no mechanism to manually inflate them.</p>
@@ -447,20 +535,29 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>Fabric runs automated discovery scans daily against eight sources: package registries (npm, PyPI), GitHub topic search, a curated watchlist of high-profile AI platforms, GitHub Trending (Python and TypeScript), Show HN posts on Hacker News, Product Hunt AI launches, and YC Launch HN announcements. MCP servers are additionally discovered via Smithery.ai, mcp.so, and the ClawHub skills registry. When a new service is detected, it enters a metadata enrichment pipeline that automatically resolves its GitHub repository, npm package, and PyPI package from its organisation name — then it enters the scoring pipeline and appears in the index once initial data collection completes, typically within 24–48 hours. Users can also submit services for inclusion via the Trust Index.</p>
 
 <h3>What does "Blocked" actually mean?</h3>
-<p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active vulnerabilities, malware indicators, an archived repository, a deprecated package, or a suspicious ownership transfer. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it. Some services are blocked purely because they've been abandoned by their maintainers — the code may be fine today, but nobody is patching it if a vulnerability is found tomorrow.</p>
+<p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active unpatched vulnerabilities (critical or high severity), malware indicators, an archived repository, a deprecated package, or a suspicious ownership transfer. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it. Some services are blocked purely because they've been abandoned by their maintainers — the code may be fine today, but nobody is patching it if a vulnerability is found tomorrow.</p>
+
+<h3>What is the scoring engine beta?</h3>
+<p>The scoring engine is in active beta. Sub-signal weights, data sources, and thresholds are being calibrated in real time as coverage expands across the index. Scores may shift between versions as new data sources come online and scoring logic is refined. Phase 1 (live) covers the core 23 sub-signal architecture with weight redistribution. Phase 2 (in progress) adds permission scope analysis, dependent package counts, and expanded collection sources.</p>
 
 <h2 id="changelog">Changelog</h2>
 <p>Notable changes to scoring methodology, data sources, and the Trust Index platform.</p>
 
 <table class="doc-table"><tr><th>Date</th><th>Change</th></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Sub-signal architecture (Phase 1).</strong> Scoring engine rebuilt from 6 flat signals to 23 independently scored sub-signals across 6 dimensions. Each sub-signal is individually verifiable. Weight redistribution replaces fallback values — when a sub-signal lacks data, its weight is proportionally distributed to sub-signals with real data. No defaults, no faking coverage.</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Updated scoring thresholds.</strong> Trusted threshold adjusted from 3.25 to 3.00. Caution range is now 1.00–2.99. Blocked remains below 1.00.</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Rebalanced dimension weights.</strong> Maintenance Activity reduced from ×0.20 to ×0.15. Publisher Trust increased from ×0.10 to ×0.15. Operational Reliability reduced from ×0.20 to ×0.15. All five non-vulnerability dimensions now carry equal weight (15% each).</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Trusted gate.</strong> New data sufficiency check requiring vulnerability data + 4 dimensions with data to qualify for Trusted status. Prevents services with insufficient coverage from being marked trusted prematurely.</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Additional safety overrides.</strong> npm maintainer change detection (−0.5 penalty + Telegram alert), zero signal override (no dimension at absolute zero for trusted services), expanded vulnerability override tiers (critical/high unpatched, patch available, all patched).</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Confidence levels.</strong> Every service now shows a confidence badge (high/medium/low/unverified) based on how many dimensions have real data. Displayed alongside the score on profile pages.</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Expandable sub-signal UI.</strong> Profile pages now show expandable cards for each dimension. Click to see individual sub-signal scores, weights, data sources, and whether data was available. About this score section shows total sub-signals analysed and engine version.</td></tr>
+<tr><td><span class="tag tag-b">Mar 2026</span></td><td><strong>Scale milestone: 5,800+ services scored.</strong> Full sub-signal scoring rollout across the index.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scoring engine v4.0.</strong> Supply chain override system — services with archived repos, deprecated npm packages, or suspicious ownership transfers are automatically blocked. Two-tier repo transfer detection distinguishes same-owner renames from different-owner transfers.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>CVE fast-path scanner.</strong> Vulnerability detection latency reduced from 24 hours to 5 minutes. OSV.dev delta feeds are polled every 5 minutes; significant score drops trigger immediate rescore.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>8-source discovery engine.</strong> Services are now discovered from npm, PyPI, GitHub topics, curated watchlist, GitHub Trending, Show HN, Product Hunt, and YC Launches — plus MCP-specific sources (Smithery.ai, mcp.so, ClawHub).</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Metadata enrichment engine.</strong> Automatic resolution of GitHub repos, npm packages, and PyPI packages from organisation names. 350 services enriched in initial backfill, resolving "No data" signals for platform-only services.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Watchdog auto-remediation.</strong> Continuous scoring watchdog with 6 anomaly detectors and 3 auto-fixers. Telegram alerts for critical events. Golden set validation ensures 38 reference services stay correctly scored.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Open sourced under AGPL-3.0.</strong> Full scoring engine, collectors, discovery pipeline, and override system published on GitHub.</td></tr>
-<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Scale milestone: 5,000+ services scored.</strong> Full publisher coverage across AI tools, MCP servers, agent frameworks, and ClawHub skills.</td></tr>
-<tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Public API v1 launched.</strong> Five read-only endpoints with API key authentication and rate limiting. Access scores, signal breakdowns, and service metadata programmatically.</td></tr>
 <tr><td><span class="tag tag-b">Feb 2026</span></td><td><strong>Trust Index launch.</strong> Public directory with initial AI service coverage. Six-signal scoring engine with data from OSV.dev, GitHub, npm, PyPI, and Fabric Monitor. Three status tiers: Trusted, Caution, Blocked.</td></tr>
 </table>
 
@@ -470,7 +567,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>By using Fabric's Trust Index or any other part of the Service, you agree to the following. Full legal documents are linked below — this section summarises the key points relevant to users.</p>
 
 <h3>Trust scores are informational, not guarantees</h3>
-<p>Fabric trust scores are algorithmically generated from public third-party data sources. They are point-in-time assessments and may not reflect the current state of any indexed service. Scores should not be your sole basis for any decision involving data security, financial transactions, or the selection of AI tools for business-critical applications. A "Trusted" score does not mean a service is safe — it means low risk was detected at the time of scoring.</p>
+<p>Fabric trust scores are algorithmically generated from public third-party data sources. They are point-in-time assessments and may not reflect the current state of any indexed service. The scoring engine is in active beta — signals, sub-signal weights, and thresholds are being calibrated as coverage expands. Scores should not be your sole basis for any decision involving data security, financial transactions, or the selection of AI tools for business-critical applications. A "Trusted" score does not mean a service is safe — it means low risk was detected at the time of scoring.</p>
 
 <h3>No endorsement of third-party services</h3>
 <p>Fabric does not operate, control, endorse, or guarantee any third-party service indexed in the Trust Index. We aggregate and analyse data to generate scores. We do not audit, certify, or recommend any provider. Inclusion in the index is automatic and does not imply any relationship between Fabric and the indexed service.</p>
@@ -484,7 +581,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <tr><td><a href="/privacy">Privacy Policy</a></td><td>Data collection, processing, retention, security, international transfers, your rights under GDPR and Australian Privacy Act</td></tr>
 <tr><td><a href="/disclaimer">Disclaimer</a></td><td>Score accuracy limitations, third-party data reliance, emerging technology caveats, no professional advice</td></tr></table>
 
-<div class="callout"><p><strong>Fabric Layer Technologies Ltd</strong> is incorporated in the British Virgin Islands. For legal enquiries, contact <a href="/cdn-cgi/l/email-protection#2e424b494f426e484f4c5c474d424f574b5c004f47"><span class="__cf_email__" data-cfemail="701c1517111c301611120219131c110915025e1119">[email&#160;protected]</span></a>.</p></div>
+<div class="callout"><p><strong>Fabric Layer Technologies Ltd</strong> is incorporated in the British Virgin Islands. For legal enquiries, contact <a href="mailto:legal@fabriclayer.ai">legal@fabriclayer.ai</a>.</p></div>
 
 </main>
 </div>
