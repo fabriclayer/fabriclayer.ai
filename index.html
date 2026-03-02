@@ -272,6 +272,23 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .api-form-msg{font-size:13px;margin-top:10px;font-weight:500}
 .api-form-msg.ok{color:var(--green)}.api-form-msg.err{color:#e82d35}
 
+/* FAQ */
+.faq-wrap{max-width:1400px;margin:0 auto;padding:80px 20px 0}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-inner .sec-label{color:var(--text-3);margin-bottom:8px}
+.faq-inner .sec-title{color:var(--black);margin-bottom:32px}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-top:1px solid var(--border);padding:0}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;padding:18px 0;font-family:var(--sans);font-size:16px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;letter-spacing:-0.3px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::marker{display:none;content:''}
+.faq-item summary::after{content:'';display:inline-block;width:16px;height:16px;flex-shrink:0;margin-left:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.faq-item[open] summary::after{transform:rotate(180deg)}
+.faq-body{padding:0 0 18px;font-size:15px;color:var(--text-2);line-height:1.65}
+@media(min-width:901px){.faq-wrap{padding:120px 40px 0}.faq-item summary{font-size:18px;padding:22px 0}.faq-body{font-size:16px}}
+@media(max-width:480px){.faq-wrap{padding:56px 14px 0}.faq-item summary{font-size:14.5px;padding:16px 0}.faq-body{font-size:13.5px}}
+
 /* FINAL CTA */
 .cta{text-align:center;padding:48px 20px;position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(6,140,255,.05) 0%,rgba(254,131,224,.03) 50%,transparent 70%);pointer-events:none}
@@ -386,6 +403,7 @@ h1{font-size:35px}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Fabric","legalName":"Fabric Layer Technologies LTD","url":"https://fabriclayer.ai","logo":"https://fabriclayer.ai/logo.png","description":"Trust scores for every AI service. The trust layer for the agent economy.","sameAs":["https://x.com/fabriclayer","https://github.com/fabriclayer"],"parentOrganization":{"@type":"Organization","name":"Motherbird","url":"https://motherbird.ai"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Fabric","url":"https://fabriclayer.ai","description":"Free public trust scores on every AI service, model, and MCP skill.","potentialAction":{"@type":"SearchAction","target":"https://trust.fabriclayer.ai/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Fabric Trust Index?","acceptedAnswer":{"@type":"Answer","text":"The Fabric Trust Index is a free, public directory of trust scores for AI tools, models, MCP servers, and API services. Every service gets a composite score from 0.00 to 5.00 computed across six independently weighted signals: Vulnerability & Safety, Operational Health, Maintenance Activity, Adoption, Transparency, and Publisher Trust. Scores are auto-generated from public data sources — no provider registration required."}},{"@type":"Question","name":"How are trust scores calculated?","acceptedAnswer":{"@type":"Answer","text":"Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0–5, weighted within its dimension, and the six dimension scores are combined using fixed weights (Vulnerability 25%, Operational 20%, Maintenance 20%, Adoption 15%, Transparency 10%, Publisher Trust 10%) into a single composite score."}},{"@type":"Question","name":"What do the status labels mean?","acceptedAnswer":{"@type":"Answer","text":"Services scoring 3.00 or above are labeled Trusted (low risk detected). Services between 1.00 and 2.99 are labeled Caution (human review recommended). Services below 1.00 are labeled Not Recommended. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context."}},{"@type":"Question","name":"Is the Trust Index free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Trust Index website is completely free to browse and search. No account is required. We also plan to offer a free tier of the Trust API for programmatic access to scores."}},{"@type":"Question","name":"How often are scores updated?","acceptedAnswer":{"@type":"Answer","text":"Scores are recalculated daily. Critical signals like CVE advisories and uptime checks are monitored more frequently — CVEs every 5 minutes, health checks every 15 minutes. New services are discovered and scored automatically as they appear in public registries."}},{"@type":"Question","name":"Can I claim or dispute a score?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every service detail page has a Report Issue button. Publishers can also claim their service profile to unlock deeper evaluation and real-time monitoring. Trust scores are informational and auto-generated — they are not endorsements or guarantees. We welcome feedback to improve accuracy."}}]}</script>
 </head>
 <body>
 
@@ -603,6 +621,47 @@ h1{font-size:35px}
 </div>
 
 </section></div>
+
+<!-- FAQ -->
+<section class="faq-wrap">
+<div class="faq-inner">
+<div class="sec-label">FAQ</div>
+<div class="sec-title">Frequently asked questions</div>
+<div class="faq-list">
+
+<details class="faq-item">
+<summary>What is the Fabric Trust Index?</summary>
+<div class="faq-body">The Fabric Trust Index is a free, public directory of trust scores for AI tools, models, MCP servers, and API services. Every service gets a composite score from 0.00 to 5.00 computed across six independently weighted signals: Vulnerability &amp; Safety, Operational Health, Maintenance Activity, Adoption, Transparency, and Publisher Trust. Scores are auto-generated from public data sources&mdash;no provider registration required.</div>
+</details>
+
+<details class="faq-item">
+<summary>How are trust scores calculated?</summary>
+<div class="faq-body">Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0&ndash;5, weighted within its dimension, and the six dimension scores are combined using fixed weights (Vulnerability 25%, Operational 20%, Maintenance 20%, Adoption 15%, Transparency 10%, Publisher Trust 10%) into a single composite score.</div>
+</details>
+
+<details class="faq-item">
+<summary>What do the status labels mean?</summary>
+<div class="faq-body">Services scoring 3.00 or above are labeled <strong>Trusted</strong> (low risk detected). Services between 1.00 and 2.99 are labeled <strong>Caution</strong> (human review recommended). Services below 1.00 are labeled <strong>Not Recommended</strong>. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context.</div>
+</details>
+
+<details class="faq-item">
+<summary>Is the Trust Index free?</summary>
+<div class="faq-body">Yes. The Trust Index website is completely free to browse and search. No account is required. We also plan to offer a free tier of the Trust API for programmatic access to scores. The Trust Index is the public-facing layer of Fabric&rsquo;s broader infrastructure for AI agent trust and payments.</div>
+</details>
+
+<details class="faq-item">
+<summary>How often are scores updated?</summary>
+<div class="faq-body">Scores are recalculated daily. Critical signals like CVE advisories and uptime checks are monitored more frequently&mdash;CVEs every 5 minutes, health checks every 15 minutes. New services are discovered and scored automatically as they appear in public registries.</div>
+</details>
+
+<details class="faq-item">
+<summary>Can I claim or dispute a score?</summary>
+<div class="faq-body">Yes. Every service detail page has a &ldquo;Report Issue&rdquo; button. Publishers can also claim their service profile to unlock deeper evaluation and real-time monitoring. Trust scores are informational and auto-generated&mdash;they are not endorsements or guarantees. We welcome feedback to improve accuracy.</div>
+</details>
+
+</div>
+</div>
+</section>
 
 <!-- FINAL CTA -->
 <section class="cta">
