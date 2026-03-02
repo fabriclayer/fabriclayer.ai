@@ -11,11 +11,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.fabriclayer.ai/blog/introducing-trust-index</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.fabriclayer.ai/docs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -34,5 +29,25 @@
     <loc>https://www.fabriclayer.ai/disclaimer</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.fabriclayer.ai/blog/trust-scoring</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fabriclayer.ai/blog/mcp-timeline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fabriclayer.ai/blog/clawhub</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fabriclayer.ai/blog/introducing-trust-index</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

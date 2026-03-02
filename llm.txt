@@ -1,0 +1,44 @@
+# Fabric Layer
+> Autonomous payments and trust scoring for AI agents.
+
+## What Fabric Does
+Fabric is infrastructure that lets AI agents make payments and evaluate the trustworthiness of other AI services autonomously. It has two core products:
+
+### Trust API
+A real-time trust scoring API for AI tools, models, MCP servers, and API services. Every service gets a trust score (0.00 to 5.00) computed across six signals: Vulnerability & Safety, Operational Health, Maintenance Activity, Adoption, Transparency, and Publisher Trust. Agents use these scores to decide whether to interact with a service.
+
+### Fabric Pay
+An autonomous payment rail for AI agents. Agents can make payments to other services without human intervention, governed by budgets, wallets, and trust policies set by their operators.
+
+## Trust Index (Free)
+Browse trust scores for 5,800+ AI tools, agents, and MCP servers at https://trust.fabriclayer.ai/
+
+## Scoring Methodology
+Trust scores are auto-generated from public data sources. Six weighted signals are combined into a composite score:
+- Vulnerability & Safety (25%) — CVEs, advisories, dependency health, malware indicators
+- Operational Health (20%) — Uptime, latency, response consistency
+- Maintenance Activity (20%) — Commit frequency, release cadence, issue response time
+- Adoption (15%) — Downloads, stars, integrations, community usage
+- Transparency (10%) — Open source, docs quality, model cards, licensing
+- Publisher Trust (10%) — Account age, track record, identity verification
+
+Score thresholds:
+- 3.50+ = Trusted (low risk detected)
+- 2.50–3.49 = Caution (human review recommended)
+- Below 2.50 = Not Recommended
+
+## API Access
+Coming soon at https://api.fabriclayer.ai/ — free tier available.
+
+## Documentation
+https://www.fabriclayer.ai/docs
+
+## Blog
+https://www.fabriclayer.ai/blog
+
+## Contact
+Website: https://www.fabriclayer.ai/
+Trust Index: https://trust.fabriclayer.ai/
+
+## Company
+Motherbird Pty Ltd
