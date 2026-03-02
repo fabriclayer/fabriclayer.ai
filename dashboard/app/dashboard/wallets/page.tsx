@@ -1,0 +1,172 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Wallet } from 'lucide-react';
+import { useTitle, useWallets } from '@/lib/hooks';
+import { getWalletBalance, createWallet, ApiError } from '@/lib/api';
+import type { WalletBalance } from '@/lib/api';
+import { PageSkeleton } from '@/components/ui/loading';
+import { ErrorCard } from '@/components/ui/error';
+import { EmptyState } from '@/components/ui/empty';
+
+export default function WalletsPage() {
+  useTitle('Wallets');
+  const { data: walletsData, loading, error, refetch } = useWallets();
+  const [balances, setBalances] = useState<Record<string, WalletBalance>>({});
+
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState('');
+
+  const walletList = walletsData?.wallets || [];
+  const maxWallets = walletsData?.maxWallets ?? 0;
+
+  // Fetch balances only for wallets that have an address
+  useEffect(() => {
+    if (walletList.length === 0) return;
+    walletList.forEach((w) => {
+      if (!w.agentId || !w.address) return;
+      getWalletBalance(w.agentId)
+        .then((bal) => setBalances((prev) => ({ ...prev, [w.agentId]: bal })))
+        .catch(() => { /* ignore balance fetch errors */ });
+    });
+  }, [walletList]);
+
+  const totalBalance = Object.values(balances).reduce((sum, b) => sum + parseFloat(b.balances?.usdc || '0'), 0);
+
+  const handleCreateWallet = async () => {
+    setCreating(true);
+    setCreateError('');
+    try {
+      await createWallet('default');
+      setShowCreateForm(false);
+      refetch();
+    } catch (err) {
+      if (err instanceof ApiError) {
+        const msg = typeof err.body === 'object' && err.body && 'error' in (err.body as Record<string, unknown>)
+          ? String((err.body as Record<string, string>).error)
+          : err.message;
+        setCreateError(msg);
+      } else {
+        setCreateError((err as Error).message || 'Failed to create wallet. Please try again.');
+      }
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  return (
+    <div>
+      <div className="page-header-bar">
+        <div>
+          <h1>Wallets</h1>
+          <p style={{ fontSize: '13px', color: 'var(--text-3)', marginTop: '2px' }}>Managed USDC wallets on Base L2 for payments</p>
+        </div>
+        <div className="header-actions">
+          <button className="btn-sm btn-primary-fixed" style={{ padding: '9px 20px', fontWeight: 600 }} onClick={() => setShowCreateForm(true)}>+ Create Wallet</button>
+        </div>
+      </div>
+
+      {loading ? (
+        <PageSkeleton />
+      ) : error ? (
+        <div style={{ padding: 'clamp(16px, 4vw, 24px) clamp(16px, 4vw, 36px) 48px' }}>
+          <ErrorCard message={error.message} onRetry={refetch} />
+        </div>
+      ) : walletList.length === 0 && !showCreateForm ? (
+        <div style={{ padding: 'clamp(16px, 4vw, 24px) clamp(16px, 4vw, 36px) 48px' }}>
+          <EmptyState icon={Wallet} title="No wallets yet" description="Create your first wallet to start making payments." />
+        </div>
+      ) : (
+        <div className="animate-fade-in" style={{ padding: 'clamp(16px, 4vw, 24px) clamp(16px, 4vw, 36px) 48px' }}>
+          {showCreateForm && (
+            <div className="card" style={{ marginBottom: '20px' }}>
+              <div className="card-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h3>Create Wallet</h3>
+                <button
+                  className="btn-sm"
+                  style={{ fontSize: '12px', padding: '5px 12px' }}
+                  onClick={() => { setShowCreateForm(false); setCreateError(''); }}
+>
+                  Cancel
+                </button>
+              </div>
+              <div className="card-body">
+                {createError && (
+                  <div style={{ marginBottom: '16px', padding: '12px 16px', background: 'var(--red-subtle)', borderRadius: '10px', fontSize: '13px', color: 'var(--red)' }}>
+                    {createError}
+                  </div>
+                )}
+                <button
+                  className="btn-sm btn-primary-fixed"
+                  style={{ padding: '9px 20px', fontWeight: 600, opacity: creating ? 0.4 : 1 }}
+                  disabled={creating}
+                  onClick={handleCreateWallet}
+                >
+                  {creating ? 'Creating...' : 'Create Wallet'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="stat-grid">
+            <div className="stat-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.8px', color: 'var(--text-3)', marginBottom: '8px' }}>Wallets</div>
+              <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-.5px', color: 'var(--blue)' }}>{walletList.length}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-3)', marginTop: '4px' }}>{maxWallets} max on plan</div>
+            </div>
+            <div className="stat-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.8px', color: 'var(--text-3)', marginBottom: '8px' }}>Total Balance</div>
+              <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-.5px', color: 'var(--green)' }}>${totalBalance.toFixed(2)}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-3)', marginTop: '4px' }}>USDC on Base L2</div>
+            </div>
+            <div className="stat-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.8px', color: 'var(--text-3)', marginBottom: '8px' }}>Network</div>
+              <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-.5px' }}>Base</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-3)', marginTop: '4px' }}>L2 network</div>
+            </div>
+            <div className="stat-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '.8px', color: 'var(--text-3)', marginBottom: '8px' }}>Currency</div>
+              <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-.5px' }}>USDC</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-3)', marginTop: '4px' }}>USD Coin</div>
+            </div>
+          </div>
+
+          {walletList.length > 0 && (
+            <div className="card" style={{ marginTop: '20px' }}>
+              <div className="card-header"><h3>Managed Wallets</h3></div>
+              <div className="card-body-flush">
+                {walletList.map((w) => {
+                  const bal = balances[w.agentId];
+                  const balStr = !w.address ? 'No wallet' : bal ? `$${parseFloat(bal.balances?.usdc || '0').toFixed(2)}` : '...';
+                  const shortAddr = w.address ? `${w.address.slice(0, 6)}...${w.address.slice(-4)}` : 'No address';
+
+                  return (
+                    <div key={w.agentId} className="wallet-row">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-lg" style={{ width: '36px', height: '36px', background: 'var(--green-subtle)' }}>
+                          <Wallet size={18} style={{ color: 'var(--green)' }} />
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '14px' }}>{w.agentName || 'Wallet'}</div>
+                          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-3)', marginTop: '2px' }}>
+                            {shortAddr}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="wallet-actions">
+                        <button className="btn-sm" style={{ fontSize: '12px', padding: '5px 12px' }} title="Copy address" onClick={() => { if (w.address) navigator.clipboard.writeText(w.address); }}>Fund</button>
+                        <button className="btn-sm" style={{ fontSize: '12px', padding: '5px 12px' }} title="Copy address" onClick={() => { if (w.address) navigator.clipboard.writeText(w.address); }}>Withdraw</button>
+                        <span className="wallet-balance" style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, color: 'var(--green)', whiteSpace: 'nowrap' }}>{balStr} USDC</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
