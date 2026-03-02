@@ -119,6 +119,17 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 .doc-footer{border-top:1px solid var(--border);padding:24px 0;margin-top:48px;font-family:var(--mono);font-size:0.65rem;color:var(--text-3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .doc-footer a{color:var(--text-2);text-decoration:none}.doc-footer a:hover{color:var(--text)}
 
+.faq-item{border-bottom:1px solid var(--border);margin:0}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;font-size:15px;font-weight:600;letter-spacing:-.2px;cursor:pointer;list-style:none;color:var(--text);transition:color .15s;-webkit-tap-highlight-color:transparent;user-select:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::marker{display:none;content:''}
+.faq-item summary:hover{color:var(--blue)}
+.faq-item summary .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform .25s cubic-bezier(.16,1,.3,1);color:var(--text-3)}
+.faq-item[open] summary .faq-chevron{transform:rotate(180deg)}
+.faq-item .faq-body{padding:0 0 18px;margin-top:-4px}
+.faq-item .faq-body p{font-size:14px;color:var(--text-2);margin-bottom:0}
+
 .sub-table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:12.5px}
 .sub-table th{text-align:left;padding:6px 10px;background:var(--bg);font-family:var(--mono);font-weight:500;font-size:0.58rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);border-bottom:1px solid var(--border)}
 .sub-table td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12.5px}
@@ -142,6 +153,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 .callout{padding:16px 22px;margin:16px 0 24px}.callout p{font-size:14px}.callout strong{font-size:14px}
 .doc-table{font-size:14px;display:table}.doc-table th{padding:11px 16px}.doc-table td{padding:11px 16px;white-space:normal}
 .sub-table{font-size:13px}.sub-table th{padding:7px 12px}.sub-table td{padding:7px 12px}
+.faq-item summary{font-size:16px;padding:18px 0}.faq-item .faq-body p{font-size:15px}
 .param{padding:12px 16px;font-size:14px}.param-name{font-size:13.5px}.param-desc{font-size:13.5px}
 .doc-footer{padding:32px 0;margin-top:64px}
 .inline-code{font-size:0.82em;padding:2px 7px}
@@ -164,6 +176,7 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 .doc-table th,.doc-table td{padding:8px 10px}
 .sub-table{font-size:11.5px}
 .sub-table th,.sub-table td{padding:5px 8px}
+.faq-item summary{font-size:14px;padding:14px 0}.faq-item .faq-body p{font-size:13px}
 .param{padding:10px 12px}
 .param-name{font-size:12px}
 .param-desc{font-size:12px}
@@ -510,35 +523,55 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <h2 id="faq">FAQ</h2>
 
-<h3>Is the Trust Index free?</h3>
-<p>Yes. The Trust Index website is completely free to browse. Every score, sub-signal breakdown, incident history, and data source is publicly accessible with no account required.</p>
+<details class="faq-item">
+<summary>Is the Trust Index free?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Yes. The Trust Index website is completely free to browse. Every score, sub-signal breakdown, incident history, and data source is publicly accessible with no account required.</p></div>
+</details>
 
-<h3>Is the scoring engine open source?</h3>
-<p>Yes. The entire Fabric Trust Index — the scoring engine, all 23 sub-signal collectors, the discovery pipeline, the override system, and the watchdog — is open source under the <a href="https://github.com/fabriclayer">AGPL-3.0 licence</a>. You can audit exactly how scores are computed, verify our methodology, or build on top of the scoring infrastructure for your own use. We believe trust infrastructure should be transparent and verifiable — not a black box.</p>
+<details class="faq-item">
+<summary>Is the scoring engine open source?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Yes. The entire Fabric Trust Index — the scoring engine, all 23 sub-signal collectors, the discovery pipeline, the override system, and the watchdog — is open source under the <a href="https://github.com/fabriclayer">AGPL-3.0 licence</a>. You can audit exactly how scores are computed, verify our methodology, or build on top of the scoring infrastructure for your own use. We believe trust infrastructure should be transparent and verifiable — not a black box.</p></div>
+</details>
 
-<h3>What are sub-signals?</h3>
-<p>Sub-signals are the individual, independently scored components within each of the six dimensions. For example, the Vulnerability &amp; Safety dimension has three sub-signals: Known CVEs, Dependency Health, and Supply Chain Basics. Each sub-signal has its own weight within its dimension, and when a sub-signal lacks data, its weight is redistributed proportionally to the sub-signals that do have data. You can see every sub-signal's score by expanding the dimension cards on any service's profile page.</p>
+<details class="faq-item">
+<summary>What are sub-signals?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Sub-signals are the individual, independently scored components within each of the six dimensions. For example, the Vulnerability &amp; Safety dimension has three sub-signals: Known CVEs, Dependency Health, and Supply Chain Basics. Each sub-signal has its own weight within its dimension, and when a sub-signal lacks data, its weight is redistributed proportionally to the sub-signals that do have data. You can see every sub-signal's score by expanding the dimension cards on any service's profile page.</p></div>
+</details>
 
-<h3>How often are scores updated?</h3>
-<p>Health checks (uptime/latency) run every 15 minutes. CVE fast-path scanning runs every 5 minutes, checking OSV.dev delta feeds for newly published vulnerabilities — if a significant drop is detected, a rescore is triggered immediately. The full CVE scan runs hourly. All 23 sub-signal collectors run a full sweep daily at 2am, followed by a watchdog pass at 3am that detects and auto-fixes data quality anomalies. This means vulnerability data is at most 5 minutes old, uptime data is at most 15 minutes old, and all other signals are at most 24 hours old.</p>
+<details class="faq-item">
+<summary>How often are scores updated?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Health checks (uptime/latency) run every 15 minutes. CVE fast-path scanning runs every 5 minutes, checking OSV.dev delta feeds for newly published vulnerabilities — if a significant drop is detected, a rescore is triggered immediately. The full CVE scan runs hourly. All 23 sub-signal collectors run a full sweep daily at 2am, followed by a watchdog pass at 3am that detects and auto-fixes data quality anomalies. This means vulnerability data is at most 5 minutes old, uptime data is at most 15 minutes old, and all other signals are at most 24 hours old.</p></div>
+</details>
 
-<h3>Can providers game the score?</h3>
-<p>It's extremely difficult. Gaming one sub-signal has minimal effect because 22 other independent sub-signals across five other dimensions would need to be simultaneously spoofed. The highest-weighted dimension (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Reliability is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the safety override system can automatically block services that exhibit critical risk patterns (archived repos, deprecated packages, suspicious ownership transfers, npm maintainer changes), regardless of how strong their other signals are. The entire scoring engine is open source, so you can verify exactly how scores are computed.</p>
+<details class="faq-item">
+<summary>Can providers game the score?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>It's extremely difficult. Gaming one sub-signal has minimal effect because 22 other independent sub-signals across five other dimensions would need to be simultaneously spoofed. The highest-weighted dimension (Vulnerability &amp; Safety) is sourced from the OSV.dev CVE database that providers can't manipulate. Operational Reliability is measured by Fabric's own monitoring infrastructure — providers don't control the measurement. Additionally, the safety override system can automatically block services that exhibit critical risk patterns (archived repos, deprecated packages, suspicious ownership transfers, npm maintainer changes), regardless of how strong their other signals are. The entire scoring engine is open source, so you can verify exactly how scores are computed.</p></div>
+</details>
 
-<h3>What if my score is wrong?</h3>
-<p>Scores are algorithmically generated and may occasionally reflect stale data or edge cases. If you believe your score is inaccurate, you can use the "Report Issue" button on any profile page. We investigate all reports. Score adjustments only happen through updated data — the system has safety overrides that can cap scores downward (e.g. for critical CVEs), but no mechanism to manually inflate them.</p>
+<details class="faq-item">
+<summary>What if my score is wrong?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Scores are algorithmically generated and may occasionally reflect stale data or edge cases. If you believe your score is inaccurate, you can use the "Report Issue" button on any profile page. We investigate all reports. Score adjustments only happen through updated data — the system has safety overrides that can cap scores downward (e.g. for critical CVEs), but no mechanism to manually inflate them.</p></div>
+</details>
 
-<h3>Does being in the index require my consent?</h3>
-<p>No. The Trust Index scores services using publicly available data. It operates similarly to a search engine — if your service has a public GitHub repository, a package on npm, or a listing on Hugging Face, it may be indexed automatically. You can request delisting by contacting us, though this does not remove the underlying public data.</p>
+<details class="faq-item">
+<summary>Does being in the index require my consent?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>No. The Trust Index scores services using publicly available data. It operates similarly to a search engine — if your service has a public GitHub repository, a package on npm, or a listing on Hugging Face, it may be indexed automatically. You can request delisting by contacting us, though this does not remove the underlying public data.</p></div>
+</details>
 
-<h3>How are services discovered and added?</h3>
-<p>Fabric runs automated discovery scans daily against eight sources: package registries (npm, PyPI), GitHub topic search, a curated watchlist of high-profile AI platforms, GitHub Trending (Python and TypeScript), Show HN posts on Hacker News, Product Hunt AI launches, and YC Launch HN announcements. MCP servers are additionally discovered via Smithery.ai, mcp.so, and the ClawHub skills registry. When a new service is detected, it enters a metadata enrichment pipeline that automatically resolves its GitHub repository, npm package, and PyPI package from its organisation name — then it enters the scoring pipeline and appears in the index once initial data collection completes, typically within 24–48 hours. Users can also submit services for inclusion via the Trust Index.</p>
+<details class="faq-item">
+<summary>How are services discovered and added?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>Fabric runs automated discovery scans daily against eight sources: package registries (npm, PyPI), GitHub topic search, a curated watchlist of high-profile AI platforms, GitHub Trending (Python and TypeScript), Show HN posts on Hacker News, Product Hunt AI launches, and YC Launch HN announcements. MCP servers are additionally discovered via Smithery.ai, mcp.so, and the ClawHub skills registry. When a new service is detected, it enters a metadata enrichment pipeline that automatically resolves its GitHub repository, npm package, and PyPI package from its organisation name — then it enters the scoring pipeline and appears in the index once initial data collection completes, typically within 24–48 hours. Users can also submit services for inclusion via the Trust Index.</p></div>
+</details>
 
-<h3>What does "Blocked" actually mean?</h3>
-<p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active unpatched vulnerabilities (critical or high severity), malware indicators, an archived repository, a deprecated package, or a suspicious ownership transfer. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it. Some services are blocked purely because they've been abandoned by their maintainers — the code may be fine today, but nobody is patching it if a vulnerability is found tomorrow.</p>
+<details class="faq-item">
+<summary>What does "Blocked" actually mean?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>A <span class="tag tag-r">Blocked</span> score means Fabric detected significant risk signals — typically active unpatched vulnerabilities (critical or high severity), malware indicators, an archived repository, a deprecated package, or a suspicious ownership transfer. It does not mean the service is malicious in every case, but it does mean we strongly recommend additional due diligence before using it. Some services are blocked purely because they've been abandoned by their maintainers — the code may be fine today, but nobody is patching it if a vulnerability is found tomorrow.</p></div>
+</details>
 
-<h3>What is the scoring engine beta?</h3>
-<p>The scoring engine is in active beta. Sub-signal weights, data sources, and thresholds are being calibrated in real time as coverage expands across the index. Scores may shift between versions as new data sources come online and scoring logic is refined. Phase 1 (live) covers the core 23 sub-signal architecture with weight redistribution. Phase 2 (in progress) adds permission scope analysis, dependent package counts, and expanded collection sources.</p>
+<details class="faq-item">
+<summary>What is the scoring engine beta?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+<div class="faq-body"><p>The scoring engine is in active beta. Sub-signal weights, data sources, and thresholds are being calibrated in real time as coverage expands across the index. Scores may shift between versions as new data sources come online and scoring logic is refined. Phase 1 (live) covers the core 23 sub-signal architecture with weight redistribution. Phase 2 (in progress) adds permission scope analysis, dependent package counts, and expanded collection sources.</p></div>
+</details>
 
 <h2 id="changelog">Changelog</h2>
 <p>Notable changes to scoring methodology, data sources, and the Trust Index platform.</p>
