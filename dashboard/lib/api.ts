@@ -12,13 +12,13 @@ export class ApiError extends Error {
   }
 }
 
-function getApiKey(): string | null {
+export function getStoredApiKey(): string | null {
   if (typeof window === 'undefined') return null;
   return localStorage.getItem('fabric_api_key');
 }
 
 async function request<T>(path: string, opts: RequestInit = {}): Promise<T> {
-  const key = getApiKey();
+  const key = getStoredApiKey();
   const headers: Record<string, string> = {
     ...(opts.headers as Record<string, string>),
   };
