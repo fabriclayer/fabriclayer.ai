@@ -31,13 +31,13 @@ Score thresholds:
 Coming soon at https://api.fabriclayer.ai/ — free tier available.
 
 ## Documentation
-https://www.fabriclayer.ai/docs
+https://fabriclayer.ai/docs
 
 ## Blog
-https://www.fabriclayer.ai/blog
+https://fabriclayer.ai/blog
 
 ## Contact
-Website: https://www.fabriclayer.ai/
+Website: https://fabriclayer.ai/
 Trust Index: https://trust.fabriclayer.ai/
 
 ## Company

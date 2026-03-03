@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/:path*", "has": [{"type": "host", "value": "www.fabriclayer.ai"}], "destination": "https://fabriclayer.ai/:path*", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/blog", "destination": "/blog.html" },
