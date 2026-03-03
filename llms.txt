@@ -21,7 +21,7 @@ Fabric evaluates AI services across 6 weighted signals to produce a composite tr
 - **Transparency** (15%): Checklist scoring for public source code, recognized license, README quality, SECURITY.md, API documentation, and model cards.
 - **Publisher Trust** (10%): GitHub account age, organization type, maintained package count, and identity consistency across registries.
 
-Services are classified as: **Trusted** (score ≥ 3.25), **Caution** (1.0-3.24), or **Blocked** (< 1.0 or critical CVE override).
+Services are classified as: **Trusted** (score ≥ 3.00), **Caution** (1.0-2.99), or **Blocked** (< 1.0 or critical CVE override).
 
 ## Service Categories
 

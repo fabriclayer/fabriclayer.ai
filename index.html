@@ -884,7 +884,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
     return '<div class="card-icon"'+bgStyle+'><img class="'+cls+'"'+imgStyle+' src="'+url+'" alt="" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src=\''+cbUrl+'\';}else{this.remove();this.parentElement.textContent=\''+ini+'\'}"></div>';
   }
 
-  function cls(s){return s>=3.25?'trusted':s>=1?'caution':'blocked'}
+  function cls(s){return s>=3?'trusted':s>=1?'caution':'blocked'}
 
   function boxes(score,c){
     var h='<div class="rating-boxes">';
