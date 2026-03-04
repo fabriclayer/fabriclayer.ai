@@ -182,6 +182,18 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .sig-score-val.sc-orange{color:var(--orange)}
 .sig-score-val.sc-red{color:var(--red)}
 .sig-contrib{font-family:var(--mono);font-size:11px;color:var(--text-2);min-width:48px;text-align:right}
+.sig-row{cursor:pointer}
+.sig-toggle{display:inline-flex;align-items:center;font-size:11px;color:var(--text-2);transition:transform .3s;margin-left:auto}
+.sig-row.expanded .sig-toggle{transform:rotate(90deg)}
+.sig-subs{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.sig-row.expanded .sig-subs{grid-template-rows:1fr}
+.sig-subs-inner{overflow:hidden}
+.sig-sub{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid rgba(0,0,0,.04)}
+.sig-sub:first-child{padding-top:14px;border-top:none}
+.sig-sub-name{font-size:12.5px;font-weight:500;color:var(--black);min-width:130px}
+.sig-sub-weight{font-family:var(--mono);font-size:10px;color:var(--text-2);background:rgba(0,0,0,.03);padding:2px 6px;border-radius:4px;min-width:32px;text-align:center}
+.sig-sub-desc{font-size:12px;color:var(--text-2);line-height:1.35}
+@media(max-width:600px){.sig-sub{flex-wrap:wrap;gap:6px}.sig-sub-name{min-width:auto;flex:1}}
 
 /* THRESHOLDS */
 .thresholds{margin-top:56px}
@@ -474,8 +486,8 @@ h1{font-size:35px}
 <div class="score-hero">
 <div class="score-hero-text">
 <div class="sec-label">How it works</div>
-<div class="sec-title">Six signals. One score.</div>
-<div class="sec-desc">Every AI product or service gets a trust score from 0.00 to 5.00. Computed from six weighted signals across vulnerability, operations, and reputation. Updated continuously. Completely transparent.</div>
+<div class="sec-title">Six signals. 23 sub-signals. One score.</div>
+<div class="sec-desc">Every AI product or service gets a trust score from 0.00 to 5.00. Computed from six weighted signals and 23 sub-signals across vulnerability, operations, and reputation. Updated continuously. Completely transparent.</div>
 </div>
 </div>
 
@@ -498,61 +510,96 @@ h1{font-size:35px}
 
 <div class="sig-list" id="sigList">
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Vulnerability & Safety</span><span class="sig-weight">highest</span></div>
-<div class="sig-desc">Known risks, advisories, and dependency health.</div>
+<div class="sig-header"><span class="sig-name">Vulnerability & Safety</span><span class="sig-weight">25%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Known CVEs, dependency health, and supply chain analysis.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:92%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Known CVEs</span><span class="sig-sub-weight">40%</span><span class="sig-sub-desc">CVE count and severity scoring</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Dependency Health</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Total dependency count evaluation</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Supply Chain</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Supply chain presence and transitive CVE penalties</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-green">4.6</div>
 <div class="sig-contrib"></div>
 </div>
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Operational Health</span><span class="sig-weight">moderate</span></div>
-<div class="sig-desc">Uptime, latency, and runtime behavior.</div>
+<div class="sig-header"><span class="sig-name">Operational Health</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Uptime, latency, error rates, and incident history.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:88%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Uptime</span><span class="sig-sub-weight">35%</span><span class="sig-sub-desc">30-day rolling uptime percentage</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Response Latency</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">p99 response time in milliseconds</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Error Rate</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Percentage of non-2xx status codes</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Incident History</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Incidents in last 90 days</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-green">4.4</div>
 <div class="sig-contrib"></div>
 </div>
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Maintenance Activity</span><span class="sig-weight">high</span></div>
-<div class="sig-desc">Release cadence and issue responsiveness.</div>
+<div class="sig-header"><span class="sig-name">Maintenance Activity</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Commit recency, release cadence, and issue responsiveness.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:84%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Commit Recency</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Days since last commit</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Release Cadence</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">Days since last release</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Issue Response</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Median time to close issues</span></div>
+<div class="sig-sub"><span class="sig-sub-name">CI/CD Presence</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">GitHub Actions workflows present</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-green">4.2</div>
 <div class="sig-contrib"></div>
 </div>
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Adoption</span><span class="sig-weight">moderate</span></div>
-<div class="sig-desc">Community usage and traction.</div>
+<div class="sig-header"><span class="sig-name">Adoption</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Download volume, GitHub stars, and growth trends.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill orange" style="width:60%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Download Volume</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">npm + PyPI weekly downloads</span></div>
+<div class="sig-sub"><span class="sig-sub-name">GitHub Stars</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">Stargazers count from GitHub</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Dependents</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Downstream dependent packages</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Growth Trend</span><span class="sig-sub-weight">15%</span><span class="sig-sub-desc">Week-over-week download velocity</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-orange">3.0</div>
 <div class="sig-contrib"></div>
 </div>
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Transparency</span><span class="sig-weight">moderate</span></div>
-<div class="sig-desc">Openness, licensing, and documentation.</div>
+<div class="sig-header"><span class="sig-name">Transparency</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Open source status, documentation, security policy, and changelog.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:76%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Open Source</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Public repo and license type</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Documentation</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">README quality and docs presence</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Security Policy</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">SECURITY.md file presence</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Changelog</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">CHANGELOG.md and release history</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-green">3.8</div>
 <div class="sig-contrib"></div>
 </div>
 
-<div class="sig-row">
+<div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
-<div class="sig-header"><span class="sig-name">Publisher Trust</span><span class="sig-weight">lower</span></div>
-<div class="sig-desc">Identity, track record, and verification.</div>
+<div class="sig-header"><span class="sig-name">Publisher Trust</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
+<div class="sig-desc">Track record, org maturity, and cross-platform identity.</div>
 <div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:86%"></div></div></div>
+<div class="sig-subs"><div class="sig-subs-inner">
+<div class="sig-sub"><span class="sig-sub-name">Track Record</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Sibling service scores and GitHub credibility</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Org Maturity</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">GitHub account age and organization type</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Community Standing</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Public repository count</span></div>
+<div class="sig-sub"><span class="sig-sub-name">Cross-Platform</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Presence on GitHub, npm, and PyPI</span></div>
+</div></div>
 </div>
 <div class="sig-score-val sc-green">4.3</div>
 <div class="sig-contrib"></div>
