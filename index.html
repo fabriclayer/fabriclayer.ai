@@ -161,7 +161,7 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .signal-total-icons .rt-fill.animated{width:var(--target-w)!important}
 .signal-total-icons .rt-fill svg path{fill:var(--green)}
 .sig-list{display:flex;flex-direction:column;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-.sig-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:20px 24px;background:var(--white);transition:background .3s}
+.sig-row{display:block;padding:20px 24px;background:var(--white);transition:background .3s}
 .sig-row:hover{background:var(--bg)}
 .sig-row+.sig-row{border-top:1px solid var(--border)}
 .sig-contrib{display:none}
@@ -171,6 +171,7 @@ a.hero-card-wrap{display:block;text-decoration:none!important;color:inherit}
 .sig-weight{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text-2);background:rgba(0,0,0,.04);padding:3px 8px;border-radius:6px;letter-spacing:.5px}
 .sig-desc{font-size:13px;color:var(--text-2);line-height:1.4}
 .sig-bar-wrap{display:flex;align-items:center;gap:12px}
+.sig-score-inline{font-family:var(--mono);font-size:14px;font-weight:600;min-width:32px;text-align:right}
 .sig-bar{height:6px;background:rgba(0,0,0,.06);border-radius:3px;flex:1;overflow:hidden;min-width:80px}
 .sig-bar-fill{height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
 .sig-bar-fill.green{background:var(--green)}
@@ -333,7 +334,7 @@ nav{padding:0 1rem;height:48px}
 .hero-text{text-align:center}
 .sec{padding:64px 32px}.sec-title{font-size:36px;letter-spacing:-1.5px}.sec-desc{font-size:17px}
 .problems{grid-template-columns:repeat(2,1fr)}
-.score-examples{gap:24px;margin-top:48px;margin-bottom:56px}.sig-row{grid-template-columns:1fr auto auto;padding:24px 28px}.sig-bar{min-width:120px}.sig-contrib{display:block}.signal-total-icons{display:flex}
+.score-examples{gap:24px;margin-top:48px;margin-bottom:56px}.sig-row{padding:24px 28px}.sig-bar{min-width:120px}.signal-total-icons{display:flex}
 .threshold-grid{grid-template-columns:1fr}.source-grid{grid-template-columns:repeat(3,1fr)}
 .score-badge{display:block;width:240px}
 .who-grid{grid-template-columns:repeat(3,1fr)}
@@ -358,7 +359,7 @@ h1{font-size:clamp(49px,6.65vw,72px);letter-spacing:-3px;white-space:nowrap;line
 .hero-split{gap:20px;padding:0 40px;justify-content:center}
 .sec{padding:80px 40px}.sec-label{font-size:13px;margin-bottom:16px}.sec-title{font-size:clamp(36px,4.5vw,52px);letter-spacing:-2px;margin-bottom:20px}.sec-desc{font-size:18px}
 .problems{grid-template-columns:repeat(4,1fr);gap:20px}.problem{padding:32px 24px}
-.score-examples{gap:32px;margin-top:56px;margin-bottom:64px}.sig-row{grid-template-columns:1fr auto auto;padding:28px 32px}.sig-bar{min-width:180px}.signal-total-score{font-size:56px}
+.score-examples{gap:32px;margin-top:56px;margin-bottom:64px}.sig-row{padding:28px 32px}.sig-bar{min-width:180px}.signal-total-score{font-size:56px}
 .threshold-grid{grid-template-columns:repeat(3,1fr)}.source-grid{grid-template-columns:repeat(4,1fr)}
 .score-badge{width:300px}
 .who-grid{margin-top:56px}.who{padding:36px 32px}
@@ -514,22 +515,20 @@ h1{font-size:35px}
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Vulnerability & Safety</span><span class="sig-weight">25%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Known CVEs, dependency health, and supply chain analysis.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:92%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:92%"></div></div><span class="sig-score-inline sc-green">4.6</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Known CVEs</span><span class="sig-sub-weight">40%</span><span class="sig-sub-desc">CVE count and severity scoring</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Dependency Health</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Total dependency count evaluation</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Supply Chain</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Supply chain presence and transitive CVE penalties</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-green">4.6</div>
-<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Operational Health</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Uptime, latency, error rates, and incident history.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:88%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:88%"></div></div><span class="sig-score-inline sc-green">4.4</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Uptime</span><span class="sig-sub-weight">35%</span><span class="sig-sub-desc">30-day rolling uptime percentage</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Response Latency</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">p99 response time in milliseconds</span></div>
@@ -537,15 +536,13 @@ h1{font-size:35px}
 <div class="sig-sub"><span class="sig-sub-name">Incident History</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Incidents in last 90 days</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-green">4.4</div>
-<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Maintenance Activity</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Commit recency, release cadence, and issue responsiveness.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:84%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:84%"></div></div><span class="sig-score-inline sc-green">4.2</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Commit Recency</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Days since last commit</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Release Cadence</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">Days since last release</span></div>
@@ -553,15 +550,13 @@ h1{font-size:35px}
 <div class="sig-sub"><span class="sig-sub-name">CI/CD Presence</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">GitHub Actions workflows present</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-green">4.2</div>
-<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Adoption</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Download volume, GitHub stars, and growth trends.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill orange" style="width:60%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill orange" style="width:60%"></div></div><span class="sig-score-inline sc-orange">3.0</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Download Volume</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">npm + PyPI weekly downloads</span></div>
 <div class="sig-sub"><span class="sig-sub-name">GitHub Stars</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">Stargazers count from GitHub</span></div>
@@ -569,15 +564,13 @@ h1{font-size:35px}
 <div class="sig-sub"><span class="sig-sub-name">Growth Trend</span><span class="sig-sub-weight">15%</span><span class="sig-sub-desc">Week-over-week download velocity</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-orange">3.0</div>
-<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Transparency</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Open source status, documentation, security policy, and changelog.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:76%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:76%"></div></div><span class="sig-score-inline sc-green">3.8</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Open Source</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Public repo and license type</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Documentation</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">README quality and docs presence</span></div>
@@ -585,15 +578,13 @@ h1{font-size:35px}
 <div class="sig-sub"><span class="sig-sub-name">Changelog</span><span class="sig-sub-weight">25%</span><span class="sig-sub-desc">CHANGELOG.md and release history</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-green">3.8</div>
-<div class="sig-contrib"></div>
 </div>
 
 <div class="sig-row" onclick="this.classList.toggle('expanded')">
 <div class="sig-info">
 <div class="sig-header"><span class="sig-name">Publisher Trust</span><span class="sig-weight">15%</span><span class="sig-toggle">&#9656;</span></div>
 <div class="sig-desc">Track record, org maturity, and cross-platform identity.</div>
-<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:86%"></div></div></div>
+<div class="sig-bar-wrap"><div class="sig-bar"><div class="sig-bar-fill green" style="width:86%"></div></div><span class="sig-score-inline sc-green">4.3</span></div>
 <div class="sig-subs"><div class="sig-subs-inner">
 <div class="sig-sub"><span class="sig-sub-name">Track Record</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">Sibling service scores and GitHub credibility</span></div>
 <div class="sig-sub"><span class="sig-sub-name">Org Maturity</span><span class="sig-sub-weight">30%</span><span class="sig-sub-desc">GitHub account age and organization type</span></div>
@@ -601,8 +592,6 @@ h1{font-size:35px}
 <div class="sig-sub"><span class="sig-sub-name">Cross-Platform</span><span class="sig-sub-weight">20%</span><span class="sig-sub-desc">Presence on GitHub, npm, and PyPI</span></div>
 </div></div>
 </div>
-<div class="sig-score-val sc-green">4.3</div>
-<div class="sig-contrib"></div>
 </div>
 
 </div>
