@@ -70,7 +70,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 h1{font-size:28px;font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease .2s both}
 .grad{background:linear-gradient(135deg,#c084fc 0%,#7c8cf8 50%,#60a5fa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding:6px 0;display:inline-block}
 .hero-sub{font-size:15px;color:var(--text-2);max-width:460px;line-height:1.55;margin-bottom:32px;animation:fadeUp .8s ease .4s both;margin-left:auto;margin-right:auto}
-.hero-actions-inline{animation:fadeUp .8s ease .5s both;margin-bottom:68px}
+.hero-actions-inline{animation:fadeUp .8s ease .5s both;margin-bottom:68px;display:flex;align-items:center;gap:12px;justify-content:center}
+.hero-search{display:flex;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0 6px 0 14px;height:52px;min-width:220px;transition:border-color .2s,box-shadow .2s}.hero-search:focus-within{border-color:var(--black);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+.hero-search input{border:none;outline:none;font-size:14px;font-family:var(--sans);background:transparent;flex:1;color:var(--text);min-width:0}
+.hero-search input::placeholder{color:var(--text-3)}
+.hero-search button{background:var(--black);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}.hero-search button:hover{background:#1a1a1a}
+.hero-search button svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes btnPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 .hero-icon{display:none}
@@ -382,7 +387,8 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 h1{font-size:38px;letter-spacing:-1px;line-height:1.1}
 .hero-sub{font-size:14px;margin-bottom:20px;line-height:1.5}
 .hero-split{gap:16px;padding:0 14px}
-.hero-actions-inline{margin-bottom:32px}
+.hero-actions-inline{margin-bottom:32px;flex-direction:column;gap:10px}
+.hero-search{width:100%;min-width:0}
 .card-marquee-wrap{padding:32px 0 60px;gap:14px}
 .hero-icon svg{width:40px;height:40px}
 .hero-actions{margin-top:60px;margin-bottom:32px}
@@ -456,7 +462,7 @@ h1{font-size:35px}
 <div class="hero-text">
 <h1>The trust layer for<br>the <span class="grad">agent economy</span></h1>
 <p class="hero-sub">Free safety scores for every AI product, agent and service.<br>Know what's safe before you use it.</p>
-<div class="hero-actions-inline"><a href="https://trust.fabriclayer.ai" class="btn-p">Browse the Trust Index &rarr;</a></div>
+<div class="hero-actions-inline"><a href="https://trust.fabriclayer.ai" class="btn-p">Browse the Trust Index &rarr;</a><form class="hero-search" action="https://trust.fabriclayer.ai/" method="get" onsubmit="if(!this.q.value.trim()){event.preventDefault();this.q.focus()}"><input type="text" name="q" placeholder="Search 5,800+ AI services…" autocomplete="off"><button type="submit"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button></form></div>
 </div>
 </div>
 
