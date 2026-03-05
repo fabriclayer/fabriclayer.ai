@@ -91,8 +91,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 
 /* ECOSYSTEM GRID */
 .eco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:24px 0 32px}
-.eco-item{background:var(--bg);border-radius:10px;padding:14px 16px}
-.eco-item .name{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.eco-item{background:var(--bg);border-radius:10px;padding:14px 16px;text-decoration:none;display:block;transition:all .15s;border:1px solid transparent}
+.eco-item:hover{border-color:var(--border);background:var(--white);text-decoration:none}
+.eco-item .eco-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+.eco-item .name{font-size:14px;font-weight:600;color:var(--text)}
+.eco-item .score{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--green)}
 .eco-item .desc{font-size:12px;color:var(--text-3);line-height:1.4}
 
 /* FINDING */
@@ -225,18 +228,18 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <p>For LangChain, we scored every service published under the LangChain organisation &mdash; from the core framework packages to their ecosystem of integrations, adapters, and platform tools. This includes:</p>
 
 <div class="eco-grid">
-  <div class="eco-item"><span class="name">langchain</span><span class="desc">Core framework (Python)</span></div>
-  <div class="eco-item"><span class="name">langchain-core</span><span class="desc">Base abstractions</span></div>
-  <div class="eco-item"><span class="name">langgraph</span><span class="desc">Agent orchestration</span></div>
-  <div class="eco-item"><span class="name">langsmith</span><span class="desc">Observability platform</span></div>
-  <div class="eco-item"><span class="name">langchain-openai</span><span class="desc">OpenAI integration</span></div>
-  <div class="eco-item"><span class="name">langchain-anthropic</span><span class="desc">Anthropic integration</span></div>
-  <div class="eco-item"><span class="name">langchain-community</span><span class="desc">Community integrations</span></div>
-  <div class="eco-item"><span class="name">langchain-mcp-adapters</span><span class="desc">MCP protocol bridge</span></div>
-  <div class="eco-item"><span class="name">langchain.js</span><span class="desc">JavaScript/TypeScript</span></div>
-  <div class="eco-item"><span class="name">@langchain/langgraph</span><span class="desc">JS agent runtime</span></div>
-  <div class="eco-item"><span class="name">@langchain/mcp-adapters</span><span class="desc">JS MCP bridge</span></div>
-  <div class="eco-item"><span class="name">langgraph-checkpoint</span><span class="desc">State persistence</span></div>
+  <a href="https://trust.fabriclayer.ai/langchain-openai" class="eco-item"><div class="eco-top"><span class="name">@langchain/openai</span><span class="score">4.80</span></div><span class="desc">OpenAI integration</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-anthropic" class="eco-item"><div class="eco-top"><span class="name">@langchain/anthropic</span><span class="score">4.79</span></div><span class="desc">Anthropic integration</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-mcp-adapters" class="eco-item"><div class="eco-top"><span class="name">@langchain/mcp-adapters</span><span class="score">4.76</span></div><span class="desc">MCP protocol bridge</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-text-splitters" class="eco-item"><div class="eco-top"><span class="name">langchain-text-splitters</span><span class="score">4.73</span></div><span class="desc">Text chunking utilities</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-core" class="eco-item"><div class="eco-top"><span class="name">@langchain/core</span><span class="score">4.73</span></div><span class="desc">Base abstractions</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-community" class="eco-item"><div class="eco-top"><span class="name">langchain-community</span><span class="score">4.65</span></div><span class="desc">Community integrations</span></a>
+  <a href="https://trust.fabriclayer.ai/langgraph" class="eco-item"><div class="eco-top"><span class="name">langgraph</span><span class="score">4.60</span></div><span class="desc">Agent orchestration</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-experimental" class="eco-item"><div class="eco-top"><span class="name">langchain-experimental</span><span class="score">4.56</span></div><span class="desc">Experimental features</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain" class="eco-item"><div class="eco-top"><span class="name">langchain</span><span class="score">4.54</span></div><span class="desc">Core framework (Python)</span></a>
+  <a href="https://trust.fabriclayer.ai/langsmith" class="eco-item"><div class="eco-top"><span class="name">langsmith</span><span class="score">4.45</span></div><span class="desc">Observability platform</span></a>
+  <a href="https://trust.fabriclayer.ai/langchain-google-genai" class="eco-item"><div class="eco-top"><span class="name">langchain-google-genai</span><span class="score">4.34</span></div><span class="desc">Google AI integration</span></a>
+  <a href="https://trust.fabriclayer.ai/langserve" class="eco-item"><div class="eco-top"><span class="name">langserve</span><span class="score">4.29</span></div><span class="desc">Deployment server</span></a>
 </div>
 
 <p>Every single one of these is now searchable, scoreable, and linkable on the Trust Index. If you're evaluating LangChain as a dependency, you can see every score at <a href="https://trust.fabriclayer.ai/?publisher=LangChain">trust.fabriclayer.ai/?publisher=LangChain</a>.</p>
