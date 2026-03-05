@@ -84,15 +84,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .post-img{width:160px;height:auto;border-radius:10px;flex-shrink:0;object-fit:cover}
 .post-body{flex:1;min-width:0}
 
-/* FEATURED POST */
-.featured{background:var(--black);border-radius:16px;padding:40px;margin-bottom:48px;text-decoration:none;display:block;transition:all .2s}
-.featured:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.2);text-decoration:none}
-.featured .post-meta{margin-bottom:16px}
-.featured .post-tag{color:var(--red);background:rgba(232,45,53,.2)}
+/* FEATURED / PINNED POST */
+.featured{border-radius:16px;margin-bottom:48px;text-decoration:none;display:block;transition:all .2s;overflow:hidden;position:relative}
+.featured:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.15);text-decoration:none}
+.featured-img{width:100%;display:block;border-radius:16px 16px 0 0}
+.featured-body{background:var(--black);padding:32px 36px}
+.featured .post-meta{margin-bottom:12px}
+.featured .post-tag{color:var(--orange);background:rgba(247,147,30,.15)}
 .featured .post-date{color:rgba(255,255,255,.35)}
-.featured .post-title{font-size:28px;letter-spacing:-1.2px;color:var(--white);margin-bottom:12px}
+.featured .pinned-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3)}
+.featured .post-title{font-size:26px;letter-spacing:-1.2px;color:var(--white);margin-bottom:10px;line-height:1.2}
 .featured:hover .post-title{color:var(--pink)}
-.featured .post-excerpt{color:rgba(255,255,255,.5);font-size:15px}
+.featured .post-excerpt{color:rgba(255,255,255,.45);font-size:14px;line-height:1.6}
 .featured .post-read{color:var(--pink)}
 
 
@@ -108,8 +111,9 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 .page{padding:72px 16px 60px}
 .page h1{font-size:28px;letter-spacing:-1.5px}
 .page .subtitle{font-size:15px;margin-bottom:36px}
-.featured{padding:28px 20px;margin-bottom:36px}
-.featured .post-title{font-size:22px}
+.featured{margin-bottom:36px}
+.featured-body{padding:22px 20px}
+.featured .post-title{font-size:21px}
 .post-title{font-size:19px}
 .post{padding:24px 0}
 .post-img{width:120px}
@@ -131,8 +135,9 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 .page{padding:64px 14px 48px}
 .page h1{font-size:24px}
 .page .subtitle{font-size:14px;margin-bottom:28px}
-.featured{padding:22px 16px;border-radius:12px;margin-bottom:28px}
-.featured .post-title{font-size:20px;letter-spacing:-.5px}
+.featured{border-radius:12px;margin-bottom:28px}
+.featured-body{padding:18px 16px}
+.featured .post-title{font-size:18px;letter-spacing:-.5px}
 .featured .post-desc{font-size:13.5px}
 .post{padding:20px 0}
 .post-title{font-size:17px;letter-spacing:-.3px}
@@ -181,6 +186,21 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <h1>Updates &amp; analysis</h1>
 <p class="subtitle">Case studies, security research, and product updates from the Fabric team.</p>
 
+<!-- PINNED -->
+<a href="/blog/introducing-trust-index" class="featured">
+  <img src="/og-introducing-trust-index.png" alt="Introducing the Fabric Trust Index" class="featured-img">
+  <div class="featured-body">
+    <div class="post-meta">
+      <span class="post-tag announcement">Announcement</span>
+      <span class="post-date">March 2026</span>
+      <span class="pinned-label">Pinned</span>
+    </div>
+    <div class="post-title">Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)</div>
+    <div class="post-excerpt">23 sub-signals across 6 dimensions scoring 5,800+ AI services, SDKs, agent tools, and MCP skills. Full transparency, no defaults, actively evolving. Free, public, no account required.</div>
+    <span class="post-read">Read post →</span>
+  </div>
+</a>
+
 <!-- POST LIST -->
 <div class="posts">
 
@@ -193,19 +213,6 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
     </div>
     <div class="post-title">LangChain on the AI Trust Index — Featured Publisher Report</div>
     <div class="post-excerpt">We scored every LangChain service across 6 trust dimensions and 23 sub-metrics. Here's what we found — and why the most important framework in the AI agent ecosystem is getting most things right.</div>
-    <span class="post-read">Read post →</span>
-  </div>
-</a>
-
-<a href="/blog/introducing-trust-index" class="post post-with-img">
-  <img src="/thumb-introducing-trust-index.png" alt="Introducing the Fabric Trust Index" class="post-img">
-  <div class="post-body">
-    <div class="post-meta">
-      <span class="post-tag announcement">Announcement</span>
-      <span class="post-date">March 2026</span>
-    </div>
-    <div class="post-title">Introducing the Fabric Trust Index — 23 signals scoring 5,800+ AI services (beta)</div>
-    <div class="post-excerpt">23 sub-signals across 6 dimensions scoring 5,800+ AI services, SDKs, agent tools, and MCP skills. Full transparency, no defaults, actively evolving. Free, public, no account required.</div>
     <span class="post-read">Read post →</span>
   </div>
 </a>
