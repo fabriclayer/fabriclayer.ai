@@ -89,21 +89,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);bord
 .stat-val{font-size:26px;font-weight:700;color:var(--text);letter-spacing:-.5px}
 .stat-lbl{font-family:var(--mono);font-size:11px;color:var(--text-3);margin-top:2px}
 
-/* SERVICE CARDS */
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0 32px}
-.svc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:all .2s}
-.svc-card:hover{border-color:#ccc;box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-1px);text-decoration:none}
-.svc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.svc-name{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;line-height:1.25}
-.svc-score{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--green);white-space:nowrap;flex-shrink:0}
-.svc-meta{display:flex;align-items:center;gap:8px}
-.svc-tag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);background:var(--bg);padding:2px 7px;border-radius:4px}
-.svc-desc{font-size:13px;color:var(--text-2);line-height:1.5;flex:1}
-.svc-bar-wrap{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:4px}
-.svc-boxes{display:flex;gap:3px}
-.svc-box{width:24px;height:6px;border-radius:2px;background:var(--border)}
-.svc-box.filled{background:var(--green)}
-.svc-bar-score{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:500;margin-left:auto}
+/* SERVICE CARDS — matches marketing hero cards */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0 32px}
+a.svc-card{display:block;text-decoration:none!important;color:inherit;flex-shrink:0;transition:all .3s;border-radius:14px}
+a.svc-card:hover{transform:translateY(-3px);text-decoration:none!important}
+.hcard{background:var(--white);border:1px solid #e0e0e0;border-radius:14px;padding:1.1rem;display:flex;flex-direction:column;gap:0.6rem;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:left;overflow:hidden;min-width:0}
+.card-top{display:flex;align-items:flex-start;gap:0.6rem}
+.card-icon{width:44px;height:44px;border-radius:10px;background:#f5f5f5;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.card-icon img{width:115%;height:115%;object-fit:cover;display:block}
+.card-title-block{flex:1;min-width:0}
+.card-name{font-size:0.85rem;font-weight:600;color:var(--text);letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-publisher{font-family:var(--mono);font-size:0.58rem;color:#bbb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-tag{font-family:var(--mono);font-size:0.52rem;padding:0.15rem 0.4rem;border-radius:100px;text-transform:uppercase;letter-spacing:0.04em;font-weight:500;white-space:nowrap;display:inline-block;background:transparent;color:#ccc;border:1px solid #eee}
+.card-desc{font-size:0.72rem;line-height:1.5;color:#888;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-score-row{display:flex;align-items:center;gap:0.45rem;padding-top:0.45rem;border-top:1px solid #f0f0f0;margin-top:auto;overflow:hidden}
+.rating-boxes{display:flex;gap:2px;flex-shrink:0}
+.rating-box{width:16px;height:16px;position:relative;flex-shrink:0}
+.rating-box svg{width:16px;height:16px;display:block}
+.rating-bg{position:absolute;top:0;left:0;width:100%;height:100%}
+.rating-bg svg path{fill:#e6e6e6}
+.rating-fill{position:absolute;top:0;left:0;height:100%;overflow:hidden}
+.rating-fill svg path{fill:#0dc956}
+.score-num{font-family:var(--mono);font-size:0.75rem;font-weight:600;letter-spacing:-0.02em;color:#0dc956}
 
 /* FINDING */
 .finding{margin:24px 0;padding:16px 20px;background:rgba(13,201,86,.04);border-left:3px solid var(--green);border-radius:0 10px 10px 0}
@@ -132,7 +139,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px}
 @media(max-width:768px){
 .nav-links{display:none!important}.burger{display:flex}nav{padding:0 1rem;height:48px}.mobile-menu{top:48px}
 .article{padding:72px 16px 60px}.article h1{font-size:28px;letter-spacing:-1.5px}.article .lead{font-size:16px}.article h2{font-size:22px;margin:40px 0 12px}
-.stats{flex-direction:column}.svc-grid{grid-template-columns:1fr}
+.stats{flex-direction:column}.svc-grid{grid-template-columns:1fr}.card-icon{width:36px;height:36px;border-radius:8px}
 .article-cta{padding:36px 24px}.article-cta h3{font-size:20px}
 footer{padding:20px 16px}
 }
@@ -157,7 +164,7 @@ footer{height:56px;padding:0 40px;display:flex;align-items:center}.foot-inner{fl
 .article-cta{padding:28px 18px;border-radius:12px;margin-top:48px}
 .article-cta h3{font-size:18px}
 .article-cta .btn-p{font-size:13px;padding:10px 20px}
-.svc-grid{grid-template-columns:1fr!important}
+.svc-grid{grid-template-columns:1fr!important}.card-icon{width:32px;height:32px;border-radius:7px}
 .pull-quote{font-size:17px;padding:20px 0 20px 18px}
 }
 .article p,.article li{overflow-wrap:break-word;word-break:break-word}
@@ -234,93 +241,58 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 
 <p>For LangChain, we scored every service published under the LangChain organisation &mdash; from the core framework packages to their ecosystem of integrations, adapters, and platform tools. This includes:</p>
 
-<div class="svc-grid">
+<div class="svc-grid" id="svcGrid"></div>
+<script>
+(function(){
+  var IC='<svg viewBox="0 0 123.32 123.32"><path d="M0,14.57v94.17c0,8.05,6.52,14.57,14.57,14.57h94.17c8.05,0,14.57-6.52,14.57-14.57V14.57c0-8.05-6.52-14.57-14.57-14.57H14.57C6.52,0,0,6.52,0,14.57ZM72.96,19.4l7.51,5.41-3.57,30.98,16.03-21.88,6.81,4.91-16.79,23.14-13.59-9.91,3.6-32.65ZM31.62,33.12l28.33,12.98-15.83-22.06,6.82-4.91,16.79,23.08-13.61,9.92-29.9-13.51,7.4-5.5ZM24.42,82.22l21.23-23.06-25.9,8.28-2.63-7.97,27.17-8.81,5.18,15.99-22.09,24.25-2.96-8.68ZM68.91,104.19l-15.35-27.39-.1,27.29-8.49.04v-28.57s16.89-.04,16.89-.04l16.22,28.51-9.17.16ZM103.46,68.68l-30.49,6.14,25.61,8.48-2.51,8.04-27.14-8.8,5.19-16.02,32.08-6.63-2.74,8.79Z"/></svg>';
+  var LOGO='https://github.com/langchain-ai.png?size=80';
+  var svcs=[
+    {name:'@langchain/openai',slug:'langchain-openai',score:4.80,cat:'Framework',desc:'OpenAI integrations for LangChain.js'},
+    {name:'@langchain/anthropic',slug:'langchain-anthropic',score:4.79,cat:'Framework',desc:'Anthropic integrations for LangChain.js'},
+    {name:'@langchain/mcp-adapters',slug:'langchain-mcp-adapters',score:4.76,cat:'Framework',desc:'LangChain.js adapters for Model Context Protocol (MCP)'},
+    {name:'langchain-text-splitters',slug:'langchain-text-splitters',score:4.73,cat:'Framework',desc:'Text splitting utilities for document chunking and processing'},
+    {name:'@langchain/core',slug:'langchain-core',score:4.73,cat:'Framework',desc:'Core LangChain.js abstractions and schemas'},
+    {name:'langchain-community',slug:'langchain-community',score:4.65,cat:'Framework',desc:'Community-maintained integrations for LangChain'},
+    {name:'langgraph',slug:'langgraph',score:4.60,cat:'Framework',desc:'Framework for building stateful multi-actor AI agent applications'},
+    {name:'langchain-experimental',slug:'langchain-experimental',score:4.56,cat:'Framework',desc:'Experimental features and research implementations'},
+    {name:'langchain',slug:'langchain',score:4.54,cat:'Framework',desc:'Building applications with LLMs through composability'},
+    {name:'langsmith',slug:'langsmith',score:4.45,cat:'Infra',desc:'LLM observability and evaluation platform by LangChain'},
+    {name:'langchain-google-genai',slug:'langchain-google-genai',score:4.34,cat:'Framework',desc:'Google Generative AI integration for LangChain'},
+    {name:'langserve',slug:'langserve',score:4.29,cat:'Framework',desc:'Deploy LangChain runnables and chains as REST APIs'}
+  ];
 
-  <a href="https://trust.fabriclayer.ai/langchain-openai" class="svc-card">
-    <div class="svc-top"><span class="svc-name">@langchain/openai</span><span class="svc-score">4.80</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">OpenAI integrations for LangChain.js</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.80</span></div>
-  </a>
+  function boxes(score){
+    var h='<div class="rating-boxes">';
+    for(var i=0;i<5;i++){
+      var pct=Math.min(100,Math.max(0,Math.round((score-i)*100)));
+      h+='<div class="rating-box"><div class="rating-bg">'+IC+'</div><div class="rating-fill" style="width:'+pct+'%">'+IC+'</div></div>';
+    }
+    return h+'</div>';
+  }
 
-  <a href="https://trust.fabriclayer.ai/langchain-anthropic" class="svc-card">
-    <div class="svc-top"><span class="svc-name">@langchain/anthropic</span><span class="svc-score">4.79</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Anthropic integrations for LangChain.js</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.79</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-mcp-adapters" class="svc-card">
-    <div class="svc-top"><span class="svc-name">@langchain/mcp-adapters</span><span class="svc-score">4.76</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">LangChain.js adapters for Model Context Protocol (MCP)</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.76</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-text-splitters" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langchain-text-splitters</span><span class="svc-score">4.73</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Text splitting utilities for document chunking and processing</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.73</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-core" class="svc-card">
-    <div class="svc-top"><span class="svc-name">@langchain/core</span><span class="svc-score">4.73</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Core LangChain.js abstractions and schemas</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.73</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-community" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langchain-community</span><span class="svc-score">4.65</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Community-maintained integrations for LangChain</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.65</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langgraph" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langgraph</span><span class="svc-score">4.60</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Framework for building stateful multi-actor AI agent applications</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.60</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-experimental" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langchain-experimental</span><span class="svc-score">4.56</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Experimental features and research implementations for LangChain</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.56</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langchain</span><span class="svc-score">4.54</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Building applications with LLMs through composability</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span></div><span class="svc-bar-score">4.54</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langsmith" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langsmith</span><span class="svc-score">4.45</span></div>
-    <div class="svc-meta"><span class="svc-tag">Infra</span></div>
-    <div class="svc-desc">LLM observability and evaluation platform by LangChain</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box"></span></div><span class="svc-bar-score">4.45</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langchain-google-genai" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langchain-google-genai</span><span class="svc-score">4.34</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Google Generative AI integration for LangChain</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box"></span></div><span class="svc-bar-score">4.34</span></div>
-  </a>
-
-  <a href="https://trust.fabriclayer.ai/langserve" class="svc-card">
-    <div class="svc-top"><span class="svc-name">langserve</span><span class="svc-score">4.29</span></div>
-    <div class="svc-meta"><span class="svc-tag">Framework</span></div>
-    <div class="svc-desc">Deploy LangChain runnables and chains as REST APIs</div>
-    <div class="svc-bar-wrap"><div class="svc-boxes"><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box filled"></span><span class="svc-box"></span></div><span class="svc-bar-score">4.29</span></div>
-  </a>
-
-</div>
+  var html='';
+  svcs.forEach(function(s){
+    html+='<a href="https://trust.fabriclayer.ai/'+s.slug+'" class="svc-card">'
+      +'<div class="hcard">'
+        +'<div class="card-top">'
+          +'<div class="card-icon"><img src="'+LOGO+'" alt=""></div>'
+          +'<div class="card-title-block">'
+            +'<div class="card-name">'+s.name+'</div>'
+            +'<div class="card-publisher">LangChain</div>'
+          +'</div>'
+        +'</div>'
+        +'<span class="card-tag">'+s.cat+'</span>'
+        +'<div class="card-desc">'+s.desc+'</div>'
+        +'<div class="card-score-row">'
+          +boxes(s.score)
+          +'<span class="score-num">'+s.score.toFixed(2)+'</span>'
+        +'</div>'
+      +'</div>'
+    +'</a>';
+  });
+  document.getElementById('svcGrid').innerHTML=html;
+})();
+</script>
 
 <p>Every single one of these is now searchable, scoreable, and linkable on the Trust Index. If you're evaluating LangChain as a dependency, you can see every score at <a href="https://trust.fabriclayer.ai/?publisher=LangChain">trust.fabriclayer.ai/?publisher=LangChain</a>.</p>
 
