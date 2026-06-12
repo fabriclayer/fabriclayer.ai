@@ -206,7 +206,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
   <div class="nav-right">
     <div class="nav-links">
       <a href="https://trust.fabriclayer.ai">Trust Index</a>
-      <span class="nav-soon">API<span class="soon-tip">Coming soon</span></span>
+      <a href="https://trust.fabriclayer.ai/api-access">API</a>
       <a href="/blog">Blog</a>
     </div>
     <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -215,7 +215,7 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://trust.fabriclayer.ai">Trust Index</a>
-  <span class="nav-soon">API<span class="soon-badge">Coming soon</span></span>
+  <a href="https://trust.fabriclayer.ai/api-access">API</a>
   <a href="/blog">Blog</a>
 </div>
 
@@ -224,6 +224,13 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <div class="sidebar-head"><span class="sidebar-badge">Documentation</span></div>
 <div class="nav-group"><div class="nav-group-title">Getting Started</div>
 <a href="#overview" class="nav-item active">Overview</a></div>
+<div class="nav-group"><div class="nav-group-title">API</div>
+<a href="#api-overview" class="nav-item">API overview</a>
+<a href="#api-endpoints" class="nav-item">Endpoints</a>
+<a href="#api-auth" class="nav-item">Authentication</a>
+<a href="#api-plans" class="nav-item">Plans &amp; pricing</a>
+<a href="#mcp-server" class="nav-item">MCP server</a>
+<a href="#github-action" class="nav-item">GitHub Action</a></div>
 <div class="nav-group"><div class="nav-group-title">Trust Score</div>
 <a href="#trust-overview" class="nav-item">How it works</a>
 <a href="#trust-signals" class="nav-item">Six dimensions</a>
@@ -248,6 +255,182 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <main class="content">
 <h1 id="overview">Fabric Documentation</h1>
 <p class="subtitle">The Fabric Trust Index is an open-source, public directory of trust scores for AI tools, models, MCP servers, and API services. Over 5,800 indexed services each receive a composite score from 0.00 to 5.00, computed from <strong>23 independently scored sub-signals</strong> grouped into six weighted dimensions — all generated automatically from public data sources. The scoring engine is in <strong>active beta</strong> and is <a href="https://github.com/fabriclayer">open source under AGPL-3.0</a>.</p>
+
+<h2 id="api-overview">API overview</h2>
+<p>The Fabric Trust API lets you look up trust scores programmatically, run batch checks across your dependency tree, and monitor incidents affecting AI services you depend on.</p>
+
+<h3>Base URL</h3>
+<div class="code"><pre><span class="str">https://api.fabriclayer.ai</span>
+<span class="cmt"># or</span>
+<span class="str">https://trust.fabriclayer.ai/api/v1/</span></pre></div>
+
+<h3>Response format</h3>
+<p>All responses are JSON with <span class="inline-code">Content-Type: application/json</span>. Error responses include a <span class="inline-code">message</span> field describing the issue.</p>
+
+<h3>Rate limits</h3>
+<p>Burst limit is 10 requests per second. Monthly quotas depend on your plan (see <a href="#api-plans">Plans &amp; pricing</a>). When you exceed either limit, the API returns <span class="inline-code">429 Too Many Requests</span> with a <span class="inline-code">Retry-After</span> header.</p>
+
+<h2 id="api-endpoints">Endpoints</h2>
+
+<h3>GET /lookup</h3>
+<p>Look up the trust score for a single service. Requires an API key.</p>
+<div class="param"><span class="param-name">slug</span><span class="param-type">string</span><span class="param-req">required</span><div class="param-desc">The service slug, e.g. <span class="inline-code">openai</span> or <span class="inline-code">langchain</span></div></div>
+<div class="code"><span class="code-label">Request</span><pre><span class="fn">curl</span> <span class="str">"https://api.fabriclayer.ai/lookup?slug=openai"</span> \
+  -H <span class="str">"Authorization: Bearer fl_live_abc123..."</span></pre></div>
+<div class="code"><span class="code-label">Response</span><pre>{
+  <span class="str">"slug"</span>: <span class="str">"openai"</span>,
+  <span class="str">"name"</span>: <span class="str">"OpenAI"</span>,
+  <span class="str">"score"</span>: <span class="fn">4.12</span>,
+  <span class="str">"status"</span>: <span class="str">"trusted"</span>,
+  <span class="str">"confidence"</span>: <span class="str">"high"</span>,
+  <span class="str">"coverage"</span>: <span class="fn">0.87</span>,
+  <span class="str">"signals"</span>: {
+    <span class="str">"vulnerability"</span>: <span class="fn">4.50</span>,
+    <span class="str">"operational"</span>: <span class="fn">4.20</span>,
+    <span class="str">"maintenance"</span>: <span class="fn">3.80</span>,
+    <span class="str">"adoption"</span>: <span class="fn">4.90</span>,
+    <span class="str">"transparency"</span>: <span class="fn">3.60</span>,
+    <span class="str">"publisher_trust"</span>: <span class="fn">4.70</span>
+  },
+  <span class="str">"weights"</span>: { <span class="str">"vulnerability"</span>: <span class="fn">0.25</span>, <span class="str">"operational"</span>: <span class="fn">0.15</span>, <span class="str">"maintenance"</span>: <span class="fn">0.15</span>, <span class="str">"adoption"</span>: <span class="fn">0.15</span>, <span class="str">"transparency"</span>: <span class="fn">0.15</span>, <span class="str">"publisher_trust"</span>: <span class="fn">0.15</span> },
+  <span class="str">"publisher"</span>: <span class="str">"openai"</span>,
+  <span class="str">"category"</span>: <span class="str">"LLMs"</span>
+}</pre></div>
+
+<h3>GET /public-lookup</h3>
+<p>Free lookup with no API key required. Limited to 50 requests per day per IP address. Returns the same response shape as <span class="inline-code">/lookup</span> with an additional <span class="inline-code">get_a_free_key</span> URL.</p>
+<div class="param"><span class="param-name">slug</span><span class="param-type">string</span><span class="param-req">required</span><div class="param-desc">The service slug</div></div>
+<div class="code"><pre><span class="fn">curl</span> <span class="str">"https://api.fabriclayer.ai/public-lookup?slug=langchain"</span></pre></div>
+
+<h3>POST /batch</h3>
+<p>Look up trust scores for multiple services in a single request. Available on Pro and Enterprise plans only. Maximum 50 slugs per request.</p>
+<div class="code"><span class="code-label">Request</span><pre><span class="fn">curl</span> -X POST <span class="str">"https://api.fabriclayer.ai/batch"</span> \
+  -H <span class="str">"Authorization: Bearer fl_live_abc123..."</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{ "slugs": ["openai", "stripe", "langchain"] }'</span></pre></div>
+<div class="code"><span class="code-label">Response</span><pre>{
+  <span class="str">"results"</span>: [
+    { <span class="str">"slug"</span>: <span class="str">"openai"</span>, <span class="str">"score"</span>: <span class="fn">4.12</span>, <span class="str">"status"</span>: <span class="str">"trusted"</span>, <span class="cmt">/* ... */</span> },
+    { <span class="str">"slug"</span>: <span class="str">"stripe"</span>, <span class="str">"score"</span>: <span class="fn">4.35</span>, <span class="str">"status"</span>: <span class="str">"trusted"</span>, <span class="cmt">/* ... */</span> },
+    { <span class="str">"slug"</span>: <span class="str">"langchain"</span>, <span class="str">"score"</span>: <span class="fn">3.78</span>, <span class="str">"status"</span>: <span class="str">"trusted"</span>, <span class="cmt">/* ... */</span> }
+  ]
+}</pre></div>
+
+<h3>GET /alerts</h3>
+<p>Retrieve active incidents and CVEs for a service. Available on Pro and Enterprise plans only.</p>
+<div class="param"><span class="param-name">slug</span><span class="param-type">string</span><span class="param-req">required</span><div class="param-desc">The service slug</div></div>
+<div class="code"><span class="code-label">Response</span><pre>{
+  <span class="str">"incidents"</span>: [
+    { <span class="str">"id"</span>: <span class="str">"inc_001"</span>, <span class="str">"title"</span>: <span class="str">"API latency spike"</span>, <span class="str">"severity"</span>: <span class="str">"degraded"</span>, <span class="str">"started_at"</span>: <span class="str">"2026-06-10T14:22:00Z"</span> }
+  ],
+  <span class="str">"cves"</span>: [
+    { <span class="str">"id"</span>: <span class="str">"CVE-2026-12345"</span>, <span class="str">"severity"</span>: <span class="str">"high"</span>, <span class="str">"patched"</span>: <span class="fn">false</span>, <span class="str">"published"</span>: <span class="str">"2026-06-08"</span> }
+  ]
+}</pre></div>
+
+<h3>GET /services/{slug}</h3>
+<p>Retrieve the full service detail object, including all dimension scores, sub-signal breakdowns, publisher metadata, incident timeline, and compliance fields.</p>
+<div class="code"><pre><span class="fn">curl</span> <span class="str">"https://api.fabriclayer.ai/services/openai"</span> \
+  -H <span class="str">"Authorization: Bearer fl_live_abc123..."</span></pre></div>
+
+<h3>GET /usage</h3>
+<p>Check your current plan and API usage for the billing period.</p>
+<div class="code"><span class="code-label">Response</span><pre>{
+  <span class="str">"plan"</span>: <span class="str">"pro"</span>,
+  <span class="str">"limit"</span>: <span class="fn">50000</span>,
+  <span class="str">"used"</span>: <span class="fn">12480</span>,
+  <span class="str">"remaining"</span>: <span class="fn">37520</span>,
+  <span class="str">"reset"</span>: <span class="str">"2026-07-01T00:00:00Z"</span>
+}</pre></div>
+
+<h3>GET /openapi.json</h3>
+<p>Returns the full OpenAPI 3.1 specification for the Fabric Trust API. Use this to generate client libraries or import into tools like Postman.</p>
+
+<h2 id="api-auth">Authentication</h2>
+<p>API keys use the prefix <span class="inline-code">fl_live_</span> followed by 32 alphanumeric characters. Include the key in every request using the <span class="inline-code">Authorization</span> header.</p>
+
+<div class="code"><pre><span class="fn">curl</span> <span class="str">"https://api.fabriclayer.ai/lookup?slug=openai"</span> \
+  -H <span class="str">"Authorization: Bearer fl_live_abc123def456ghi789jkl012mno345pq"</span></pre></div>
+
+<div class="callout"><p><strong>Get your API key.</strong> Sign up and generate a key at <a href="https://trust.fabriclayer.ai/api-access">trust.fabriclayer.ai/api-access</a>. Keys are SHA-256 hashed server side. We never store the raw key, so make sure you copy it when it is first displayed.</p></div>
+
+<h2 id="api-plans">Plans &amp; pricing</h2>
+<p>Every plan includes access to the lookup, services, and usage endpoints. Batch lookups and alerts are available on Pro and Enterprise plans.</p>
+
+<table class="doc-table"><tr><th>Plan</th><th>Price</th><th>Monthly limit</th></tr>
+<tr><td><strong>Free</strong></td><td>$0</td><td>1,000 lookups</td></tr>
+<tr><td><strong>Publisher</strong></td><td>$19/mo</td><td>1,000 lookups</td></tr>
+<tr><td><strong>Pro</strong></td><td>$49/mo</td><td>50,000 lookups</td></tr>
+<tr><td><strong>Enterprise</strong></td><td>$299/mo</td><td>500,000 lookups</td></tr></table>
+
+<div class="callout"><p><strong>Need higher volume?</strong> Enterprise customers with usage above 500,000 lookups per month can contact <a href="mailto:hello@fabriclayer.ai">hello@fabriclayer.ai</a> for custom pricing.</p></div>
+
+<h2 id="mcp-server">MCP server</h2>
+<p>The Fabric MCP server lets AI assistants check trust scores natively through the Model Context Protocol. Install it as an npm package or run it directly with npx.</p>
+
+<h3>Installation</h3>
+<div class="code"><pre><span class="fn">npx</span> <span class="str">@fabriclayer/trust-mcp</span></pre></div>
+
+<h3>Claude Desktop configuration</h3>
+<div class="code"><span class="code-label">claude_desktop_config.json</span><pre>{
+  <span class="str">"mcpServers"</span>: {
+    <span class="str">"fabriclayer-trust"</span>: {
+      <span class="str">"command"</span>: <span class="str">"npx"</span>,
+      <span class="str">"args"</span>: [<span class="str">"@fabriclayer/trust-mcp"</span>],
+      <span class="str">"env"</span>: {
+        <span class="str">"FABRIC_API_KEY"</span>: <span class="str">"fl_live_abc123..."</span>
+      }
+    }
+  }
+}</pre></div>
+
+<h3>Available tools</h3>
+<table class="doc-table"><tr><th>Tool</th><th>Description</th></tr>
+<tr><td><span class="inline-code">check_trust</span></td><td>Look up the trust score for a single AI service by slug</td></tr>
+<tr><td><span class="inline-code">check_batch</span></td><td>Look up trust scores for multiple services in one call (Pro/Enterprise)</td></tr>
+<tr><td><span class="inline-code">get_alerts</span></td><td>Retrieve active incidents and CVEs for a service (Pro/Enterprise)</td></tr></table>
+
+<h3>Keyless mode</h3>
+<p>If you omit the <span class="inline-code">FABRIC_API_KEY</span> environment variable, the MCP server runs in keyless mode. It uses the <span class="inline-code">/public-lookup</span> endpoint, which is free but limited to 50 requests per day per IP. Keyless mode only supports the <span class="inline-code">check_trust</span> tool.</p>
+
+<h3>Authenticated mode</h3>
+<p>Set the <span class="inline-code">FABRIC_API_KEY</span> environment variable to unlock all three tools and use your plan's full monthly quota.</p>
+
+<h2 id="github-action">GitHub Action</h2>
+<p>The Fabric Trust GitHub Action scans your project's AI dependencies and reports their trust scores directly in your CI pipeline.</p>
+
+<h3>Usage</h3>
+<div class="code"><span class="code-label">YAML</span><pre><span class="kw">name</span>: AI Dependency Trust Check
+<span class="kw">on</span>: [push, pull_request]
+
+<span class="kw">jobs</span>:
+  <span class="kw">trust-check</span>:
+    <span class="kw">runs-on</span>: ubuntu-latest
+    <span class="kw">steps</span>:
+      - <span class="kw">uses</span>: actions/checkout@v4
+      - <span class="kw">uses</span>: fabriclayer/trust-action@v1
+        <span class="kw">with</span>:
+          <span class="kw">api-key</span>: ${{ secrets.FABRIC_API_KEY }}
+          <span class="kw">fail-on-blocked</span>: <span class="str">true</span>
+          <span class="kw">fail-on-unverified</span>: <span class="str">false</span></pre></div>
+
+<h3>Auto-detection</h3>
+<p>The action automatically detects AI dependencies from <span class="inline-code">package.json</span>, <span class="inline-code">requirements.txt</span>, and <span class="inline-code">pyproject.toml</span>. No manual slug list needed for most projects.</p>
+
+<h3>Inputs</h3>
+<table class="doc-table"><tr><th>Input</th><th>Required</th><th>Description</th></tr>
+<tr><td><span class="inline-code">api-key</span></td><td>Yes</td><td>Your Fabric API key (use a repository secret)</td></tr>
+<tr><td><span class="inline-code">slugs</span></td><td>No</td><td>Comma separated list of slugs to check (overrides auto-detection)</td></tr>
+<tr><td><span class="inline-code">fail-on-blocked</span></td><td>No</td><td>Fail the workflow if any dependency is Blocked (default: <span class="inline-code">true</span>)</td></tr>
+<tr><td><span class="inline-code">fail-on-unverified</span></td><td>No</td><td>Fail the workflow if any dependency is Unverified (default: <span class="inline-code">false</span>)</td></tr></table>
+
+<h3>Outputs</h3>
+<table class="doc-table"><tr><th>Output</th><th>Description</th></tr>
+<tr><td><span class="inline-code">results</span></td><td>JSON array of trust score results for each detected dependency</td></tr>
+<tr><td><span class="inline-code">blocked-count</span></td><td>Number of dependencies with Blocked status</td></tr>
+<tr><td><span class="inline-code">caution-count</span></td><td>Number of dependencies with Caution status</td></tr></table>
+
+<p>The action also writes a summary table to <span class="inline-code">GITHUB_STEP_SUMMARY</span>, which appears directly in the workflow run summary on GitHub.</p>
 
 <h2 id="trust-overview">Trust Score</h2>
 <p>The Fabric Trust Score is the core of the Trust Index. It determines whether a service is trusted, flagged for caution, or blocked outright.</p>
@@ -358,8 +541,16 @@ nav{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(
 <tr><td>1.00 – 2.99</td><td><span class="tag tag-o">Caution</span></td><td>Some signals flagged. Require human confirmation before granting access.</td></tr>
 <tr><td>0.00 – 0.99</td><td><span class="tag tag-r">Blocked</span></td><td>Significant risks detected. Deny by default.</td></tr></table>
 
+<h3>Coverage gates</h3>
+<p>Before the composite score determines a service's status, the scoring engine evaluates data coverage, which measures how many dimensions have real data. Coverage gates prevent services with thin data from receiving premature labels.</p>
+<table class="doc-table"><tr><th>Coverage</th><th>Effect</th></tr>
+<tr><td>&lt; 0.40</td><td><span class="tag tag-r">Unverified</span> — score is withheld entirely, insufficient data to produce a meaningful rating</td></tr>
+<tr><td>0.40 – 0.60</td><td><span class="tag tag-o">Caution</span> — low coverage flag applied regardless of composite score</td></tr>
+<tr><td>≥ 0.60 + composite ≥ 3.00</td><td><span class="tag tag-g">Trusted</span> — sufficient data and strong composite score</td></tr>
+<tr><td>Any critical CVE</td><td><span class="tag tag-r">Blocked</span> — overrides all other gates</td></tr></table>
+
 <h3>Trusted gate</h3>
-<p>Achieving <span class="tag tag-g">Trusted</span> status requires more than just a composite score above 3.00. The scoring engine applies a "trusted gate" — a data sufficiency check that prevents services with insufficient coverage from being labelled trusted prematurely.</p>
+<p>Achieving <span class="tag tag-g">Trusted</span> status requires more than just a composite score above 3.00. The scoring engine applies a "trusted gate," a data sufficiency check that prevents services with insufficient coverage from being labelled trusted prematurely.</p>
 <p>To qualify for Trusted status, a service must:</p>
 <ul>
 <li>Have vulnerability data (the vulnerability dimension must have real data, not fallbacks)</li>
