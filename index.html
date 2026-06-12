@@ -422,7 +422,7 @@ h1{font-size:35px}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Fabric","legalName":"Fabric Layer Technologies LTD","url":"https://fabriclayer.ai","logo":"https://fabriclayer.ai/logo.png","description":"Trust scores for every AI service. The trust layer for the agent economy.","sameAs":["https://x.com/fabriclayer","https://github.com/fabriclayer"],"parentOrganization":{"@type":"Organization","name":"Motherbird","url":"https://motherbird.ai"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Fabric","url":"https://fabriclayer.ai","description":"Free public trust scores on every AI service, model, and MCP skill.","potentialAction":{"@type":"SearchAction","target":"https://trust.fabriclayer.ai/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Fabric Trust Index?","acceptedAnswer":{"@type":"Answer","text":"The Fabric Trust Index is a free, public directory of trust scores for AI tools, models, MCP servers, and API services. Every service gets a composite score from 0.00 to 5.00 computed across six independently weighted signals: Vulnerability & Safety, Operational Health, Maintenance Activity, Adoption, Transparency, and Publisher Trust. Scores are auto-generated from public data sources — no provider registration required."}},{"@type":"Question","name":"How are trust scores calculated?","acceptedAnswer":{"@type":"Answer","text":"Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0–5, weighted within its dimension, and the six dimension scores are combined using fixed weights (Vulnerability 25%, Operational 20%, Maintenance 20%, Adoption 15%, Transparency 10%, Publisher Trust 10%) into a single composite score."}},{"@type":"Question","name":"What do the status labels mean?","acceptedAnswer":{"@type":"Answer","text":"Services scoring 3.00 or above are labeled Trusted (low risk detected). Services between 1.00 and 2.99 are labeled Caution (human review recommended). Services below 1.00 are labeled Not Recommended. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context."}},{"@type":"Question","name":"Is the Trust Index free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Trust Index website is completely free to browse and search. No account is required. We also plan to offer a free tier of the Trust API for programmatic access to scores."}},{"@type":"Question","name":"How often are scores updated?","acceptedAnswer":{"@type":"Answer","text":"Scores are recalculated daily. Critical signals like CVE advisories and uptime checks are monitored more frequently — CVEs every 5 minutes, health checks every 15 minutes. New services are discovered and scored automatically as they appear in public registries."}},{"@type":"Question","name":"Can I claim or dispute a score?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every service detail page has a Report Issue button. Publishers can also claim their service profile to unlock deeper evaluation and real-time monitoring. Trust scores are informational and auto-generated — they are not endorsements or guarantees. We welcome feedback to improve accuracy."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Fabric Trust Index?","acceptedAnswer":{"@type":"Answer","text":"The Fabric Trust Index is a free, public directory of trust scores for AI tools, models, MCP servers, and API services. Every service gets a composite score from 0.00 to 5.00 computed across six independently weighted signals: Vulnerability & Safety, Operational Health, Maintenance Activity, Adoption, Transparency, and Publisher Trust. Scores are auto-generated from public data sources — no provider registration required."}},{"@type":"Question","name":"How are trust scores calculated?","acceptedAnswer":{"@type":"Answer","text":"Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0–5, weighted within its dimension, and the six dimension scores are combined as a weighted mean (Vulnerability 25%, Operational 15%, Maintenance 15%, Adoption 15%, Transparency 15%, Publisher Trust 15%), renormalized over evaluated signals only. Coverage gates apply: below 0.40 coverage the service is unverified, 0.40–0.60 triggers a low coverage caution label, and 0.60 or above with a score of 3.00 or higher earns a trusted label."}},{"@type":"Question","name":"What do the status labels mean?","acceptedAnswer":{"@type":"Answer","text":"Services with coverage of 0.60 or above and a score of 3.00 or higher are labeled Trusted (low risk detected). Services with coverage between 0.40 and 0.60 are labeled Caution, low coverage (human review recommended). Services with coverage below 0.40 are labeled Unverified, meaning not enough data exists to produce a reliable score. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context."}},{"@type":"Question","name":"Is the Trust Index free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Trust Index website is completely free to browse and search. No account is required. We also plan to offer a free tier of the Trust API for programmatic access to scores."}},{"@type":"Question","name":"How often are scores updated?","acceptedAnswer":{"@type":"Answer","text":"Scores are recalculated daily. Critical signals like CVE advisories and uptime checks are monitored more frequently — CVEs every 5 minutes, health checks every 15 minutes. New services are discovered and scored automatically as they appear in public registries."}},{"@type":"Question","name":"Can I claim or dispute a score?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every service detail page has a Report Issue button. Publishers can also claim their service profile to unlock deeper evaluation and real-time monitoring. Trust scores are informational and auto-generated — they are not endorsements or guarantees. We welcome feedback to improve accuracy."}},{"@type":"Question","name":"How does the API work?","acceptedAnswer":{"@type":"Answer","text":"The Fabric Trust API lets you look up trust scores programmatically. Send a GET request to https://api.fabriclayer.ai/lookup?slug=openai with your API key in the Authorization header. The response includes the composite score, status label, coverage ratio, and all six signal scores. Free tier allows 1,000 requests per month with no key required. Pro and Enterprise tiers unlock batch lookups, alerts, and higher rate limits."}},{"@type":"Question","name":"What is the MCP server?","acceptedAnswer":{"@type":"Answer","text":"The Fabric MCP server lets AI assistants like Claude Desktop query trust scores directly during a conversation. When an agent considers using an external tool or service, it can call the MCP server to check the trust score before proceeding. The server exposes a lookup tool that returns the same data as the REST API."}},{"@type":"Question","name":"How does the GitHub Action work?","acceptedAnswer":{"@type":"Answer","text":"The Fabric Trust GitHub Action runs trust checks inside your CI/CD pipeline. Add it to any workflow to scan your dependencies or a list of services against the Trust Index on every push or pull request. If any dependency falls below your configured score threshold, the check fails and blocks the merge."}}]}</script>
 </head>
 <body>
 
@@ -437,9 +437,9 @@ h1{font-size:35px}
   <div class="nav-right">
     <div class="nav-links">
       <a href="https://trust.fabriclayer.ai">Trust Index</a>
-      <span class="nav-soon">API<span class="tooltip">Coming soon</span></span>
+      <a href="https://trust.fabriclayer.ai/api-access">API</a>
       <a href="/blog">Blog</a>
-      <a href="/docs">Docs</a>
+      <a href="/docs.html">Docs</a>
     
     </div>
     <button class="burger" id="burgerBtn" aria-label="Menu">
@@ -450,10 +450,9 @@ h1{font-size:35px}
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://trust.fabriclayer.ai">Trust Index</a>
-  <span class="nav-soon" style="display:block;padding:0.55rem 1.25rem;font-family:var(--mono);font-size:0.78rem;color:#ccc">API<span class="tooltip">Coming soon</span></span>
+  <a href="https://trust.fabriclayer.ai/api-access">API</a>
   <a href="/blog">Blog</a>
-  <a href="/docs">Docs</a>
-
+  <a href="/docs.html">Docs</a>
 </div>
 
 <!-- HERO -->
@@ -608,32 +607,32 @@ h1{font-size:35px}
 
 <!-- API -->
 <div class="api-wrap"><section class="sec" id="api">
-<div class="api-badge">COMING SOON</div>
+<div class="api-badge">LIVE</div>
 <div class="sec-title">The Fabric API.<br>Scores in your pipeline.</div>
 <div class="sec-desc">Query any service programmatically. Get the score, signals, and alerts in one call. Integrate safety checks into your agent workflows, CI/CD, or tool selection logic.</div>
 
 <div class="api-cols">
 <div class="api-code">
-<pre><span class="cm">// Check if a tool is safe before granting access</span>
+<pre><span class="cm"># Look up any service by slug</span>
 
-<span class="kw">const</span> res = <span class="kw">await</span> fetch(
-  <span class="str">'https://api.fabriclayer.ai/v1/lookup?slug=mcp-python-sdk'</span>
-)
-<span class="kw">const</span> { score, status, signals } = <span class="kw">await</span> res.json()
+<span class="kw">curl</span> <span class="str">https://api.fabriclayer.ai/lookup?slug=openai</span> \
+  -H <span class="str">"Authorization: Bearer fl_live_..."</span>
 
-<span class="cm">// score:  4.59</span>
-<span class="cm">// status: "trusted"</span>
-<span class="cm">// signals:</span>
-<span class="cm">//   vulnerability:     4.8</span>
-<span class="cm">//   maintenance:        5.0</span>
-<span class="cm">//   operational_health: 4.5</span>
-<span class="cm">//   adoption:           3.9</span>
-<span class="cm">//   transparency:       4.5</span>
-<span class="cm">//   publisher_trust:    4.3</span>
-
-<span class="kw">if</span> (status === <span class="str">'blocked'</span>) {
-  <span class="kw">throw new</span> Error(<span class="str">'Tool failed safety check'</span>)
-}</pre>
+<span class="cm"># Response</span>
+<span class="cm"># {</span>
+<span class="cm">#   "slug": "openai",</span>
+<span class="cm">#   "score": 4.51,</span>
+<span class="cm">#   "status": "trusted",</span>
+<span class="cm">#   "coverage": 0.83,</span>
+<span class="cm">#   "signals": {</span>
+<span class="cm">#     "vulnerability":  4.8,</span>
+<span class="cm">#     "operational":    4.5,</span>
+<span class="cm">#     "maintenance":    5.0,</span>
+<span class="cm">#     "adoption":       3.9,</span>
+<span class="cm">#     "transparency":   4.5,</span>
+<span class="cm">#     "publisher_trust": 4.3</span>
+<span class="cm">#   }</span>
+<span class="cm"># }</span></pre>
 </div>
 
 <div>
@@ -657,6 +656,60 @@ h1{font-size:35px}
 
 </section></div>
 
+<!-- PRICING -->
+<section class="sec" id="pricing" style="padding-top:80px;padding-bottom:80px">
+<div class="sec-label">Pricing</div>
+<div class="sec-title">Simple, transparent pricing</div>
+<div class="sec-desc" style="margin-bottom:40px">Start free. Scale when you need to.</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);border-radius:16px;overflow:hidden">
+
+<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Free</div>
+<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$0<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
+<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
+<li>&#10003; 1,000 requests/month</li>
+<li>&#10003; Single lookups</li>
+<li>&#10003; Public lookup, no key required</li>
+</ul>
+</div>
+
+<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Publisher</div>
+<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$19<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
+<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
+<li>&#10003; 1,000 requests/month</li>
+<li>&#10003; Claim and verify your services</li>
+<li>&#10003; Trust badge for your site</li>
+<li>&#10003; Daily diff alerts</li>
+</ul>
+</div>
+
+<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px;border:2px solid var(--blue);border-radius:0;position:relative">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Pro</div>
+<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$49<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
+<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
+<li>&#10003; 50,000 requests/month</li>
+<li>&#10003; Batch lookups</li>
+<li>&#10003; Alerts</li>
+<li>&#10003; Priority support</li>
+</ul>
+</div>
+
+<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Enterprise</div>
+<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$299<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
+<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
+<li>&#10003; 500,000 requests/month</li>
+<li>&#10003; Everything in Pro</li>
+<li>&#10003; SLA</li>
+<li>&#10003; Dedicated support</li>
+</ul>
+</div>
+
+</div>
+</section>
+
 <!-- FAQ -->
 <section class="faq-wrap">
 <div class="faq-inner">
@@ -671,12 +724,12 @@ h1{font-size:35px}
 
 <details class="faq-item">
 <summary>How are trust scores calculated?</summary>
-<div class="faq-body">Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0&ndash;5, weighted within its dimension, and the six dimension scores are combined using fixed weights (Vulnerability 25%, Operational 20%, Maintenance 20%, Adoption 15%, Transparency 10%, Publisher Trust 10%) into a single composite score.</div>
+<div class="faq-body">Each service is evaluated across 23 sub-signals grouped into six dimensions. Sub-signals are collected from public sources like GitHub, npm, NVD, and uptime monitors. Each sub-signal is scored 0&ndash;5, weighted within its dimension, and the six dimension scores are combined as a weighted mean (Vulnerability 25%, Operational 15%, Maintenance 15%, Adoption 15%, Transparency 15%, Publisher Trust 15%), renormalized over evaluated signals only. Coverage gates determine the label: below 0.40 coverage means unverified, 0.40&ndash;0.60 triggers a low coverage caution label, and 0.60 or above with a score of 3.00 or higher earns a trusted label.</div>
 </details>
 
 <details class="faq-item">
 <summary>What do the status labels mean?</summary>
-<div class="faq-body">Services scoring 3.00 or above are labeled <strong>Trusted</strong> (low risk detected). Services between 1.00 and 2.99 are labeled <strong>Caution</strong> (human review recommended). Services below 1.00 are labeled <strong>Not Recommended</strong>. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context.</div>
+<div class="faq-body">Services with coverage of 0.60 or above and a score of 3.00 or higher are labeled <strong>Trusted</strong> (low risk detected). Services with coverage between 0.40 and 0.60 are labeled <strong>Caution</strong>, low coverage (human review recommended). Services with coverage below 0.40 are labeled <strong>Unverified</strong>, meaning not enough data exists to produce a reliable score. These labels help AI agents and developers make quick decisions, but we recommend reviewing the full signal breakdown for context.</div>
 </details>
 
 <details class="faq-item">
@@ -692,6 +745,21 @@ h1{font-size:35px}
 <details class="faq-item">
 <summary>Can I claim or dispute a score?</summary>
 <div class="faq-body">Yes. Every service detail page has a &ldquo;Report Issue&rdquo; button. Publishers can also claim their service profile to unlock deeper evaluation and real-time monitoring. Trust scores are informational and auto-generated&mdash;they are not endorsements or guarantees. We welcome feedback to improve accuracy.</div>
+</details>
+
+<details class="faq-item">
+<summary>How does the API work?</summary>
+<div class="faq-body">The Fabric Trust API lets you look up trust scores programmatically. Send a GET request to <code>https://api.fabriclayer.ai/lookup?slug=openai</code> with your API key in the Authorization header. The response includes the composite score, status label, coverage ratio, and all six signal scores. Free tier allows 1,000 requests per month with no key required. Pro and Enterprise tiers unlock batch lookups, alerts, and higher rate limits.</div>
+</details>
+
+<details class="faq-item">
+<summary>What is the MCP server?</summary>
+<div class="faq-body">The Fabric MCP server lets AI assistants like Claude Desktop query trust scores directly during a conversation. When an agent considers using an external tool or service, it can call the MCP server to check the trust score before proceeding. Configure it in your Claude Desktop settings by pointing to the <code>@anthropic/fabric-trust-mcp</code> package. The server exposes a <code>lookup</code> tool that returns the same data as the REST API.</div>
+</details>
+
+<details class="faq-item">
+<summary>How does the GitHub Action work?</summary>
+<div class="faq-body">The Fabric Trust GitHub Action runs trust checks inside your CI/CD pipeline. Add it to any workflow to scan your dependencies or a list of services against the Trust Index on every push or pull request. If any dependency falls below your configured score threshold, the check fails and blocks the merge. This gives teams an automated gate that catches risky dependencies before they reach production.</div>
 </details>
 
 </div>
