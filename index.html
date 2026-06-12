@@ -1100,7 +1100,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
   .then(function(live){
     var map={};
-    live.forEach(function(s){if(s.composite_score)map[s.slug]=s.composite_score});
+    live.forEach(function(s){if(s.composite_score&&s.composite_score>=2.0)map[s.slug]=s.composite_score});
     var changed=false;
     CURATED.forEach(function(c){if(map[c.slug]&&map[c.slug]!==c.composite_score){c.composite_score=map[c.slug];changed=true}});
     if(changed)render(CURATED);
