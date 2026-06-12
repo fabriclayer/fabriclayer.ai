@@ -9,7 +9,9 @@
     { "source": "/blog/how-trust-scoring-works", "destination": "/post-trust-scoring.html" },
     { "source": "/blog/mcp-supply-chain-attacks-timeline", "destination": "/post-mcp-timeline.html" },
     { "source": "/blog/clawhub-malware-case-study", "destination": "/post-clawhub.html" },
-    { "source": "/blog/langchain-featured-publisher", "destination": "/post-langchain-publisher.html" }
+    { "source": "/blog/langchain-featured-publisher", "destination": "/post-langchain-publisher.html" },
+    { "source": "/blog/api-launch", "destination": "/post-api-launch.html" },
+    { "source": "/blog/mcp-github-action", "destination": "/post-mcp-github-action.html" }
   ],
   "headers": [
     {
