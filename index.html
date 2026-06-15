@@ -1066,27 +1066,21 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
 
   // Curated 21 — fixed order, live scores
   var CURATED=[
-    {name:'Supabase',slug:'supabase',publisher_name:'supabase',category:'infra',composite_score:4.68,description:'The open source Firebase alternative.'},
-    {name:'Datasets',slug:'datasets',publisher_name:'Hugging Face',category:'ml platform',composite_score:4.55,description:'The largest hub for ML datasets.'},
-    {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.51,description:'The official Python library for the OpenAI API.'},
-    {name:'Fabric Trust Index',slug:'fabric-trust-index',publisher_name:'Fabric',category:'trust layer',composite_score:4.80,description:'Trust scores for every AI service in the agent economy.'},
-    {name:'Stripe',slug:'stripe',publisher_name:'Stripe',category:'infra',composite_score:4.50,description:'Payment processing platform for the internet.'},
-    {name:'Claude Team',slug:'claude-team',publisher_name:'Anthropic, PBC.',category:'mcp server',composite_score:4.45,description:'Claude model for team collaboration workflows.'},
-    {name:'Pinecone',slug:'pinecone',publisher_name:'Pinecone',category:'infra',composite_score:4.45,description:'Vector database for machine learning applications.'},
-    {name:'Azure MCP',slug:'azure-mcp',publisher_name:'Microsoft',category:'mcp server',composite_score:4.40,description:'Model Context Protocol server for Azure services.'},
-    {name:'Vercel AI',slug:'vercel-ai',publisher_name:'Vercel',category:'framework',composite_score:4.40,description:'Build AI-powered applications with React and Next.js.'},
-    {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.36,description:'The official Python SDK for the Anthropic API.'},
-    {name:'Notion MCP',slug:'notionhq-notion-mcp-server',publisher_name:'Notion',category:'mcp server',composite_score:4.35,description:'MCP server for the Notion API.'},
-    {name:'Mistral',slug:'mistralai',publisher_name:'Mistral AI',category:'ai sdk',composite_score:4.30,description:'Open and portable generative AI for devs.'},
-    {name:'Brave Search MCP',slug:'brave-brave-search-mcp-server',publisher_name:'Brave',category:'mcp server',composite_score:4.30,description:'MCP server for the Brave Search API.'},
-    {name:'Twilio',slug:'twilio',publisher_name:'Twilio',category:'infra',composite_score:4.25,description:'Cloud communications platform for messaging and voice.'},
-    {name:'GitHub MCP',slug:'github-mcp-server',publisher_name:'GitHub',category:'mcp server',composite_score:4.20,description:'MCP server for the GitHub API.'},
-    {name:'Upstash',slug:'upstash',publisher_name:'Upstash',category:'infra',composite_score:4.20,description:'Serverless Redis and Kafka for modern apps.'},
-    {name:'Streamlit',slug:'streamlit',publisher_name:'Streamlit',category:'framework',composite_score:4.15,description:'The fastest way to build and share data apps.'},
-    {name:'Groq',slug:'groq',publisher_name:'Groq',category:'infra',composite_score:4.10,description:'Fast AI inference on LPU hardware.'},
-    {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.00,description:'Framework for orchestrating autonomous AI agents.'},
-    {name:'TensorFlow',slug:'tensorflow',publisher_name:'Google',category:'ml platform',composite_score:3.50,description:'An end-to-end open source machine learning platform.'},
-    {name:'LangChain Core',slug:'langchain-core',publisher_name:'LangChain',category:'framework',composite_score:3.45,description:'Core abstractions for building with LLMs.'}
+    {name:'Supabase',slug:'supabase',publisher_name:'supabase',category:'infra',composite_score:4.66,description:'The open source Firebase alternative.'},
+    {name:'Stripe',slug:'stripe',publisher_name:'Stripe',category:'infra',composite_score:4.64,description:'Payment processing platform for the internet.'},
+    {name:'GitHub MCP',slug:'github-mcp-server',publisher_name:'GitHub',category:'mcp server',composite_score:4.61,description:'MCP server for the GitHub API.'},
+    {name:'CrewAI',slug:'crewai',publisher_name:'CrewAI',category:'framework',composite_score:4.61,description:'Framework for orchestrating autonomous AI agents.'},
+    {name:'OpenAI',slug:'openai',publisher_name:'OpenAI',category:'ai sdk',composite_score:4.57,description:'The official Python library for the OpenAI API.'},
+    {name:'LangChain Core',slug:'langchain-core',publisher_name:'LangChain',category:'framework',composite_score:4.53,description:'Core abstractions for building with LLMs.'},
+    {name:'Anthropic',slug:'anthropic',publisher_name:'Anthropic, PBC.',category:'ai sdk',composite_score:4.50,description:'The official Python SDK for the Anthropic API.'},
+    {name:'Datasets',slug:'datasets',publisher_name:'Hugging Face',category:'ml platform',composite_score:4.44,description:'The largest hub for ML datasets.'},
+    {name:'Twilio',slug:'twilio',publisher_name:'Twilio',category:'infra',composite_score:4.32,description:'Cloud communications platform for messaging and voice.'},
+    {name:'TensorFlow',slug:'tensorflow',publisher_name:'Google',category:'ml platform',composite_score:4.17,description:'An end-to-end open source machine learning platform.'},
+    {name:'Notion MCP',slug:'notionhq-notion-mcp-server',publisher_name:'Notion',category:'mcp server',composite_score:4.11,description:'MCP server for the Notion API.'},
+    {name:'Upstash',slug:'upstash',publisher_name:'Upstash',category:'infra',composite_score:3.78,description:'Serverless Redis and Kafka for modern apps.'},
+    {name:'Pinecone',slug:'pinecone',publisher_name:'Pinecone',category:'infra',composite_score:3.24,description:'Vector database for machine learning applications.'},
+    {name:'Brave Search MCP',slug:'brave-brave-search-mcp-server',publisher_name:'Brave',category:'mcp server',composite_score:3.24,description:'MCP server for the Brave Search API.'},
+    {name:'Groq',slug:'groq',publisher_name:'Groq',category:'infra',composite_score:3.24,description:'Fast AI inference on LPU hardware.'}
   ];
 
   // Render immediately with static scores so cards appear instantly
@@ -1100,7 +1094,7 @@ document.querySelectorAll('.signal-total-icons, .hero-card-wrap').forEach(el=>bo
   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
   .then(function(live){
     var map={};
-    live.forEach(function(s){if(s.composite_score&&s.composite_score>=2.0)map[s.slug]=s.composite_score});
+    live.forEach(function(s){if(s.composite_score&&s.composite_score>=3.0)map[s.slug]=s.composite_score});
     var changed=false;
     CURATED.forEach(function(c){if(map[c.slug]&&map[c.slug]!==c.composite_score){c.composite_score=map[c.slug];changed=true}});
     if(changed)render(CURATED);
