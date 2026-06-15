@@ -660,54 +660,159 @@ h1{font-size:35px}
 <section class="sec" id="pricing" style="padding-top:80px;padding-bottom:80px">
 <div class="sec-label">Pricing</div>
 <div class="sec-title">Simple, transparent pricing</div>
-<div class="sec-desc" style="margin-bottom:40px">Start free. Scale when you need to.</div>
+<div class="sec-desc" style="margin-bottom:12px">Start free. Scale when you need to.</div>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border);border-radius:16px;overflow:hidden">
+<!-- Billing toggle -->
+<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px">
+<span id="lbl-mo" style="font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text);transition:color .2s">Monthly</span>
+<button id="billing-toggle" aria-label="Toggle annual billing" style="position:relative;width:48px;height:26px;border-radius:13px;border:1px solid var(--border);background:var(--bg);cursor:pointer;transition:all .25s;padding:0">
+<span id="toggle-dot" style="position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--black);transition:transform .25s ease"></span>
+</button>
+<span id="lbl-yr" style="font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text-3);transition:color .2s">Annual <span style="font-family:var(--mono);font-size:10px;color:var(--green);font-weight:600;background:rgba(13,201,86,.08);padding:2px 6px;border-radius:4px;margin-left:2px">Save 20%</span></span>
+</div>
 
-<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
-<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Free</div>
-<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$0<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
-<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
-<li>&#10003; 1,000 requests/month</li>
-<li>&#10003; Single lookups</li>
-<li>&#10003; Public lookup, no key required</li>
+<div id="pricing-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto">
+
+<!-- Free -->
+<div class="price-card" style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px 24px;display:flex;flex-direction:column;transition:all .25s;position:relative">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Free</div>
+<div style="margin-bottom:4px"><span class="price-amount" data-mo="0" data-yr="0" style="font-size:40px;font-weight:700;letter-spacing:-2px">$0</span></div>
+<div style="font-family:var(--mono);font-size:12px;color:var(--text-3);margin-bottom:24px;height:18px">Forever free</div>
+<div style="border-top:1px solid var(--border);padding-top:20px;flex:1">
+<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px">Includes</div>
+<ul style="list-style:none;font-size:13.5px;color:var(--text-2);display:flex;flex-direction:column;gap:10px">
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>1,000 requests/month</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Single lookups</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No key required</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>MCP server access</li>
 </ul>
 </div>
+<a href="https://trust.fabriclayer.ai/api-access" style="display:block;text-align:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:24px;transition:all .2s;text-decoration:none" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)';this.style.borderColor='var(--black)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--text)';this.style.borderColor='var(--border)'">Get started</a>
+</div>
 
-<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
-<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Publisher</div>
-<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$19<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
-<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
-<li>&#10003; 1,000 requests/month</li>
-<li>&#10003; Claim and verify your services</li>
-<li>&#10003; Trust badge for your site</li>
-<li>&#10003; Daily diff alerts</li>
+<!-- Publisher -->
+<div class="price-card" style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px 24px;display:flex;flex-direction:column;transition:all .25s;position:relative">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--pink);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Publisher</div>
+<div style="margin-bottom:4px"><span class="price-amount" data-mo="19" data-yr="15" style="font-size:40px;font-weight:700;letter-spacing:-2px">$19</span><span class="price-period" style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div>
+<div class="price-annual-note" style="font-family:var(--mono);font-size:12px;color:var(--text-3);margin-bottom:24px;height:18px"></div>
+<div style="border-top:1px solid var(--border);padding-top:20px;flex:1">
+<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px">Everything in Free, plus</div>
+<ul style="list-style:none;font-size:13.5px;color:var(--text-2);display:flex;flex-direction:column;gap:10px">
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Claim and verify your services</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trust badge for your site</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Daily score change alerts</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>DNS/GitHub verification</li>
 </ul>
 </div>
+<a href="https://trust.fabriclayer.ai/api-access" style="display:block;text-align:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:24px;transition:all .2s;text-decoration:none" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)';this.style.borderColor='var(--black)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--text)';this.style.borderColor='var(--border)'">Get started</a>
+</div>
 
-<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px;border:2px solid var(--blue);border-radius:0;position:relative">
-<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Pro</div>
-<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$49<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
-<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
-<li>&#10003; 50,000 requests/month</li>
-<li>&#10003; Batch lookups</li>
-<li>&#10003; Alerts</li>
-<li>&#10003; Priority support</li>
+<!-- Pro (featured) -->
+<div class="price-card" style="background:var(--black);border:1px solid var(--black);border-radius:16px;padding:32px 24px;display:flex;flex-direction:column;transition:all .25s;position:relative;color:var(--white);box-shadow:0 8px 40px rgba(0,0,0,.2)">
+<div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--white);background:var(--blue);padding:4px 14px;border-radius:20px;white-space:nowrap">Most popular</div>
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Pro</div>
+<div style="margin-bottom:4px"><span class="price-amount" data-mo="49" data-yr="39" style="font-size:40px;font-weight:700;letter-spacing:-2px;color:var(--white)">$49</span><span class="price-period" style="font-size:14px;font-weight:400;color:rgba(255,255,255,.4)">/mo</span></div>
+<div class="price-annual-note" style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.3);margin-bottom:24px;height:18px"></div>
+<div style="border-top:1px solid rgba(255,255,255,.1);padding-top:20px;flex:1">
+<div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:12px">Everything in Free, plus</div>
+<ul style="list-style:none;font-size:13.5px;color:rgba(255,255,255,.55);display:flex;flex-direction:column;gap:10px">
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style="color:var(--white);font-weight:600">50,000</strong> requests/month</span></li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Batch lookups (50 per call)</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Incident and CVE alerts</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
 </ul>
 </div>
+<a href="https://trust.fabriclayer.ai/api-access" style="display:block;text-align:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--black);background:var(--white);border:1px solid var(--white);border-radius:10px;padding:12px;margin-top:24px;transition:all .2s;text-decoration:none" onmouseover="this.style.background='var(--blue)';this.style.color='var(--white)';this.style.borderColor='var(--blue)'" onmouseout="this.style.background='var(--white)';this.style.color='var(--black)';this.style.borderColor='var(--white)'">Get started</a>
+</div>
 
-<div style="background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:8px">
-<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:1px">Enterprise</div>
-<div style="font-size:32px;font-weight:700;letter-spacing:-1.5px">$299<span style="font-size:15px;font-weight:400;color:var(--text-2)">/mo</span></div>
-<ul style="list-style:none;font-size:14px;color:var(--text-2);line-height:2;margin-top:8px">
-<li>&#10003; 500,000 requests/month</li>
-<li>&#10003; Everything in Pro</li>
-<li>&#10003; SLA</li>
-<li>&#10003; Dedicated support</li>
+<!-- Enterprise -->
+<div class="price-card" style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px 24px;display:flex;flex-direction:column;transition:all .25s;position:relative">
+<div style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Enterprise</div>
+<div style="margin-bottom:4px"><span class="price-amount" data-mo="299" data-yr="239" style="font-size:40px;font-weight:700;letter-spacing:-2px">$299</span><span class="price-period" style="font-size:14px;font-weight:400;color:var(--text-3)">/mo</span></div>
+<div class="price-annual-note" style="font-family:var(--mono);font-size:12px;color:var(--text-3);margin-bottom:24px;height:18px"></div>
+<div style="border-top:1px solid var(--border);padding-top:20px;flex:1">
+<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px">Everything in Pro, plus</div>
+<ul style="list-style:none;font-size:13.5px;color:var(--text-2);display:flex;flex-direction:column;gap:10px">
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong style="font-weight:600">500,000</strong> requests/month</span></li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>99.9% uptime SLA</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated support channel</li>
+<li style="display:flex;align-items:flex-start;gap:8px"><svg style="flex-shrink:0;margin-top:2px" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5.5" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom integrations</li>
 </ul>
 </div>
+<a href="mailto:kenny@fabriclayer.ai?subject=Enterprise%20inquiry" style="display:block;text-align:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:24px;transition:all .2s;text-decoration:none" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)';this.style.borderColor='var(--black)'" onmouseout="this.style.background='var(--bg)';this.style.color='var(--text)';this.style.borderColor='var(--border)'">Contact sales</a>
+</div>
 
 </div>
+
+<!-- Feature comparison -->
+<details id="compare-details" style="max-width:1100px;margin:32px auto 0">
+<summary style="font-family:var(--mono);font-size:13px;color:var(--text-3);cursor:pointer;text-align:center;padding:12px;transition:color .15s;list-style:none;display:flex;align-items:center;justify-content:center;gap:6px;user-select:none" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'"><svg id="compare-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" style="transition:transform .2s"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Compare all features</summary>
+<table style="width:100%;border-collapse:collapse;margin-top:16px;font-size:13px">
+<thead><tr style="border-bottom:2px solid var(--border)">
+<th style="text-align:left;padding:12px 16px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);font-weight:500">Feature</th>
+<th style="text-align:center;padding:12px 8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3);font-weight:500">Free</th>
+<th style="text-align:center;padding:12px 8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--pink);font-weight:500">Publisher</th>
+<th style="text-align:center;padding:12px 8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--blue);font-weight:500">Pro</th>
+<th style="text-align:center;padding:12px 8px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--orange);font-weight:500">Enterprise</th>
+</tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Monthly requests</td><td style="text-align:center;padding:10px 8px;font-family:var(--mono);font-weight:500">1K</td><td style="text-align:center;padding:10px 8px;font-family:var(--mono);font-weight:500">1K</td><td style="text-align:center;padding:10px 8px;font-family:var(--mono);font-weight:500">50K</td><td style="text-align:center;padding:10px 8px;font-family:var(--mono);font-weight:500">500K</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Single lookups</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Batch lookups</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Incident &amp; CVE alerts</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Claim &amp; verify services</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">Trust badge</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">MCP server</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">GitHub Action</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 16px;color:var(--text-2)">SLA</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+<tr><td style="padding:10px 16px;color:var(--text-2)">Dedicated support</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--text-3)">&mdash;</td><td style="text-align:center;padding:10px 8px;color:var(--green)">&#10003;</td></tr>
+</tbody>
+</table>
+</details>
+
+<script>
+(function(){
+  var toggle=document.getElementById('billing-toggle');
+  var dot=document.getElementById('toggle-dot');
+  var lblMo=document.getElementById('lbl-mo');
+  var lblYr=document.getElementById('lbl-yr');
+  var amounts=document.querySelectorAll('.price-amount');
+  var notes=document.querySelectorAll('.price-annual-note');
+  var annual=false;
+  toggle.addEventListener('click',function(){
+    annual=!annual;
+    dot.style.transform=annual?'translateX(22px)':'translateX(0)';
+    toggle.style.background=annual?'var(--black)':'var(--bg)';
+    toggle.style.borderColor=annual?'var(--black)':'var(--border)';
+    dot.style.background=annual?'var(--white)':'var(--black)';
+    lblMo.style.color=annual?'var(--text-3)':'var(--text)';
+    lblYr.style.color=annual?'var(--text)':'var(--text-3)';
+    amounts.forEach(function(el){
+      var v=annual?el.dataset.yr:el.dataset.mo;
+      el.textContent='$'+v;
+    });
+    notes.forEach(function(el){
+      var card=el.closest('.price-card');
+      var amt=card.querySelector('.price-amount');
+      if(amt.dataset.mo==='0'){el.textContent='Forever free';return}
+      el.textContent=annual?'Billed $'+(parseInt(amt.dataset.yr)*12)+'/year':'';
+    });
+  });
+  var det=document.getElementById('compare-details');
+  var chev=document.getElementById('compare-chevron');
+  det.addEventListener('toggle',function(){chev.style.transform=det.open?'rotate(180deg)':'rotate(0)'});
+})();
+</script>
+
+<style>
+.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+#pricing-grid{padding-top:12px}
+@media(max-width:900px){#pricing-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px}}
+@media(max-width:520px){#pricing-grid{grid-template-columns:1fr!important;gap:12px;max-width:380px}}
+#compare-details table{display:table}
+@media(max-width:600px){#compare-details table{font-size:11px}#compare-details th,#compare-details td{padding:8px 4px!important}}
+</style>
+
 </section>
 
 <!-- FAQ -->
